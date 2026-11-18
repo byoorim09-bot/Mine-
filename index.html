@@ -888,6 +888,22 @@ WARDROBE.forEach(function (it) {
   if (CONNECT_LINKS[it.id]) it.connectUrl = CONNECT_LINKS[it.id];
 });
 
+/* 쿠팡 파트너스 단축 링크 (2026-11-19 partners.coupang.com 에서 직접 발급 · 채널 '기본값')
+   - 대표 아이템 7개만 실제 상품과 연결했습니다. 나머지는 이름으로 쿠팡 검색.
+   - 링크가 있는 아이템은 「쿠팡에서 최저가 보기」가 이 단축 링크로 열립니다. */
+var COUPANG_LINKS = {
+  m_o6: 'https://link.coupang.com/a/iMTfKOffEq',   /* 이브컴퍼니 남성 캐시미어 울 싱글 코트 8컬러 · 98,800원 */
+  m_o8: 'https://link.coupang.com/a/iMTjJzlgjI',   /* 에이치베이직 오버핏 롱 트렌치 로브 바바리 · 66,800원 */
+  m_t10: 'https://link.coupang.com/a/iMTlZ84UVg',  /* 룩플레인 울 원단 라운드 니트 15color · 32,900원 */
+  m_b3: 'https://link.coupang.com/a/iMToB2OgaO',   /* 트래드클럽 트루 레귤러 치노 면바지 · 34,900원 */
+  m_s4: 'https://link.coupang.com/a/iMTqvLp77s',   /* 오오룩 소가죽 화이트 스니커즈 · 44,800원 */
+  m_t2: 'https://link.coupang.com/a/iMTsbvutzw',   /* 엘엑스티 구김없는 스판 반슬림 와이셔츠 · 22,800원 */
+  f_o1: 'https://link.coupang.com/a/iMTt6Kq6jQ'    /* 라파클럽 여성 라운드 니트 가디건 · 39,800원 */
+};
+WARDROBE.forEach(function (it) {
+  if (COUPANG_LINKS[it.id]) it.coupangUrl = COUPANG_LINKS[it.id];
+});
+
 /* ============================================================
    코디 추천 엔진 (날씨 · 기분 · 상황 → 풀코디 3가지)
    ============================================================ */
