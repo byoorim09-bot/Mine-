@@ -1122,7 +1122,7 @@ function makeColorTip(top, bottom, outer, acc, ctx) {
   var s = '색은 ' + top.colorName + ' ' + catLabel(top.cat) + ', ' + bottom.colorName + ' ' + catLabel(bottom.cat) + '로 맞췄어요.';
   if (outer) s += ' 여기에 ' + outer.colorName + ' ' + josa(outerNoun(outer), '으로', '로') + ' 온도를 더했어요.';
   if (acc) s += ' ' + acc.colorName + ' ' + josa(accNoun(acc), '으로', '로') + ' 마무리했고요.';
-  return s + ' ' + ctx.mo.tone + josa(ctx.mo.tone, '이', '가') + ' 됩니다.';
+  return s + ' ' + josa(ctx.mo.tone, '이', '가') + ' 됩니다.';
 }
 /* '오늘의 팁'은 코디(정석·여유·포인트)와 날씨·실제 아이템에 맞춰 서로 다른 문구로 씁니다. */
 function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
