@@ -1140,7 +1140,7 @@ function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
     if (w === 'cold') return (top.kind === 'knit' || top.kind === 'turtleneck' ? '두꺼운 니트는 손세탁이 오래갑니다. 세탁망에 넣고 눌러 빨래하세요.' : '안쪽에 얇은 이너를 받쳐 입으면 겉옷이 덜 눌립니다.') + ' ' + (acc ? josa(accNoun(acc), '은', '는') + ' ' + acc.colorName + ' 한 가지로 통일하면 흐트러지지 않아요.' : '');
     if (w === 'rain') return '젖은 옷은 그늘에서 넓게 펴 말려야 냄새가 덜 배요. ' + josa(catLabel(bottom.cat), '은', '는') + ' 밑단이 짧을수록 편합니다.';
     if (w === 'warm') return '얇은 니트는 옷걸이보다 개어 보관하세요. 실내 냉방에는 ' + (outer ? outerNoun(outer) : '얇은 셔츠') + ' 하나면 충분합니다.';
-    return '니트 밑단을 살짝 넣으면 허리선이 살아 비율이 좋아 보여요. ' + josa(shoeNoun(shoe), '은', '는') + ' 무광 소재가 편안한 핏과 잘 어울립니다.';
+    return ((top.kind === 'knit' || top.kind === 'turtleneck') ? '니트 밑단을 살짝 넣으면' : '상의 밑단을 살짝 넣으면') + ' 허리선이 살아 비율이 좋아 보여요. ' + josa(shoeNoun(shoe), '은', '는') + ' 무광 소재가 편안한 핏과 잘 어울립니다.';
   }
   /* accent */
   if (w === 'cold') return '포인트 색은 목에 가까이 둘수록 얼굴빛이 밝아 보여요. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '스카프 하나') + '로 시선을 위로 모아 보세요.';
