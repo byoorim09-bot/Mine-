@@ -1070,7 +1070,7 @@ function buildLooks(gender, weatherId, moodId, occasionId, seed) {
       tips: {
         color: makeColorTip(top, bottom, outer, acc, ctx),
         fit: concept.fit[gender],
-        extra: makeExtraTip(ctx, outer)
+        extra: makeExtraTip(ctx, outer, acc, shoe, concept.key, top, bottom)
       },
       reason: makeReason(concept, ctx)
     });
@@ -1078,16 +1078,75 @@ function buildLooks(gender, weatherId, moodId, occasionId, seed) {
   return looks;
 }
 
+/* 조사 처리: 받침이 있으면 '으로/을/은', 없으면 '로/를/는' */
+function josa(word, withB, withoutB) {
+  var c = String(word).charCodeAt(String(word).length - 1);
+  if (!(c >= 0xAC00 && c <= 0xD7A3)) return word + withoutB;
+  return word + (((c - 0xAC00) % 28 !== 0) ? withB : withoutB);
+}
+function outerNoun(it) {
+  var k = it.kind;
+  if (k === 'coat') return '코트';
+  if (k === 'trench') return '트렌치 재킷';
+  if (k === 'jacket') return '재킷';
+  if (k === 'blazer') return '블레이저';
+  if (k === 'cardigan') return '가디건';
+  if (k === 'padding') return '패딩';
+  return '겉옷';
+}
+function accNoun(it) {
+  var k = it.kind;
+  if (k === 'belt') return '벨트';
+  if (k === 'watch') return '시계';
+  if (k === 'scarf') return '머플러';
+  if (k === 'bag') return '가방';
+  if (k === 'tote') return '토트백';
+  if (k === 'gloves') return '장갑';
+  if (k === 'umbrella') return '우산';
+  if (k === 'earring') return '이어링';
+  return '소품';
+}
+function shoeNoun(it) {
+  var k = it.kind;
+  if (k === 'loafer') return '로퍼';
+  if (k === 'derby') return '더비 슈즈';
+  if (k === 'sneaker') return '스니커즈';
+  if (k === 'boot') return '부츠';
+  if (k === 'pump') return '펌프스';
+  if (k === 'flat') return '플랫';
+  return '신발';
+}
+/* 색 설명은 실제로 고른 상의·하의·겉옷·소품의 색 이름을 그대로 씁니다. */
 function makeColorTip(top, bottom, outer, acc, ctx) {
   var base = top.colorName + '·' + bottom.colorName;
-  var addName = outer ? outer.colorName + ' 겉옷' : acc.colorName + ' 소품';
-  return '색은 ' + base + ' 두 가지로 정리하고, ' + addName + '으로 온도를 더했어요. ' + ctx.mo.tone + '이 됩니다.';
+  var s = '색은 ' + top.colorName + ' ' + catLabel(top.cat) + ', ' + bottom.colorName + ' ' + catLabel(bottom.cat) + '로 맞췄어요.';
+  if (outer) s += ' 여기에 ' + outer.colorName + ' ' + outerNoun(outer) + josa(outerNoun(outer), '으로', '로') + ' 온도를 더했어요.';
+  if (acc) s += ' ' + acc.colorName + ' ' + accNoun(acc) + josa(accNoun(acc), '으로', '로') + ' 마무리했고요.';
+  return s + ' ' + ctx.mo.tone + '이 됩니다.';
 }
-function makeExtraTip(ctx, outer) {
-  if (ctx.w.id === 'cold') return '울·캐시미어는 드라이클리닝, 니트는 손세탁이 오래갑니다.' + (outer ? ' 코트 안에는 얇은 니트를 받쳐 입으세요.' : '');
-  if (ctx.w.id === 'rain') return '가죽 신발은 방수 스프레이를 뿌려 두고, 접이식보다 장우산이 편해요.';
-  if (ctx.w.id === 'warm') return '린넨·코튼은 땀에 강해요. 세탁 후 그늘에 말리면 오래갑니다.';
-  return '얇은 겉옷은 벗어도 주름이 적은 소재가 좋아요. 스카프 하나면 저녁 바람도 든든합니다.';
+/* '오늘의 팁'은 코디(정석·여유·포인트)와 날씨·실제 아이템에 맞춰 서로 다른 문구로 씁니다. */
+function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
+  var w = ctx.w.id;
+  if (conceptKey === 'classic') {
+    if (w === 'cold') {
+      return outer ? '울 ' + outerNoun(outer) + '는 어깨선이 맞아야 단정해 보여요. ' + bottom.colorName + ' ' + catLabel(bottom.cat) + '는 무릎이 살짝 덮이는 길이가 가장 안정적입니다.'
+                   : '겨울에는 기모 안감 니트가 얇아 보이면서도 따뜻합니다. 목만 감싸도 체감 온도가 달라져요.';
+    }
+    if (w === 'rain') return '가죽 ' + shoeNoun(shoe) + '는 방수 스프레이를 뿌려 두면 물 자국이 덜 남습니다. 접이식보다 장우산이 편해요.';
+    if (w === 'warm') return '린넨·코튼 ' + catLabel(top.cat) + '은 땀에 강해요. 세탁 후 그늘에 말리면 모양이 오래갑니다.';
+    return '아침저녁 일교차에는 얇은 ' + (outer ? outerNoun(outer) : '재킷') + '가 답이에요. 벗어서 팔에 걸쳐도 단정해 보입니다.';
+  }
+  if (conceptKey === 'soft') {
+    if (w === 'cold') return (top.kind === 'knit' || top.kind === 'turtleneck' ? '두꺼운 니트는 손세탁이 오래갑니다. 세탁망에 넣고 눌러 빨래하세요.' : '안쪽에 얇은 이너를 받쳐 입으면 겉옷이 덜 눌립니다.') + ' ' + (acc ? accNoun(acc) + '는 ' + acc.colorName + ' 한 가지로 통일하면 흐트러지지 않아요.' : '');
+    if (w === 'rain') return '젖은 옷은 그늘에서 넓게 펴 말려야 냄새가 덜 배요. ' + catLabel(bottom.cat) + '은 밑단이 짧을수록 편합니다.';
+    if (w === 'warm') return '얇은 니트는 옷걸이보다 개어 보관하세요. 실내 냉방에는 ' + (outer ? outerNoun(outer) : '얇은 셔츠') + ' 하나면 충분합니다.';
+    return '니트 밑단을 살짝 넣으면 허리선이 살아 비율이 좋아 보여요. ' + shoeNoun(shoe) + '은 무광 소재가 편안한 핏과 잘 어울립니다.';
+  }
+  /* accent */
+  if (w === 'cold') return '포인트 색은 목에 가까이 둘수록 얼굴빛이 밝아 보여요. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '스카프 하나') + '로 시선을 위로 모아 보세요.';
+  if (w === 'rain') return '비 오는 날은 밝은 색 상의가 답답함을 덜어 줘요. ' + (acc && acc.kind === 'umbrella' ? acc.colorName + ' 우산' : '우산 색') + '으로 포인트를 더하면 사진도 잘 나옵니다.';
+  if (w === 'warm') return '한낮에는 겉옷을 벗어도 주름이 적은 소재가 좋아요. 밝은 ' + top.colorName + ' ' + catLabel(top.cat) + '가 햇빛을 반사해 시원해 보입니다.';
+  return '겉옷은 어두운 톤, 안쪽은 밝은 톤으로 대비를 주면 얼굴이 화사해 보여요. ' + top.colorName + ' ' + catLabel(top.cat) + '가 그 역할을 합니다.';
 }
 function makeReason(concept, ctx) {
   if (concept.key === 'classic') return ctx.oc.label + ' 자리에 가장 무난하게 어울리는 조합이에요.';
