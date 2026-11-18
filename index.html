@@ -230,6 +230,12 @@ img, svg { display: block; }
   pointer-events: none;
 }
 .hero-in { position: relative; z-index: 1; max-width: 760px; }
+/* 제목·설명 글자 뒤에만 은은하게 깔리는 어두운 판 — 사진은 살리고 글자는 더 또렷이 */
+.hero-in::before {
+  content: ""; position: absolute; inset: -24px -10px -20px; z-index: -1;
+  background: radial-gradient(58% 64% at 50% 52%, rgba(8, 13, 26, .50) 0%, rgba(8, 13, 26, .24) 62%, rgba(8, 13, 26, 0) 100%);
+  pointer-events: none;
+}
 .eyebrow {
   margin: 0; font-size: .82rem; font-weight: 800; letter-spacing: .14em;
   color: #F1DCB4;
