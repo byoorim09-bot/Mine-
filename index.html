@@ -225,8 +225,8 @@ img, svg { display: block; }
   content: "";
   position: absolute; inset: 0; z-index: 0;
   background:
-    linear-gradient(180deg, rgba(10, 16, 30, .64) 0%, rgba(10, 16, 30, .34) 38%, rgba(10, 16, 30, .50) 70%, rgba(8, 13, 26, .78) 100%),
-    radial-gradient(66% 62% at 50% 48%, rgba(8, 13, 26, .56) 0%, rgba(8, 13, 26, .30) 58%, rgba(8, 13, 26, .08) 100%);
+    linear-gradient(180deg, rgba(10, 16, 30, .48) 0%, rgba(10, 16, 30, .22) 36%, rgba(10, 16, 30, .34) 72%, rgba(8, 13, 26, .62) 100%),
+    radial-gradient(62% 58% at 50% 46%, rgba(8, 13, 26, .46) 0%, rgba(8, 13, 26, .20) 60%, rgba(8, 13, 26, .02) 100%);
   pointer-events: none;
 }
 .hero-in { position: relative; z-index: 1; max-width: 760px; }
@@ -436,7 +436,7 @@ img, svg { display: block; }
 .cart-layout { display: grid; gap: 16px; grid-template-columns: 1fr; }
 .cart-lines { display: flex; flex-direction: column; gap: 10px; }
 .cart-line {
-  display: grid; grid-template-columns: 76px 1fr; gap: 12px;
+  display: grid; grid-template-columns: 76px 1fr auto; gap: 12px; align-items: start;
   border-radius: 16px;
   padding: 12px;
 }
@@ -456,6 +456,10 @@ img, svg { display: block; }
 .cl-del {
   margin-left: 6px; border: 0; background: none; color: var(--ink2);
   font: inherit; font-size: .8rem; text-decoration: underline; cursor: pointer; padding: 8px 4px;
+}
+.cl-price {
+  font-size: 1.02rem; font-weight: 800; color: var(--navy);
+  white-space: nowrap; text-align: right; padding-top: 2px;
 }
 
 .summary {
@@ -687,8 +691,9 @@ img, svg { display: block; }
   .looks { gap: 14px; }
   .board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .board-sm { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .cart-line { grid-template-columns: 62px 1fr; gap: 10px; padding: 10px; }
+  .cart-line { grid-template-columns: 62px 1fr auto; gap: 10px; padding: 10px; }
   .cl-name { font-size: .92rem; }
+  .cl-price { font-size: .92rem; }
   .irow { grid-template-columns: 38px 1fr auto; }
   .irow-go { display: none; }
   .modal-card { padding: 14px; }
@@ -1407,7 +1412,7 @@ function renderCart() {
       '<div class="cl-main">' +
         '<p class="cl-cat">' + catLabel(it.cat) + '</p>' +
         '<p class="cl-name">' + esc(it.name) + '</p>' +
-        '<p class="cl-meta">사이즈 ' + esc(sizeTxt) + ' · ' + priceOf(it) + '</p>' +
+        '<p class="cl-meta">사이즈 ' + esc(sizeTxt) + '</p>' +
         '<div class="cl-qty">' +
           '<button type="button" class="qbtn" data-act="qty" data-i="' + i + '" data-d="-1" aria-label="수량 줄이기">−</button>' +
           '<span class="qnum">' + l.qty + '</span>' +
@@ -1415,6 +1420,7 @@ function renderCart() {
           '<button type="button" class="cl-del" data-act="rm" data-i="' + i + '">삭제</button>' +
         '</div>' +
       '</div>' +
+      '<div class="cl-price">' + priceOf(it) + '</div>' +
       '</div>';
   }).join('');
 
