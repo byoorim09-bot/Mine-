@@ -197,6 +197,29 @@ img, svg { display: block; }
 .btn-sm { padding: 9px 14px; font-size: .84rem; border-radius: 11px; min-height: 42px; }
 .btn-block { width: 100%; }
 
+/* ---------------- 뒤로가기 버튼 ---------------- */
+/* 화면 위쪽, 눈에 잘 띄고 손가락으로 누르기 쉬운 크기(48px 높이)의 알약형 버튼 */
+.back-bar { margin: 0 0 12px; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  min-height: 48px; padding: 10px 20px 10px 15px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(184, 134, 75, .45);
+  background: linear-gradient(180deg, #FFFEFB 0%, #FBF3E6 100%);
+  color: var(--navy);
+  font: inherit; font-size: .94rem; font-weight: 800; letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 #fff, 0 8px 18px -16px rgba(48, 36, 22, .95);
+  transition: border-color .15s, background .15s, transform .12s;
+}
+.back-btn:hover { border-color: var(--gold2); background: #FFF8EC; }
+.back-btn:active { transform: translateY(1px); }
+.back-arw { font-size: 1.15rem; line-height: 1; color: var(--gold); font-weight: 900; }
+@media (max-width: 719px) {
+  .back-bar { margin: 0 0 10px; }
+  .back-btn { min-height: 50px; font-size: .98rem; padding: 11px 20px 11px 15px; }
+}
+
 /* ---------------- 고급 카드 표면 (공통) ----------------
    아이보리 반투명 + 골드 헤어라인 테두리 + 얕고 넓은 그림자.
    각 카드 규칙에서는 배경/테두리/그림자를 다시 지정하지 않습니다. */
@@ -1074,6 +1097,16 @@ function renderShell() {
   });
 }
 
+/* ---------------- 뒤로가기 버튼 ---------------- */
+/* 결과·코디북·찜한 옷 화면 위쪽에 눈에 띄는 '← 이전으로' 버튼을 둡니다. */
+function backHTML(label) {
+  return '<div class="back-bar">' +
+    '<button type="button" class="back-btn" data-act="back-view" aria-label="' + esc(label) + ' (이전 화면으로 돌아가기)">' +
+      '<span class="back-arw" aria-hidden="true">←</span><span class="back-t">' + esc(label) + '</span>' +
+    '</button>' +
+  '</div>';
+}
+
 /* ---------------- 1단계: 조건 고르기 ---------------- */
 function chipsHTML(group) {
   return OPTIONS[group].map(function (o) {
@@ -1205,9 +1238,9 @@ function renderResults() {
 
   var box = $('#view-result');
   box.innerHTML = '' +
+    backHTML('조건 선택으로') +
     '<div class="result-top">' +
-      '<div class="result-head"><h1 class="view-title">오늘의 코디 3가지</h1>' +
-        '<button type="button" class="btn btn-ghost btn-sm" data-act="go-home">조건 바꾸기</button></div>' +
+      '<div class="result-head"><h1 class="view-title">오늘의 코디 3가지</h1></div>' +
       '<div class="pills">' + chosen + '</div>' +
     '</div>' +
     '<div class="weather-note"><span class="wn-ic" aria-hidden="true">' + ctx.w.icon + '</span>' +
@@ -1227,7 +1260,8 @@ function bookTitle(entry) {
 }
 function renderBook() {
   var box = $('#view-book');
-  var head = '<div class="page-head"><h1 class="view-title">나만의 코디북</h1>' +
+  var head = backHTML('이전으로') +
+    '<div class="page-head"><h1 class="view-title">나만의 코디북</h1>' +
     '<p class="page-lede">마음에 든 코디를 저장해 두고, 그대로 다시 불러올 수 있어요.</p></div>';
 
   if (!state.book.length) {
@@ -1279,7 +1313,8 @@ function sizeLabel(it) {
 
 function renderWish() {
   var box = $('#view-wish');
-  var head = '<div class="page-head"><h1 class="view-title">찜한 옷</h1>' +
+  var head = backHTML('이전으로') +
+    '<div class="page-head"><h1 class="view-title">찜한 옷</h1>' +
     '<p class="page-lede">마음에 든 옷을 모아 두고, 네이버쇼핑에서 최저가를 확인해 보세요.</p></div>';
 
   if (!state.wish.length) {
@@ -1315,9 +1350,10 @@ function renderWish() {
 }
 
 /* ---------------- 아이템 상세 ---------------- */
-function openItem(id) {
+function openItem(id, fromHistory) {
   var it = item(id);
   if (!it) return;
+  var already = !!(state.modal && state.modal.id === id);
   state.modal = { id: id };
   var isW = wished(it.id);
   var modal = $('#modal');
@@ -1340,17 +1376,77 @@ function openItem(id) {
     '</div>';
   modal.hidden = false;
   document.body.classList.add('lock');
+  /* 폰 뒤로가기로 이 모달만 닫히도록 히스토리를 한 칸 쌓습니다. */
+  if (!fromHistory && !already) Hist.push();
 }
-function closeModal() {
+function closeModal(fromHistory) {
   var modal = $('#modal');
+  if (modal.hidden && !state.modal) return;
   modal.hidden = true;
   modal.innerHTML = '';
   state.modal = null;
   document.body.classList.remove('lock');
+  /* 화면의 닫기 버튼으로 닫았다면, 쌓아 둔 히스토리 칸도 함께 소비합니다.
+     (그러지 않으면 뒤로가기를 눌렀을 때 이미 닫힌 모달이 한 번 더 남습니다.) */
+  if (!fromHistory && Hist.ok) {
+    var cur = history.state;
+    if (cur && cur.yc === 1 && cur.modal) history.back();
+  }
 }
 
+/* ---------------- 히스토리 · 휴대폰 뒤로가기 ----------------
+   · 결과·코디북·찜한 옷으로 넘어갈 때마다 히스토리를 한 칸 쌓습니다.
+   · 아이템 상세(모달)도 한 칸 쌓아, 폰 뒤로가기를 누르면 모달만 닫힙니다.
+   · 같은 화면을 다시 눌러도 칸이 겹치지 않습니다(무한 루프·중복 방지). */
+var Hist = {
+  ok: false,
+  init: function () {
+    try {
+      history.replaceState({ yc: 1, view: 'home', modal: null }, '');
+      this.ok = true;
+    } catch (e) { this.ok = false; }
+  },
+  snap: function () {
+    return { yc: 1, view: state.view, modal: state.modal ? state.modal.id : null };
+  },
+  push: function () {
+    if (!this.ok) return;
+    var s = this.snap(), cur = history.state;
+    if (cur && cur.yc === 1 && cur.view === s.view && (cur.modal || null) === (s.modal || null)) return;
+    try { history.pushState(s, ''); } catch (e) {}
+  },
+  /* 화면 버튼으로 뒤로 가기: 브라우저 뒤로가기와 똑같은 길로 갑니다. */
+  back: function () {
+    if (state.modal) { closeModal(); return; }
+    var cur = this.ok ? history.state : null;
+    if (cur && cur.yc === 1) { history.back(); return; }
+    showView('home');
+  },
+  /* 브라우저가 알려 준 칸(상태)을 화면에 그대로 반영합니다. */
+  apply: function (s) {
+    var v = (s && s.view) || 'home';
+    if (v !== state.view) showView(v, true);
+    if (s && s.modal) {
+      if (!state.modal || state.modal.id !== s.modal) openItem(s.modal, true);
+    } else if (state.modal) {
+      closeModal(true);
+    }
+  }
+};
+
+window.addEventListener('popstate', function (e) {
+  var s = e.state;
+  if (!s || s.yc !== 1) {
+    /* 이 앱이 쌓은 칸이 아니면 첫 화면(조건 고르기)으로 돌아옵니다. */
+    if (state.modal) closeModal(true);
+    if (state.view !== 'home') showView('home', true);
+    return;
+  }
+  Hist.apply(s);
+});
+
 /* ---------------- 화면 전환 ---------------- */
-function showView(name) {
+function showView(name, fromHistory) {
   state.view = name;
   if (name === 'result') renderResults();
   if (name === 'book') renderBook();
@@ -1360,6 +1456,8 @@ function showView(name) {
   window.scrollTo({ top: 0, behavior: 'auto' });
   var h = $('.view:not([hidden]) .view-title') || $('.view:not([hidden]) .hero-title');
   if (h) { h.setAttribute('tabindex', '-1'); }
+  /* 화면이 실제로 바뀌었을 때만 히스토리를 한 칸 쌓습니다. */
+  if (!fromHistory) Hist.push();
 }
 
 /* ---------------- 이벤트 ---------------- */
@@ -1395,6 +1493,7 @@ document.addEventListener('click', function (e) {
     case 'go-home': showView('home'); break;
     case 'go-book': showView('book'); break;
     case 'go-wish': showView('wish'); break;
+    case 'back-view': Hist.back(); break;
     case 'item': openItem(el.dataset.id); break;
     case 'close-modal': closeModal(); break;
     case 'add-item': {
@@ -1472,6 +1571,7 @@ document.addEventListener('keydown', function (e) {
 
 /* ---------------- 시작 ---------------- */
 function boot() {
+  Hist.init();
   state.wish = Store.get(K.wish, []) || [];
   state.book = Store.get(K.book, []) || [];
   state.zoom = Store.get(K.zoom, 0);
