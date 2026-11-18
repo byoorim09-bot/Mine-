@@ -480,9 +480,23 @@ img, svg { display: block; }
 .wish-cat { margin: 0; font-size: .72rem; font-weight: 800; color: var(--gold); }
 .wish-name { margin: 3px 0 5px; font-size: 1rem; font-weight: 800; color: var(--navy); line-height: 1.35; letter-spacing: -0.01em; }
 .wish-meta { margin: 0; font-size: .8rem; color: var(--ink2); line-height: 1.55; }
-.wish-btns { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin-top: 10px; }
-.wish-shop { padding: 14px 16px; font-size: .95rem; min-height: 54px; }
-.wish-btns .btn-ghost { min-height: 54px; }
+.wish-btns { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.wish-shop { padding: 14px 10px; font-size: .88rem; min-height: 56px; line-height: 1.3; text-align: center; white-space: normal; word-break: keep-all; }
+.wish-del { grid-column: 1 / -1; min-height: 42px; padding: 9px 12px; font-size: .82rem; }
+
+/* 네이버쇼핑 · 쿠팡 두 버튼 (모달·찜한 옷 공통) */
+.shop-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 4px; }
+.shop-btn {
+  min-height: 58px; padding: 12px 8px; font-size: .86rem; line-height: 1.3;
+  text-align: center; text-decoration: none; white-space: normal; word-break: keep-all;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-nshop { background: var(--navy, #1E2A4A); color: #fff; border: 1.5px solid var(--navy, #1E2A4A); }
+.btn-nshop:hover { background: #16203A; }
+.btn-coupang { background: #FBEDE7; color: #B23A1E; border: 1.5px solid #EFC3B3; }
+.btn-coupang:hover { background: #F7E1D8; border-color: #E3A48C; }
+.wish-shop.btn-nshop { background: var(--navy, #1E2A4A); color: #fff; }
+.wish-shop.btn-coupang { background: #FBEDE7; color: #B23A1E; }
 
 /* ---------------- 빈 화면 ---------------- */
 .empty {
@@ -536,7 +550,7 @@ img, svg { display: block; }
 .modal-actions .is-wished { background: #F3F0E9; color: var(--ink2); border-color: var(--line); }
 .modal-meta { margin: 0 0 14px; font-size: .84rem; color: var(--ink2); }
 .modal-shop { min-height: 56px; padding: 15px 16px; font-size: .96rem; text-decoration: none; }
-.modal-note { margin: 12px 0 0; font-size: .76rem; color: var(--ink2); line-height: 1.5; }
+.modal-note { margin: 12px 0 0; font-size: .74rem; color: var(--ink2); line-height: 1.55; }
 
 /* ---------------- 알림 ---------------- */
 .toast {
@@ -560,6 +574,7 @@ img, svg { display: block; }
 .foot p { margin: 0; font-size: .82rem; color: rgba(255, 255, 255, .62); }
 .foot p b { color: #F2E4CC; letter-spacing: .01em; }
 .foot-sub { margin-top: 6px !important; font-size: .74rem !important; line-height: 1.6; max-width: 640px; margin-inline: auto !important; }
+.foot-affil { margin-top: 10px !important; font-size: .71rem !important; line-height: 1.65; color: rgba(255, 255, 255, .52) !important; max-width: 640px; margin-inline: auto !important; }
 
 /* ---------------- 큰 화면 ---------------- */
 @media (min-width: 700px) {
@@ -607,7 +622,8 @@ img, svg { display: block; }
   .board-sm { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .wish-card { grid-template-columns: 84px minmax(0, 1fr); gap: 2px 12px; padding: 10px; }
   .wish-name { font-size: .94rem; }
-  .wish-shop { font-size: .9rem; padding: 13px 12px; }
+  .wish-shop { font-size: .82rem; padding: 12px 8px; min-height: 54px; }
+  .shop-btn { font-size: .82rem; padding: 11px 8px; min-height: 54px; }
   .irow { grid-template-columns: 38px 1fr auto; }
   .irow-go { display: none; }
   .modal-card { padding: 14px; }
@@ -651,7 +667,8 @@ img, svg { display: block; }
 
 <footer class="foot">
   <p><b>영앤클래식</b> · 중년 남녀를 위한 데일리 코디 체험 앱</p>
-  <p class="foot-sub">표시된 가격은 원대(3만~·5만~)로 표기한 예상 가격대이며, 실제 구매와 결제는 네이버쇼핑에서 진행됩니다. 저장한 코디북과 찜한 옷은 이 브라우저에만 보관돼요.</p>
+  <p class="foot-sub">표시된 가격은 원대(3만~·5만~)로 표기한 예상 가격대이며, 실제 구매와 결제는 네이버쇼핑·쿠팡에서 진행됩니다. 저장한 코디북과 찜한 옷은 이 브라우저에만 보관돼요.</p>
+  <p class="foot-affil">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>이 링크는 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</p>
 </footer>
 
 <div id="modal" class="modal" hidden></div>
@@ -849,6 +866,29 @@ var CONCEPTS = [
 ];
 
 /* ============================================================
+   네이버 쇼핑 커넥트 제휴 링크 (2026-11-19 발급 · brandconnect.naver.com)
+   - 영앤클래식 대표 아이템과 실제 상품을 1:1로 이어 둔 링크입니다.
+   - 넣은 아이템만 「네이버쇼핑에서 최저가 보기」가 이 링크로 열리고,
+     나머지 아이템은 이름으로 네이버쇼핑을 검색합니다.
+   - 수수료율은 발급 시점 기준이고 매월 1일 판매자 설정에 따라 바뀔 수 있습니다.
+   - 쿠팡 파트너스 상품 링크를 따로 발급하면 it.coupangUrl 에 넣으면 그 링크로 열립니다.
+     (없으면 쿠팡 검색으로 연결됩니다)
+   ============================================================ */
+var CONNECT_LINKS = {
+  m_t10: 'https://naver.me/5hovk6aO',   /* 그레이 와플 니트 → 남자니트 오버핏 겨울 두꺼운 워셔블니트 (맨즈그라운드, 32,900원·5%) */
+  m_b3: 'https://naver.me/xG0ET7E3',    /* 베이지 치노 팬츠 → 남자 치노 면바지 일자 (이구이오, 34,000원·5%) */
+  m_o6: 'https://naver.me/xm06h3DU',    /* 카멜 울 코트 → 남자 코트 빅사이즈 오버핏 울 코트 (션타운, 84,000원·5%) */
+  m_o8: 'https://naver.me/xwodN1Xt',    /* 베이지 트렌치 재킷 → 남자 트렌치코트 롱 바바리 (에이치베이직, 59,900원·5%) */
+  m_t2: 'https://naver.me/5YoTQ7yt',    /* 화이트 코튼 셔츠 → 어반트 세미카라 화이트 남자 긴팔 셔츠 (52,000원·18%) */
+  m_s4: 'https://naver.me/xnObA7Xw',    /* 화이트 레더 스니커즈 → 캄슈 화이트스니커즈 키높이 (58,900원·5%) */
+  f_o1: 'https://naver.me/G9UGTnwr',    /* 카멜 가디건(여성) → 루즈핏 캐시미어 브이넥 가디건 (코이블리, 22,900원·5%) */
+  f_b1: 'https://naver.me/xWISh4Hx'     /* 네이비 와이드 슬랙스 → 하이웨스트 핀턱 와이드 슬랙스 (코이블리, 37,900원·5%) */
+};
+WARDROBE.forEach(function (it) {
+  if (CONNECT_LINKS[it.id]) it.connectUrl = CONNECT_LINKS[it.id];
+});
+
+/* ============================================================
    코디 추천 엔진 (날씨 · 기분 · 상황 → 풀코디 3가지)
    ============================================================ */
 var ITEM_MAP = {};
@@ -880,6 +920,15 @@ function naverSearchUrl(keyword) {
 function shopUrlOf(it) {
   if (it && it.connectUrl) return it.connectUrl;
   return naverSearchUrl(shopKeyword(it));
+}
+/* 쿠팡 파트너스 상품 링크(coupangUrl)가 있으면 그 링크를 열고,
+   없으면 쿠팡 검색에서 이름으로 찾습니다. (쿠팡 파트너스 링크는 직접 발급분만 넣습니다) */
+function coupangKeywordUrl(keyword) {
+  return 'https://www.coupang.com/np/search?component=&q=' + encodeURIComponent(keyword);
+}
+function coupangUrlOf(it) {
+  if (it && it.coupangUrl) return it.coupangUrl;
+  return coupangKeywordUrl(shopKeyword(it));
 }
 function lookKeyword(look, ctx) {
   return (ctx.gender === 'm' ? '남성 ' : '여성 ') + ctx.oc.label + ' 코디 세트';
@@ -1126,7 +1175,7 @@ function renderHome() {
         '<p class="eyebrow">중년들의 데일리 스타일 가이드</p>' +
         '<h1 class="hero-title">' + APP_TITLE + '</h1>' +
         '<p class="hero-lede">누구 옷인지, 날씨·기분·상황 — 네 가지만 고르면 <br class="only-m">오늘 입을 풀코디 3가지를 골라 드려요.</p>' +
-        '<div class="hero-tags"><span>👔 상의·하의·아우터·신발·소품</span><span>🛍 네이버쇼핑 최저가 보기</span><span>📖 나만의 코디북</span></div>' +
+        '<div class="hero-tags"><span>👔 상의·하의·아우터·신발·소품</span><span>🛍 네이버쇼핑·쿠팡 최저가 보기</span><span>📖 나만의 코디북</span></div>' +
       '</div>' +
     '</div>' +
 
@@ -1221,6 +1270,7 @@ function lookHTML(look, i, ctx) {
     '<div class="look-shops">' +
       '<span>이 코디와 비슷한 옷</span>' +
       '<a href="' + shopN + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 보기 ↗</a>' +
+      '<a href="' + coupangKeywordUrl(lookKeyword(look, ctx)) + '" target="_blank" rel="noopener noreferrer">쿠팡에서 보기 ↗</a>' +
     '</div>' +
     '</article>';
 }
@@ -1249,7 +1299,7 @@ function renderResults() {
     '<div class="looks">' + state.looks.map(function (l, i) { return lookHTML(l, i, ctx); }).join('') + '</div>' +
     '<div class="after-looks">' +
       '<button type="button" class="btn btn-soft" data-act="shuffle">🔄 다른 조합 보기</button>' +
-      '<p class="note">가격은 3만~·5만~처럼 만 원 단위로 표기한 예상 가격대예요. 실제 판매가·배송비·재고는 네이버쇼핑에서 확인해 주세요.</p>' +
+      '<p class="note">가격은 3만~·5만~처럼 만 원 단위로 표기한 예상 가격대예요. 실제 판매가·배송비·재고는 네이버쇼핑·쿠팡에서 확인해 주세요.</p>' +
     '</div>';
 }
 
@@ -1315,7 +1365,7 @@ function renderWish() {
   var box = $('#view-wish');
   var head = backHTML('이전으로') +
     '<div class="page-head"><h1 class="view-title">찜한 옷</h1>' +
-    '<p class="page-lede">마음에 든 옷을 모아 두고, 네이버쇼핑에서 최저가를 확인해 보세요.</p></div>';
+    '<p class="page-lede">마음에 든 옷을 모아 두고, 네이버쇼핑·쿠팡에서 최저가를 확인해 보세요.</p></div>';
 
   if (!state.wish.length) {
     box.innerHTML = head +
@@ -1339,14 +1389,15 @@ function renderWish() {
         '<p class="wish-meta">사이즈 ' + esc(sizeLabel(it)) + '</p>' +
       '</div>' +
       '<div class="wish-btns">' +
-        '<a class="btn btn-primary wish-shop" href="' + shopUrlOf(it) + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
-        '<button type="button" class="btn btn-ghost" data-act="wish-del" data-i="' + i + '">빼기</button>' +
+        '<a class="btn btn-nshop wish-shop" href="' + shopUrlOf(it) + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
+        '<a class="btn btn-coupang wish-shop" href="' + coupangUrlOf(it) + '" target="_blank" rel="noopener noreferrer">쿠팡에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
+        '<button type="button" class="btn btn-ghost wish-del" data-act="wish-del" data-i="' + i + '">찜에서 빼기</button>' +
       '</div>' +
       '</article>';
   }).join('');
 
   box.innerHTML = head + '<div class="wish-grid">' + cards + '</div>' +
-    '<p class="note">표시된 가격은 예상 가격대예요. 실제 판매가·배송비·재고는 네이버쇼핑에서 확인해 주세요.<br>찜한 옷은 이 기기 브라우저에만 보관됩니다.</p>';
+    '<p class="note">표시된 가격은 예상 가격대예요. 실제 판매가·배송비·재고는 네이버쇼핑·쿠팡에서 확인해 주세요.<br>찜한 옷은 이 기기 브라우저에만 보관됩니다.</p>';
 }
 
 /* ---------------- 아이템 상세 ---------------- */
@@ -1370,8 +1421,13 @@ function openItem(id, fromHistory) {
           '<button type="button" class="btn btn-soft btn-block' + (isW ? ' is-wished' : '') + '" data-act="add-item" data-id="' + it.id + '" aria-pressed="' + (isW ? 'true' : 'false') + '">' +
             (isW ? '찜한 옷에 담김 ✓' : '찜해 두기') + '</button>' +
         '</div>' +
-        '<a class="btn btn-primary btn-block modal-shop" href="' + shopUrlOf(it) + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
-        '<p class="modal-note">표시 가격은 3만~·5만~처럼 만 원 단위로 나타낸 예상 가격대예요. 실제 판매가·재고·사이즈는 네이버쇼핑 상품 페이지에서 확인해 주세요.</p>' +
+        '<div class="shop-btns">' +
+          '<a class="btn btn-nshop shop-btn" href="' + shopUrlOf(it) + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
+          '<a class="btn btn-coupang shop-btn" href="' + coupangUrlOf(it) + '" target="_blank" rel="noopener noreferrer">쿠팡에서 최저가 보기 <span aria-hidden="true">↗</span></a>' +
+        '</div>' +
+        '<p class="modal-note">표시 가격은 3만~·5만~처럼 만 원 단위로 나타낸 예상 가격대예요. 실제 판매가·재고·사이즈는 네이버쇼핑·쿠팡 상품 페이지에서 확인해 주세요.<br>' +
+          '이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.<br>' +
+          '이 링크는 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.</p>' +
       '</div>' +
     '</div>';
   modal.hidden = false;
