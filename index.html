@@ -6,13 +6,13 @@
 <meta name="theme-color" content="#FAF8F5">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231E2A4A'/%3E%3Cpath d='M12 6.4V8M12 6.4a1.7 1.7 0 1 1 1.7-1.7' stroke='%23D8B78A' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M12 8 6 12.2c-.6.4-.3 1.2.4 1.2h11.2c.7 0 1-.8.4-1.2L12 8Z' stroke='%23D8B78A' stroke-width='1.4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
-<meta property="og:title" content="50대중년 세련미 풀풀 코디법">
-<meta property="og:description" content="날씨·기분·상황에 맞춘 50대 남녀 풀코디 추천, 쇼핑몰 연결, 나만의 코디북.">
-<meta name="description" content="50대 중년 남녀를 위한 날씨·기분·상황별 코디 추천과 쇼핑몰 연결, 나만의 코디북. 「50대중년 세련미 풀풀 코디법」">
-<title>50대중년 세련미 풀풀 코디법</title>
-<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/bg-luxury.jpg">
+<meta property="og:title" content="영앤클래식">
+<meta property="og:description" content="날씨·기분·상황에 맞춘 중년 풀코디 추천, 쇼핑몰 연결, 나만의 코디북.">
+<meta name="description" content="중년 남녀를 위한 날씨·기분·상황별 코디 추천과 쇼핑몰 연결, 나만의 코디북. 「영앤클래식」">
+<title>영앤클래식</title>
+<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/hero-beach.jpg">
 <style>/* ============================================================
-   50대중년 세련미 풀풀 코디법 — 스타일
+   영앤클래식 — 스타일
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -204,32 +204,66 @@ img, svg { display: block; }
 }
 
 /* ---------------- 1단계 ---------------- */
-.hero { padding: 30px 0 6px; text-align: center; }
+/* ---------------- 1단계 : 오션뷰 비치 히어로 ---------------- */
+.hero {
+  position: relative;
+  margin: 6px 0 8px;
+  min-height: 352px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 46px 22px 40px;
+  background: #18202f url("hero-beach.jpg") 58% 52% / cover no-repeat;
+  border: 1px solid rgba(216, 183, 138, .55);
+  box-shadow: 0 30px 62px -34px rgba(20, 28, 46, .85), inset 0 0 0 1px rgba(255, 255, 255, .14);
+  isolation: isolate;
+}
+/* 배경 위에서도 글자가 설망하게 읽히도록 어두운 샴페인빛 광막을 덮습니다. */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 16, 30, .64) 0%, rgba(10, 16, 30, .34) 38%, rgba(10, 16, 30, .50) 70%, rgba(8, 13, 26, .78) 100%),
+    radial-gradient(66% 62% at 50% 48%, rgba(8, 13, 26, .56) 0%, rgba(8, 13, 26, .30) 58%, rgba(8, 13, 26, .08) 100%);
+  pointer-events: none;
+}
+.hero-in { position: relative; z-index: 1; max-width: 760px; }
 .eyebrow {
-  margin: 0; font-size: .8rem; font-weight: 800; letter-spacing: .12em;
-  color: #8C6431;
+  margin: 0; font-size: .82rem; font-weight: 800; letter-spacing: .14em;
+  color: #F1DCB4;
   display: inline-flex; align-items: center; gap: 10px;
+  text-shadow: 0 1px 6px rgba(6, 11, 22, .55);
 }
 .eyebrow::before, .eyebrow::after {
   content: ""; width: 26px; height: 1px; flex: none;
-  background: linear-gradient(90deg, rgba(184, 134, 75, 0), rgba(184, 134, 75, .85));
+  background: linear-gradient(90deg, rgba(241, 220, 180, 0), rgba(241, 220, 180, .95));
 }
-.eyebrow::after { background: linear-gradient(270deg, rgba(184, 134, 75, 0), rgba(184, 134, 75, .85)); }
+.eyebrow::after { background: linear-gradient(270deg, rgba(241, 220, 180, 0), rgba(241, 220, 180, .95)); }
 .hero-title {
   font-family: "Nanum Myeongjo", "Noto Serif KR", "AppleMyungjo", "Batang", "NanumGothic", serif;
-  font-size: 2.05rem; line-height: 1.28; letter-spacing: -0.03em;
-  color: var(--navy); margin: .28em 0 .32em; font-weight: 800;
+  font-size: 2.35rem; line-height: 1.24; letter-spacing: .04em;
+  color: #FFFBF2; margin: .26em 0 .2em; font-weight: 800;
   word-break: keep-all;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .9), 0 8px 26px rgba(255, 255, 255, .8);
+  text-shadow: 0 2px 16px rgba(6, 11, 22, .72), 0 1px 2px rgba(6, 11, 22, .55);
 }
-.hero-lede { margin: 0; color: #4E5768; font-size: 1rem; text-shadow: 0 1px 0 rgba(255, 255, 255, .75); }
+.hero-title::after {
+  content: ""; display: block; width: 54px; height: 2px; margin: 16px auto 0;
+  background: linear-gradient(90deg, rgba(241, 220, 180, 0), rgba(241, 220, 180, 1), rgba(241, 220, 180, 0));
+}
+.hero-lede {
+  margin: 14px 0 0; color: rgba(255, 250, 242, .92); font-size: 1rem;
+  text-shadow: 0 1px 8px rgba(6, 11, 22, .6);
+}
 .only-m { display: none; }
 .hero-tags {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px;
 }
 .hero-tags span {
-  background: rgba(255, 255, 255, .78); border: 1px solid var(--line-gold); border-radius: 999px;
-  padding: 6px 13px; font-size: .78rem; color: #525B6C; font-weight: 600;
+  background: rgba(12, 20, 36, .44); border: 1px solid rgba(241, 220, 180, .42); border-radius: 999px;
+  padding: 6px 13px; font-size: .78rem; color: rgba(255, 250, 242, .94); font-weight: 600;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
 }
 .q {
   margin-top: 18px; padding: 18px;
@@ -333,7 +367,11 @@ img, svg { display: block; }
 }
 .board-sm .tile { flex: 0 0 calc((100% - 24px) / 5); padding: 4px 3px; }
 .tile:hover { border-color: var(--gold2); transform: translateY(-1px); }
-.tile .glyph { width: 100%; max-width: 88px; height: auto; filter: drop-shadow(0 2px 2px rgba(30, 42, 74, .09)); }
+.tile .tile-pic {
+  width: 100%; aspect-ratio: 1 / 1; height: auto;
+  object-fit: cover; border-radius: 9px; background: #F7F4EE;
+  box-shadow: inset 0 0 0 1px rgba(216, 200, 176, .55);
+}
 .tile-cat { font-size: .66rem; font-weight: 800; color: var(--gold); letter-spacing: .02em; }
 .tile-col { font-size: .7rem; color: var(--ink2); }
 
@@ -364,12 +402,6 @@ img, svg { display: block; }
 .tips p:last-child { margin-bottom: 0; }
 .tips b { color: #8A6632; font-size: .76rem; font-weight: 800; line-height: 1.75; }
 
-.look-total {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 10px 0; border-top: 1px solid var(--line); margin-top: auto;
-}
-.look-total span { font-size: .84rem; color: var(--ink2); }
-.look-total b { font-size: 1.15rem; color: var(--navy); letter-spacing: -0.02em; }
 .look-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .look-actions .btn { padding: 13px 8px; font-size: .9rem; min-height: 52px; }
 .look-shops {
@@ -397,19 +429,19 @@ img, svg { display: block; }
 .book-top h3 { margin: 0; font-size: 1rem; color: var(--navy); letter-spacing: -0.02em; }
 .book-date { font-size: .74rem; color: var(--ink2); }
 .book-foot { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
-.book-foot b { font-size: 1.05rem; color: var(--navy); }
+.book-count { font-size: .84rem; font-weight: 800; color: var(--ink2); }
 .book-btns { display: flex; gap: 8px; }
 
 /* ---------------- 장바구니 · 주문 ---------------- */
 .cart-layout { display: grid; gap: 16px; grid-template-columns: 1fr; }
 .cart-lines { display: flex; flex-direction: column; gap: 10px; }
 .cart-line {
-  display: grid; grid-template-columns: 76px 1fr auto; gap: 12px;
+  display: grid; grid-template-columns: 76px 1fr; gap: 12px;
   border-radius: 16px;
   padding: 12px;
 }
-.cl-pic { background: rgba(247, 241, 231, .9); border-radius: 12px; display: grid; place-items: center; padding: 4px; }
-.cl-pic .glyph { width: 100%; max-width: 68px; height: auto; }
+.cl-pic { background: rgba(247, 241, 231, .9); border-radius: 12px; display: grid; place-items: center; overflow: hidden; }
+.cl-pic img { width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; display: block; }
 .cl-cat { margin: 0; font-size: .7rem; font-weight: 800; color: var(--gold); }
 .cl-name { margin: 0; font-size: .98rem; font-weight: 800; color: var(--navy); line-height: 1.35; }
 .cl-meta { margin: 2px 0 8px; font-size: .8rem; color: var(--ink2); }
@@ -425,7 +457,6 @@ img, svg { display: block; }
   margin-left: 6px; border: 0; background: none; color: var(--ink2);
   font: inherit; font-size: .8rem; text-decoration: underline; cursor: pointer; padding: 8px 4px;
 }
-.cl-sum { font-size: 1rem; font-weight: 800; color: var(--navy); white-space: nowrap; text-align: right; }
 
 .summary {
   align-self: start;
@@ -433,15 +464,12 @@ img, svg { display: block; }
   padding: 18px;
 }
 .sum-title { margin: 0 0 12px; font-size: 1.05rem; color: var(--navy); }
-.sum-row {
+.sum-text { margin: 0 0 12px; font-size: .84rem; color: var(--ink2); line-height: 1.6; }
+.sum-count {
   display: flex; justify-content: space-between; align-items: baseline;
-  padding: 8px 0; font-size: .9rem; color: var(--ink2);
-  border-bottom: 1px dashed #F0E8DC;
+  padding: 10px 0; font-size: .9rem; color: var(--ink2); border-top: 1px dashed #F0E8DC;
 }
-.sum-row b { color: var(--navy); font-size: 1rem; }
-.sum-total { border-bottom: 0; margin-top: 4px; padding-top: 12px; border-top: 2px solid var(--navy); }
-.sum-total span { font-weight: 800; color: var(--navy); }
-.sum-total b { font-size: 1.3rem; }
+.sum-count b { color: var(--navy); font-size: 1.05rem; }
 .summary .btn { margin-top: 14px; }
 .sum-note { margin: 10px 0 0; font-size: .76rem; color: var(--ink2); text-align: center; }
 .sum-items { list-style: none; margin: 0 0 8px; padding: 0; }
@@ -527,15 +555,7 @@ img, svg { display: block; }
 }
 .rc-items em { font-style: normal; color: var(--ink2); font-size: .8rem; }
 .rc-items b { white-space: nowrap; color: var(--navy); }
-.rc-money { margin: 6px 0 18px; }
-.rc-money > div {
-  display: flex; justify-content: space-between; padding: 6px 0;
-  font-size: .9rem; color: var(--ink2);
-}
-.rc-money b { color: var(--navy); }
-.rc-total { border-top: 2px solid var(--navy); margin-top: 6px; padding-top: 12px !important; }
-.rc-total span { font-weight: 800; color: var(--navy); }
-.rc-total b { font-size: 1.3rem; }
+.rc-note { margin: 0 0 16px; font-size: .82rem; color: var(--ink2); line-height: 1.6; }
 .demo-note {
   background: #FBF7F0; border: 1px dashed #E2D1B6; border-radius: 12px;
   padding: 12px 14px; font-size: .84rem; color: #6B5A42; line-height: 1.6;
@@ -573,9 +593,12 @@ img, svg { display: block; }
 }
 .modal-pic {
   background: radial-gradient(120% 110% at 50% 0%, #FBF6EE 0%, #EDE3D3 100%);
-  border: 1px solid #EADFCF; border-radius: 16px; padding: 14px; display: grid; place-items: center;
+  border: 1px solid #EADFCF; border-radius: 16px; padding: 10px; display: grid; place-items: center;
 }
-.modal-pic .glyph { width: 170px; max-width: 58vw; height: auto; filter: drop-shadow(0 4px 5px rgba(30, 42, 74, .16)); }
+.modal-pic img {
+  width: 100%; max-width: 300px; aspect-ratio: 1 / 1; height: auto;
+  object-fit: cover; border-radius: 12px; display: block;
+}
 .modal-cat { margin: 0; font-size: .76rem; font-weight: 800; color: var(--gold); }
 .modal-body h3 { margin: 4px 0 6px; font-size: 1.28rem; color: var(--navy); letter-spacing: -0.02em; }
 .modal-price { margin: 0 0 14px; font-size: 1.2rem; font-weight: 800; color: var(--navy); }
@@ -619,9 +642,9 @@ img, svg { display: block; }
 
 /* ---------------- 큰 화면 ---------------- */
 @media (min-width: 700px) {
-  .hero { padding: 40px 0 12px; }
-  .hero-title { font-size: 2.6rem; }
-  .hero-lede { font-size: 1.05rem; }
+  .hero { min-height: 400px; padding: 58px 30px 50px; }
+  .hero-title { font-size: 3.05rem; }
+  .hero-lede { font-size: 1.06rem; }
   .q { padding: 22px 24px; }
   .chips { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
   .chips-gender { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; }
@@ -651,20 +674,21 @@ img, svg { display: block; }
   .tab { flex: 1; padding: 9px 6px; font-size: .84rem; }
   .brand-txt i { display: none; }
   .brand-txt b { font-size: .96rem; white-space: normal; }
-  .hero { padding: 18px 0 2px; }
-  .hero-title { font-size: 1.5rem; }
-  .hero-lede { font-size: .9rem; }
-  .eyebrow { letter-spacing: .06em; font-size: .76rem; }
-  .hero-tags { margin-top: 12px; gap: 6px; }
-  .hero-tags span { font-size: .74rem; padding: 5px 11px; }
+  .hero { min-height: 310px; padding: 34px 16px 30px; border-radius: 20px; background-position: 56% 52%; }
+  .hero-title { font-size: 1.95rem; letter-spacing: .03em; }
+  .hero-title::after { margin-top: 12px; width: 44px; }
+  .hero-lede { font-size: .9rem; margin-top: 12px; }
+  .eyebrow { letter-spacing: .07em; font-size: .73rem; }
+  .eyebrow::before, .eyebrow::after { width: 16px; }
+  .hero-tags { margin-top: 14px; gap: 6px; }
+  .hero-tags span { font-size: .73rem; padding: 5px 10px; }
   .only-m { display: inline; }
   .view { padding: 14px 12px 64px; }
   .looks { gap: 14px; }
   .board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .board-sm { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .cart-line { grid-template-columns: 62px 1fr auto; gap: 10px; padding: 10px; }
+  .cart-line { grid-template-columns: 62px 1fr; gap: 10px; padding: 10px; }
   .cl-name { font-size: .92rem; }
-  .cl-sum { font-size: .92rem; }
   .irow { grid-template-columns: 38px 1fr auto; }
   .irow-go { display: none; }
   .modal-card { padding: 14px; }
@@ -704,8 +728,8 @@ img, svg { display: block; }
         </svg>
       </span>
       <span class="brand-txt">
-        <b>50대중년 세련미 풀풀 코디법</b>
-        <i>날씨 · 기분 · 상황에 맞춘 오늘의 코디</i>
+        <b>영앤클래식</b>
+        <i>중년들의 데일리 스타일 가이드</i>
       </span>
     </button>
     <nav class="tabs" aria-label="주요 메뉴">
@@ -726,8 +750,8 @@ img, svg { display: block; }
 </main>
 
 <footer class="foot">
-  <p><b>50대중년 세련미 풀풀 코디법</b> · 50대 남녀를 위한 데일리 코디 체험 앱</p>
-  <p class="foot-sub">표시된 금액은 예상 가격대이며, 실제 구매와 결제는 연결된 쇼핑몰(네이버쇼핑·쿠팡)에서 진행됩니다. 저장한 코디북과 장바구니는 이 브라우저에만 보관돼요.</p>
+  <p><b>영앤클래식</b> · 중년 남녀를 위한 데일리 코디 체험 앱</p>
+  <p class="foot-sub">표시된 가격은 원대(3만~·5만~)로 표기한 예상 가격대이며, 실제 구매와 결제는 연결된 쇼핑몰(네이버쇼핑·쿠팡)에서 진행됩니다. 저장한 코디북과 장바구니는 이 브라우저에만 보관돼요.</p>
 </footer>
 
 <div id="modal" class="modal" hidden></div>
@@ -735,266 +759,12 @@ img, svg { display: block; }
 
 <script>'use strict';
 /* ============================================================
-   아이템 그림 (인라인 SVG) — 외부 이미지 없이 오프라인에서도 보이도록
-   ============================================================ */
-function hexToRgb(h) {
-  h = h.replace('#', '');
-  if (h.length === 3) h = h.split('').map(function (c) { return c + c; }).join('');
-  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-}
-function rgbToHex(r, g, b) {
-  var f = function (v) { return ('0' + Math.max(0, Math.min(255, Math.round(v))).toString(16)).slice(-2); };
-  return '#' + f(r) + f(g) + f(b);
-}
-function mixHex(hex, target, amt) {
-  var a = hexToRgb(hex), b = hexToRgb(target);
-  return rgbToHex(a[0] + (b[0] - a[0]) * amt, a[1] + (b[1] - a[1]) * amt, a[2] + (b[2] - a[2]) * amt);
-}
-function shadeOf(c) { return mixHex(c, '#12161f', 0.26); }
-function lightOf(c) { return mixHex(c, '#ffffff', 0.42); }
-
-var GLYPH = {
-  /* ---------- 상의 ---------- */
-  shirt: function (c, s, l) { return '' +
-    '<path d="M44 30 L30 35 L21 62 L32 67 L34 104 H86 L88 67 L99 62 L90 35 L76 30 L66 30 L60 40 L54 30 Z" fill="' + c + '"/>' +
-    '<path d="M54 30 L60 40 L44 47 Z" fill="' + s + '"/>' +
-    '<path d="M66 30 L60 40 L76 47 Z" fill="' + s + '"/>' +
-    '<rect x="56.6" y="40" width="6.8" height="64" fill="' + l + '" opacity=".55"/>' +
-    '<circle cx="60" cy="52" r="1.9" fill="' + s + '"/><circle cx="60" cy="64" r="1.9" fill="' + s + '"/>' +
-    '<circle cx="60" cy="76" r="1.9" fill="' + s + '"/><circle cx="60" cy="88" r="1.9" fill="' + s + '"/>' +
-    '<path d="M21 62 L32 67" stroke="' + s + '" stroke-width="2" fill="none"/>' +
-    '<path d="M99 62 L88 67" stroke="' + s + '" stroke-width="2" fill="none"/>'; },
-
-  blouse: function (c, s, l) { return '' +
-    '<path d="M46 30 L34 33 C28 34 24 40 24 48 L24 60 C24 65 29 67 34 65 L35 102 H85 L86 65 C91 67 96 65 96 60 L96 48 C96 40 92 34 86 33 L74 30 L66 30 C64 37 56 37 54 30 Z" fill="' + c + '"/>' +
-    '<path d="M54 30 C56 38 64 38 66 30" stroke="' + s + '" stroke-width="2.4" fill="none"/>' +
-    '<path d="M56 33 L60 38 L56 43" stroke="' + s + '" stroke-width="1.8" fill="none"/>' +
-    '<path d="M64 33 L60 38 L64 43" stroke="' + s + '" stroke-width="1.8" fill="none"/>' +
-    '<circle cx="60" cy="38" r="2.4" fill="' + s + '"/>' +
-    '<path d="M35 70 L35 102" stroke="' + l + '" stroke-width="1.6" opacity=".5"/>' +
-    '<path d="M85 70 L85 102" stroke="' + l + '" stroke-width="1.6" opacity=".5"/>'; },
-
-  knit: function (c, s, l) { return '' +
-    '<path d="M42 30 C42 23 50 20 60 20 C70 20 78 23 78 30 L93 35 L99 64 L89 68 L87 100 H33 L31 68 L21 64 L27 35 Z" fill="' + c + '"/>' +
-    '<path d="M48 29 Q60 36 72 29 Q60 23 48 29 Z" fill="' + s + '" opacity=".7"/>' +
-    '<path d="M33 92 H87" stroke="' + s + '" stroke-width="2" opacity=".5"/>' +
-    '<path d="M40 92 V100 M47 92 V100 M54 92 V100 M61 92 V100 M68 92 V100 M75 92 V100 M82 92 V100" stroke="' + s + '" stroke-width="1.2" opacity=".35"/>' +
-    '<path d="M25 62 L31 68 M95 62 L89 68" stroke="' + s + '" stroke-width="2" opacity=".45"/>'; },
-
-  turtleneck: function (c, s, l) { return '' +
-    '<path d="M42 34 C42 28 50 25 60 25 C70 25 78 28 78 34 L93 39 L99 66 L89 70 L87 100 H33 L31 70 L21 66 L27 39 Z" fill="' + c + '"/>' +
-    '<path d="M48 12 H72 C74 12 75 13 75 15 V28 C75 31 70 33 60 33 C50 33 45 31 45 28 V15 C45 13 46 12 48 12 Z" fill="' + c + '"/>' +
-    '<path d="M45 22 C50 25 70 25 75 22" stroke="' + s + '" stroke-width="2.2" fill="none"/>' +
-    '<path d="M33 92 H87" stroke="' + s + '" stroke-width="2" opacity=".5"/>' +
-    '<path d="M40 92 V100 M50 92 V100 M60 92 V100 M70 92 V100 M80 92 V100" stroke="' + s + '" stroke-width="1.2" opacity=".35"/>'; },
-
-  tee: function (c, s, l) { return '' +
-    '<path d="M42 30 L32 34 L27 55 L38 59 L38 98 H82 L82 59 L93 55 L88 34 L78 30 L66 30 C64 37 56 37 54 30 Z" fill="' + c + '"/>' +
-    '<path d="M54 30 C56 37 64 37 66 30" stroke="' + s + '" stroke-width="2.4" fill="none"/>' +
-    '<path d="M38 88 H82" stroke="' + s + '" stroke-width="1.4" opacity=".3"/>'; },
-
-  polo: function (c, s, l) { return '' +
-    '<path d="M42 30 L32 34 L27 55 L38 59 L38 98 H82 L82 59 L93 55 L88 34 L78 30 L66 30 L60 40 L54 30 Z" fill="' + c + '"/>' +
-    '<path d="M54 30 L60 40 L46 45 Z" fill="' + s + '"/>' +
-    '<path d="M66 30 L60 40 L74 45 Z" fill="' + s + '"/>' +
-    '<rect x="57.4" y="40" width="5.2" height="16" fill="' + l + '" opacity=".6"/>' +
-    '<circle cx="60" cy="46" r="1.7" fill="' + s + '"/><circle cx="60" cy="53" r="1.7" fill="' + s + '"/>' +
-    '<path d="M38 88 H82" stroke="' + s + '" stroke-width="1.4" opacity=".3"/>'; },
-
-  /* ---------- 하의 ---------- */
-  slacks: function (c, s, l) { return '' +
-    '<path d="M34 26 H86 L93 106 H69 L60 58 L51 106 H27 Z" fill="' + c + '"/>' +
-    '<path d="M34 20 H86 V27 H34 Z" fill="' + s + '" opacity=".55"/>' +
-    '<path d="M47 31 L42 104" stroke="' + s + '" stroke-width="1.6" opacity=".38"/>' +
-    '<path d="M73 31 L78 104" stroke="' + s + '" stroke-width="1.6" opacity=".38"/>' +
-    '<path d="M34 24 H86" stroke="' + l + '" stroke-width="1" opacity=".35"/>'; },
-
-  jeans: function (c, s, l) { return '' +
-    '<path d="M34 26 H86 L92 106 H69 L60 58 L51 106 H28 Z" fill="' + c + '"/>' +
-    '<path d="M34 20 H86 V27 H34 Z" fill="' + s + '" opacity=".5"/>' +
-    '<path d="M47 31 L43 104 M73 31 L77 104" stroke="' + l + '" stroke-width="1.2" stroke-dasharray="3 2.4" opacity=".65"/>' +
-    '<path d="M28 100 H51 M69 100 H92" stroke="' + l + '" stroke-width="1.2" stroke-dasharray="3 2.4" opacity=".6"/>' +
-    '<path d="M60 27 V56" stroke="' + s + '" stroke-width="1.6" opacity=".45"/>' +
-    '<rect x="64" y="20" width="10" height="7" fill="' + s + '" opacity=".35"/>'; },
-
-  skirt: function (c, s, l) { return '' +
-    '<path d="M40 26 H80 L94 92 H26 Z" fill="' + c + '"/>' +
-    '<path d="M38 19 H82 V27 H38 Z" fill="' + s + '" opacity=".55"/>' +
-    '<path d="M48 28 L41 90 M60 28 L60 90 M72 28 L79 90" stroke="' + s + '" stroke-width="1.4" opacity=".32"/>' +
-    '<path d="M26 92 H94" stroke="' + s + '" stroke-width="1.6" opacity=".45"/>'; },
-
-  /* ---------- 아우터 ---------- */
-  blazer: function (c, s, l) { return '' +
-    '<path d="M44 30 L30 35 L21 64 L32 69 L33 102 H87 L88 69 L99 64 L90 35 L76 30 L66 30 L60 42 L54 30 Z" fill="' + c + '"/>' +
-    '<path d="M54 30 L60 42 L45 84 L40 46 Z" fill="' + s + '" opacity=".55"/>' +
-    '<path d="M66 30 L60 42 L75 84 L80 46 Z" fill="' + s + '" opacity=".55"/>' +
-    '<circle cx="63" cy="80" r="2" fill="' + l + '"/><circle cx="63" cy="91" r="2" fill="' + l + '"/>' +
-    '<path d="M36 74 H50 M70 74 H84" stroke="' + s + '" stroke-width="1.8" opacity=".45"/>'; },
-
-  coat: function (c, s, l) { return '' +
-    '<path d="M44 26 L30 31 L21 60 L32 65 L33 112 H87 L88 65 L99 60 L90 31 L76 26 L66 26 L60 38 L54 26 Z" fill="' + c + '"/>' +
-    '<path d="M54 26 L60 38 L44 78 L39 42 Z" fill="' + s + '" opacity=".5"/>' +
-    '<path d="M66 26 L60 38 L76 78 L81 42 Z" fill="' + s + '" opacity=".5"/>' +
-    '<circle cx="63" cy="58" r="2" fill="' + l + '"/><circle cx="63" cy="70" r="2" fill="' + l + '"/>' +
-    '<circle cx="63" cy="82" r="2" fill="' + l + '"/><circle cx="63" cy="94" r="2" fill="' + l + '"/>' +
-    '<path d="M33 104 H87" stroke="' + s + '" stroke-width="1.4" opacity=".25"/>'; },
-
-  trench: function (c, s, l) { return '' +
-    '<path d="M44 26 L30 31 L21 60 L32 65 L33 112 H87 L88 65 L99 60 L90 31 L76 26 L66 26 L60 38 L54 26 Z" fill="' + c + '"/>' +
-    '<path d="M54 26 L60 38 L46 66 L41 42 Z" fill="' + s + '" opacity=".45"/>' +
-    '<path d="M66 26 L60 38 L74 66 L79 42 Z" fill="' + s + '" opacity=".45"/>' +
-    '<rect x="33" y="72" width="54" height="9" fill="' + s + '" opacity=".75"/>' +
-    '<rect x="55" y="71" width="10" height="11" fill="none" stroke="' + l + '" stroke-width="2"/>' +
-    '<path d="M33 96 H87" stroke="' + s + '" stroke-width="1.4" opacity=".25"/>'; },
-
-  jacket: function (c, s, l) { return '' +
-    '<path d="M44 30 L31 35 L22 62 L33 67 L34 98 H86 L87 67 L98 62 L89 35 L76 30 L66 30 L60 40 L54 30 Z" fill="' + c + '"/>' +
-    '<path d="M46 30 H52 L60 42 L54 46 Z" fill="' + s + '" opacity=".6"/>' +
-    '<path d="M74 30 H68 L60 42 L66 46 Z" fill="' + s + '" opacity=".6"/>' +
-    '<path d="M38 56 H52 V67 H38 Z" fill="' + s + '" opacity=".35"/>' +
-    '<path d="M68 56 H82 V67 H68 Z" fill="' + s + '" opacity=".35"/>' +
-    '<rect x="58.6" y="46" width="3" height="52" fill="' + l + '" opacity=".45"/>' +
-    '<path d="M34 92 H86" stroke="' + s + '" stroke-width="2" opacity=".35"/>'; },
-
-  cardigan: function (c, s, l) { return '' +
-    '<path d="M44 30 C44 24 52 21 60 21 C68 21 76 24 76 30 L90 35 L96 64 L86 68 L84 100 H36 L34 68 L24 64 L30 35 Z" fill="' + c + '"/>' +
-    '<path d="M52 24 C55 34 65 34 68 24" stroke="' + s + '" stroke-width="2.2" fill="none"/>' +
-    '<path d="M60 34 V100" stroke="' + s + '" stroke-width="2" opacity=".65"/>' +
-    '<circle cx="65" cy="52" r="1.9" fill="' + s + '"/><circle cx="65" cy="64" r="1.9" fill="' + s + '"/>' +
-    '<circle cx="65" cy="76" r="1.9" fill="' + s + '"/><circle cx="65" cy="88" r="1.9" fill="' + s + '"/>' +
-    '<path d="M36 92 H84" stroke="' + s + '" stroke-width="2" opacity=".4"/>'; },
-
-  padding: function (c, s, l) { return '' +
-    '<path d="M40 30 C40 23 48 20 60 20 C72 20 80 23 80 30 L92 36 L98 64 L88 68 L88 104 H32 L32 68 L22 64 L28 36 Z" fill="' + c + '"/>' +
-    '<path d="M45 26 H75 V34 H45 Z" fill="' + s + '" opacity=".55"/>' +
-    '<path d="M32 48 H88 M32 58 H88 M32 68 H88 M32 78 H88 M32 88 H88 M32 98 H88" stroke="' + s + '" stroke-width="1.8" opacity=".35"/>' +
-    '<path d="M60 34 V104" stroke="' + s + '" stroke-width="1.6" opacity=".5"/>' +
-    '<rect x="56" y="34" width="8" height="4" fill="' + l + '" opacity=".7"/>'; },
-
-  /* ---------- 신발 ---------- */
-  loafer: function (c, s, l) {
-    var upper = 'M21 90 V73 C21 70 25 69 31 69 H49 C55 78 63 81 71 83 L86 86 C92 87 96 88 96 90 Z';
-    return '' +
-      '<path d="' + upper + '" fill="' + c + '"/>' +
-      '<path d="M20 89 H98 V92 C98 95 94 96.5 88 96.5 H30 C24 96.5 20 94 20 92 Z" fill="' + s + '"/>' +
-      '<path d="M34 69 L52 78 L47 82 L30 73 Z" fill="' + s + '" opacity=".45"/>' +
-      '<path d="M21 71 C24 69.5 27 69 31 69" stroke="' + l + '" stroke-width="1.6" fill="none" opacity=".5"/>';
-  },
-
-  derby: function (c, s, l) {
-    var upper = 'M21 90 V72 C21 69 25 68 31 68 H48 C54 77 62 80 70 82 L86 86 C92 87 96 88 96 90 Z';
-    return '' +
-      '<path d="' + upper + '" fill="' + c + '"/>' +
-      '<path d="M20 89 H98 V92 C98 95 94 96.5 88 96.5 H30 C24 96.5 20 94 20 92 Z" fill="' + s + '"/>' +
-      '<path d="M38 76 L58 84 M34 80 L54 88 M42 71 L62 79" stroke="' + l + '" stroke-width="2.2" opacity=".9"/>' +
-      '<circle cx="36" cy="74" r="2" fill="' + l + '" opacity=".8"/>';
-  },
-
-  sneaker: function (c, s, l) {
-    var upper = 'M21 87 V72 C21 69 24 68 30 67 L44 65 C50 74 58 78 66 80 L82 84 C90 85 94 86 94 87 Z';
-    return '' +
-      '<path d="' + upper + '" fill="' + c + '"/>' +
-      '<path d="M19 86 H96 V91 C96 95 92 96.5 86 96.5 H29 C23 96.5 19 94 19 91 Z" fill="' + l + '"/>' +
-      '<path d="M19 91 H96" stroke="' + s + '" stroke-width="1.2" opacity=".4"/>' +
-      '<path d="M46 69 L58 76 M41 72 L53 79 M36 76 L48 83" stroke="' + l + '" stroke-width="2.4" opacity=".95"/>' +
-      '<path d="M30 67 C33 62 39 61 45 63" stroke="' + s + '" stroke-width="1.8" fill="none" opacity=".45"/>';
-  },
-
-  boot: function (c, s, l) { return '' +
-    '<path d="M34 30 H72 C74 30 75 31 75 33 V72 C85 76 94 82 97 88 C98 91 97 93 93 93 H28 C25 93 24 91 25 88 L27 76 C30 58 32 44 31 33 C31 31 32 30 34 30 Z" fill="' + c + '"/>' +
-    '<path d="M24 88 H98 V91 C98 93 96 94 93 94 H28 C26 94 24 92 24 88 Z" fill="' + s + '"/>' +
-    '<path d="M37 33 V74 M69 33 V71" stroke="' + s + '" stroke-width="1.6" fill="none" opacity=".4"/>' +
-    '<path d="M34 30 H72" stroke="' + s + '" stroke-width="2.4" opacity=".55"/>' +
-    '<rect x="59" y="48" width="8" height="22" rx="2" fill="' + l + '" opacity=".45"/>'; },
-
-  pump: function (c, s, l) {
-    var upper = 'M21 90 V76 C21 72 26 70 32 69 L52 64 C58 72 64 77 71 80 L86 85 C92 87 96 88 96 90 Z';
-    return '' +
-      '<path d="' + upper + '" fill="' + c + '"/>' +
-      '<path d="M23 89 L24 105 H33 L34 89 Z" fill="' + s + '"/>' +
-      '<path d="M20 89 H98 V91 C98 93 94 94 88 94 H30 C24 94 20 92 20 91 Z" fill="' + s + '" opacity=".85"/>' +
-      '<path d="M52 64 C56 72 61 77 67 80" stroke="' + l + '" stroke-width="1.8" fill="none" opacity=".45"/>'; },
-
-  flat: function (c, s, l) {
-    var upper = 'M21 90 V74 C21 71 25 69 31 69 H50 C56 78 64 81 72 83 L86 86 C92 87 96 88 96 90 Z';
-    return '' +
-      '<path d="' + upper + '" fill="' + c + '"/>' +
-      '<path d="M20 89 H98 V91 C98 93.5 94 95 88 95 H30 C24 95 20 93 20 91 Z" fill="' + s + '" opacity=".7"/>' +
-      '<path d="M36 70 C40 63 46 63 50 69 C46 72 40 73 36 70 Z" fill="' + s + '" opacity=".5"/>' +
-      '<path d="M31 69 C36 74 40 76 44 77" stroke="' + l + '" stroke-width="1.6" fill="none" opacity=".4"/>'; },
-
-  scarf: function (c, s, l) { return '' +
-    '<path d="M40 18 H80 C84 18 86 21 86 25 V32 C86 36 84 38 80 38 H40 C36 38 34 36 34 32 V25 C34 21 36 18 40 18 Z" fill="' + c + '"/>' +
-    '<path d="M38 36 H60 V98 H38 Z" fill="' + c + '"/>' +
-    '<path d="M62 36 H84 V86 H62 Z" fill="' + c + '"/>' +
-    '<path d="M34 30 C34 33 36 35 40 35 H80 C84 35 86 33 86 30" stroke="' + s + '" stroke-width="2" fill="none" opacity=".55"/>' +
-    '<path d="M44 42 V96 M50 42 V96 M56 42 V96 M68 42 V84 M74 42 V84 M80 42 V84" stroke="' + s + '" stroke-width="1.4" opacity=".28"/>' +
-    '<path d="M38 98 H60 M62 86 H84" stroke="' + s + '" stroke-width="3"/>'; },
-
-  belt: function (c, s, l) { return '' +
-    '<path d="M16 52 H102 V68 H16 Z" fill="' + c + '"/>' +
-    '<rect x="82" y="50" width="18" height="20" rx="3" fill="none" stroke="' + s + '" stroke-width="3"/>' +
-    '<path d="M86 60 H96" stroke="' + s + '" stroke-width="2.4"/>' +
-    '<circle cx="30" cy="60" r="2.6" fill="' + s + '"/><circle cx="44" cy="60" r="2.6" fill="' + s + '"/><circle cx="58" cy="60" r="2.6" fill="' + s + '"/>'; },
-
-  watch: function (c, s, l) { return '' +
-    '<path d="M49 18 H71 V44 H49 Z" fill="' + s + '"/>' +
-    '<path d="M49 76 H71 V102 H49 Z" fill="' + s + '"/>' +
-    '<circle cx="60" cy="60" r="18" fill="' + c + '" stroke="' + s + '" stroke-width="2.5"/>' +
-    '<path d="M60 50 V60 L67 66" stroke="' + l + '" stroke-width="2.4" fill="none" stroke-linecap="round"/>'; },
-
-  umbrella: function (c, s, l) { return '' +
-    '<path d="M14 62 C20 38 38 26 60 26 C82 26 100 38 106 62 C98 55 92 55 86 62 C80 55 74 55 68 62 C62 55 56 55 50 62 C44 55 38 55 32 62 C26 55 20 55 14 62 Z" fill="' + c + '"/>' +
-    '<path d="M60 26 V96" stroke="' + s + '" stroke-width="3"/>' +
-    '<path d="M60 96 C60 103 50 103 50 96" stroke="' + s + '" stroke-width="3" fill="none" stroke-linecap="round"/>' +
-    '<path d="M60 26 C48 34 40 46 36 60 M60 26 C72 34 80 46 84 60" stroke="' + s + '" stroke-width="1.4" fill="none" opacity=".4"/>'; },
-
-  gloves: function (c, s, l) { return '' +
-    '<path d="M42 44 C42 34 52 30 60 32 C70 34 78 42 78 54 L78 84 C78 94 70 100 60 100 C50 100 42 94 42 84 Z" fill="' + c + '"/>' +
-    '<path d="M42 62 C35 60 31 65 34 71 C36 75 40 75 42 72" fill="' + c + '"/>' +
-    '<path d="M52 36 V70 M60 34 V72 M68 38 V70" stroke="' + s + '" stroke-width="1.6" opacity=".4"/>' +
-    '<path d="M42 88 H78" stroke="' + s + '" stroke-width="2" opacity=".5"/>'; },
-
-  earring: function (c, s, l) { return '' +
-    '<path d="M60 34 C60 24 68 20 74 24" stroke="' + s + '" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
-    '<path d="M60 34 V52" stroke="' + s + '" stroke-width="2"/>' +
-    '<circle cx="60" cy="72" r="17" fill="' + c + '" stroke="' + s + '" stroke-width="2"/>' +
-    '<circle cx="54" cy="66" r="4" fill="' + l + '" opacity=".65"/>'; },
-
-  bag: function (c, s, l) { return '' +
-    '<path d="M44 44 C44 30 76 30 76 44" stroke="' + s + '" stroke-width="4" fill="none"/>' +
-    '<path d="M30 44 H90 C93 44 95 46 95 49 L92 100 H28 L25 49 C25 46 27 44 30 44 Z" fill="' + c + '"/>' +
-    '<path d="M25 60 H95" stroke="' + s + '" stroke-width="1.6" opacity=".45"/>' +
-    '<rect x="54" y="58" width="12" height="8" rx="2" fill="' + s + '"/>'; },
-
-  tote: function (c, s, l) { return '' +
-    '<path d="M42 42 C42 28 78 28 78 42" stroke="' + s + '" stroke-width="3.6" fill="none"/>' +
-    '<path d="M28 44 H92 L96 100 H24 Z" fill="' + c + '"/>' +
-    '<path d="M24 54 H96" stroke="' + l + '" stroke-width="1.6" opacity=".35"/>' +
-    '<path d="M42 44 V100 M78 44 V100" stroke="' + s + '" stroke-width="1.4" opacity=".3"/>'; },
-
-  generic: function (c, s, l) { return '' +
-    '<rect x="28" y="28" width="64" height="64" rx="10" fill="' + c + '"/>' +
-    '<path d="M28 46 H92" stroke="' + s + '" stroke-width="2" opacity=".5"/>'; }
-};
-
-function svgFor(kind, color, extraClass) {
-  var f = GLYPH[kind] || GLYPH.generic;
-  var s = shadeOf(color), l = lightOf(color);
-  var body = f(color, s, l);
-  /* 밝은 색 옷도 배경과 구분되도록 실루엣에 얇은 외곽선을 더합니다 */
-  body = body.split('fill="' + color + '"').join('fill="' + color + '" stroke="' + s + '" stroke-width="1.3" stroke-linejoin="round"');
-  return '<svg class="glyph ' + (extraClass || '') + '" viewBox="0 0 120 120" role="img" aria-hidden="true" focusable="false">' +
-    body + '</svg>';
-}
-
-/* ============================================================
    선택지 · 옷장 데이터
    ============================================================ */
 var OPTIONS = {
   gender: [
-    { id: 'm', label: '남성', icon: '👔', sub: '50대 남성' },
-    { id: 'f', label: '여성', icon: '👗', sub: '50대 여성' }
+    { id: 'm', label: '남성', icon: '👔', sub: '중년 남성 코디' },
+    { id: 'f', label: '여성', icon: '👗', sub: '중년 여성 코디' }
   ],
   weather: [
     { id: 'warm', label: '맑고 포근', icon: '☀️', sub: '23도 이상 · 반소매도 좋아요', needOuter: false, top: 0.6, outer: 0.4,
@@ -1139,6 +909,20 @@ var SIZE_UNIT = { m: { top: '호', bottom: '인치', outer: '호', shoes: 'mm', 
 
 var CAT_LABEL = { top: '상의', bottom: '하의', outer: '아우터', shoes: '신발', acc: '소품' };
 
+/* 아이템 실사 이미지 (assets/items → 배포 폴더 items/)
+   파일 이름은 kind-색상영문슬러그.jpg — 같은 종류·색상은 한 장을 함께 씁니다. */
+var COLOR_SLUG = {
+  '네이비': 'navy', '브라운': 'brown', '블랙': 'black', '차콜': 'charcoal',
+  '화이트': 'white', '아이보리': 'ivory', '베이지': 'beige', '오트밀': 'oatmeal',
+  '올리브': 'olive', '인디고': 'indigo', '다크인디고': 'dark-indigo', '스카이블루': 'sky-blue',
+  '그레이': 'grey', '라이트그레이': 'light-grey', '크림': 'cream', '카멜': 'camel',
+  '라벤더': 'lavender', '샴페인': 'champagne', '로즈': 'rose', '누드': 'nude',
+  '진주': 'pearl', '로즈골드': 'rose-gold', '실버': 'silver'
+};
+function imgFor(it) {
+  return 'items/' + it.kind + '-' + (COLOR_SLUG[it.colorName] || 'basic') + '.jpg';
+}
+
 var CONCEPTS = [
   { key: 'classic', no: '01', name: '정석 세미정장',
     line: '가장 안정적인 기본 조합',
@@ -1176,7 +960,8 @@ function hashStr(s) {
   for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 100000; }
   return h;
 }
-function formatWon(n) { return n.toLocaleString('ko-KR') + '원'; }
+function priceTier(n) { return Math.floor(n / 10000) + '만~'; }
+function priceOf(it) { return priceTier(it.price); }
 function catLabel(cat) { return CAT_LABEL[cat] || cat; }
 function item(id) { return ITEM_MAP[id]; }
 
@@ -1306,12 +1091,9 @@ function buildLooks(gender, weatherId, moodId, occasionId, seed) {
     if (outer) items.push(outer);
     items.push(shoe); items.push(acc);
 
-    var total = items.reduce(function (a, it) { return a + it.price; }, 0);
-
     looks.push({
       concept: concept,
       items: items,
-      total: total,
       tips: {
         color: makeColorTip(top, bottom, outer, acc, ctx),
         fit: concept.fit[gender],
@@ -1350,7 +1132,7 @@ function sizesFor(it) {
 /* ============================================================
    화면 · 상태 · 이벤트
    ============================================================ */
-var APP_TITLE = '50대중년 세련미 풀풀 코디법';
+var APP_TITLE = '영앤클래식';
 var K = { book: 'seryeom.book.v1', cart: 'seryeom.cart.v1', addr: 'seryeom.addr.v1', zoom: 'seryeom.zoom.v1' };
 
 var state = {
@@ -1413,13 +1195,14 @@ function chipsHTML(group) {
 }
 
 function renderHome() {
-  var isM = state.gender === 'm';
   var html = '' +
     '<div class="hero">' +
-      '<p class="eyebrow">' + (isM ? '50대 남성을 위한' : '50대 여성을 위한') + ' 데일리 스타일 가이드</p>' +
-      '<h1 class="hero-title">' + APP_TITLE + '</h1>' +
-      '<p class="hero-lede">날씨 · 기분 · 상황, 네 가지만 고르면 <br class="only-m">오늘 입을 풀코디 3가지를 골라 드려요.</p>' +
-      '<div class="hero-tags"><span>👔 상의·하의·아우터·신발·소품</span><span>🛍 쇼핑몰 바로 연결</span><span>📖 나만의 코디북</span></div>' +
+      '<div class="hero-in">' +
+        '<p class="eyebrow">중년들의 데일리 스타일 가이드</p>' +
+        '<h1 class="hero-title">' + APP_TITLE + '</h1>' +
+        '<p class="hero-lede">누구 옷인지, 날씨·기분·상황 — 네 가지만 고르면 <br class="only-m">오늘 입을 풀코디 3가지를 골라 드려요.</p>' +
+        '<div class="hero-tags"><span>👔 상의·하의·아우터·신발·소품</span><span>🛍 쇼핑몰 바로 연결</span><span>📖 나만의 코디북</span></div>' +
+      '</div>' +
     '</div>' +
 
     '<div class="questions">' +
@@ -1475,7 +1258,7 @@ function applyZoom() {
 function tileHTML(it) {
   return '<button type="button" class="tile" data-act="item" data-id="' + it.id + '">' +
     '<span class="tile-cat">' + catLabel(it.cat) + '</span>' +
-    svgFor(it.kind, it.color) +
+    '<img class="tile-pic" src="' + imgFor(it) + '" alt="' + esc(it.name) + '" width="480" height="480" loading="lazy" decoding="async">' +
     '<span class="tile-col">' + esc(it.colorName) + '</span>' +
     '</button>';
 }
@@ -1484,7 +1267,7 @@ function itemRowHTML(it) {
   return '<li><button type="button" class="irow" data-act="item" data-id="' + it.id + '">' +
     '<span class="irow-cat">' + catLabel(it.cat) + '</span>' +
     '<span class="irow-name">' + esc(it.name) + '</span>' +
-    '<span class="irow-price">' + formatWon(it.price) + '</span>' +
+    '<span class="irow-price">' + priceOf(it) + '</span>' +
     '<span class="irow-go" aria-hidden="true">›</span>' +
     '</button></li>';
 }
@@ -1507,7 +1290,6 @@ function lookHTML(look, i, ctx) {
       '<p><b>핏 · 체형</b><span>' + esc(look.tips.fit) + '</span></p>' +
       '<p><b>오늘의 팁</b><span>' + esc(look.tips.extra) + '</span></p>' +
     '</div>' +
-    '<div class="look-total"><span>코디 예상 합계</span><b>' + formatWon(look.total) + '</b></div>' +
     '<div class="look-actions">' +
       '<button type="button" class="btn btn-primary" data-act="add-look" data-i="' + i + '">이 코디 담기</button>' +
       '<button type="button" class="btn btn-soft" data-act="save-look" data-i="' + i + '">코디북에 저장</button>' +
@@ -1544,7 +1326,7 @@ function renderResults() {
     '<div class="looks">' + state.looks.map(function (l, i) { return lookHTML(l, i, ctx); }).join('') + '</div>' +
     '<div class="after-looks">' +
       '<button type="button" class="btn btn-soft" data-act="shuffle">🔄 다른 조합 보기</button>' +
-      '<p class="note">가격은 예상 가격대예요. 실제 판매가·재고는 쇼핑몰에서 확인해 주세요.</p>' +
+      '<p class="note">가격은 3만~·5만~처럼 만 원 단위로 표기한 예상 가격대예요. 실제 판매가·배송비·재고는 쇼핑몰에서 확인해 주세요.</p>' +
     '</div>';
 }
 
@@ -1574,7 +1356,7 @@ function renderBook() {
     return '<article class="book-card">' +
       '<div class="book-top"><h3>' + esc(bookTitle(entry)) + '</h3><span class="book-date">' + dateStr + ' 저장</span></div>' +
       '<div class="board board-sm">' + tiles + '</div>' +
-      '<div class="book-foot"><b>' + formatWon(entry.total) + '</b>' +
+      '<div class="book-foot"><span class="book-count">' + its.length + '가지 아이템</span>' +
       '<div class="book-btns">' +
         '<button type="button" class="btn btn-primary btn-sm" data-act="book-add" data-i="' + i + '">장바구니 담기</button>' +
         '<button type="button" class="btn btn-ghost btn-sm" data-act="book-del" data-i="' + i + '">지우기</button>' +
@@ -1587,14 +1369,7 @@ function renderBook() {
 }
 
 /* ---------------- 장바구니 ---------------- */
-function cartTotals() {
-  var sub = state.cart.reduce(function (a, l) {
-    var it = item(l.id); return a + (it ? it.price * l.qty : 0);
-  }, 0);
-  var ship = sub === 0 ? 0 : (sub >= 50000 ? 0 : 2500);
-  return { sub: sub, ship: ship, total: sub + ship, count: state.cart.reduce(function (a, l) { return a + l.qty; }, 0) };
-}
-function cartKey(l) { return l.id + '__' + l.size; }
+function cartQty() { return state.cart.reduce(function (a, l) { return a + l.qty; }, 0); }
 
 function addToCart(id, size, qty) {
   var it = item(id);
@@ -1611,7 +1386,6 @@ function addToCart(id, size, qty) {
 
 function renderCart() {
   var box = $('#view-cart');
-  var t = cartTotals();
   var head = '<div class="page-head"><h1 class="view-title">장바구니</h1>' +
     '<p class="page-lede">담은 옷을 확인하고 주문서를 작성해 보세요.</p></div>';
 
@@ -1629,11 +1403,11 @@ function renderCart() {
     var unit = it.cat === 'shoes' ? 'mm' : (SIZE_UNIT[it.g][it.cat] || '');
     var sizeTxt = l.size === 'FREE' ? '프리사이즈' : l.size + unit;
     return '<div class="cart-line">' +
-      '<div class="cl-pic">' + svgFor(it.kind, it.color) + '</div>' +
+      '<div class="cl-pic"><img src="' + imgFor(it) + '" alt="' + esc(it.name) + '" width="480" height="480" loading="lazy" decoding="async"></div>' +
       '<div class="cl-main">' +
         '<p class="cl-cat">' + catLabel(it.cat) + '</p>' +
         '<p class="cl-name">' + esc(it.name) + '</p>' +
-        '<p class="cl-meta">사이즈 ' + esc(sizeTxt) + ' · ' + formatWon(it.price) + '</p>' +
+        '<p class="cl-meta">사이즈 ' + esc(sizeTxt) + ' · ' + priceOf(it) + '</p>' +
         '<div class="cl-qty">' +
           '<button type="button" class="qbtn" data-act="qty" data-i="' + i + '" data-d="-1" aria-label="수량 줄이기">−</button>' +
           '<span class="qnum">' + l.qty + '</span>' +
@@ -1641,7 +1415,6 @@ function renderCart() {
           '<button type="button" class="cl-del" data-act="rm" data-i="' + i + '">삭제</button>' +
         '</div>' +
       '</div>' +
-      '<div class="cl-sum">' + formatWon(it.price * l.qty) + '</div>' +
       '</div>';
   }).join('');
 
@@ -1649,12 +1422,11 @@ function renderCart() {
     '<div class="cart-layout">' +
       '<div class="cart-lines">' + lines + '</div>' +
       '<aside class="summary">' +
-        '<h2 class="sum-title">결제 금액</h2>' +
-        '<div class="sum-row"><span>상품 금액</span><b>' + formatWon(t.sub) + '</b></div>' +
-        '<div class="sum-row"><span>배송비</span><b>' + (t.ship ? formatWon(t.ship) : '무료') + '</b></div>' +
-        '<div class="sum-row sum-total"><span>총 결제 예정</span><b>' + formatWon(t.total) + '</b></div>' +
+        '<h2 class="sum-title">주문 안내</h2>' +
+        '<p class="sum-text">아이템마다 가격대가 달라 합계는 표시하지 않아요. 실제 판매가와 배송비는 연결된 쇼핑몰에서 확인하실 수 있습니다.</p>' +
+        '<div class="sum-count"><span>담은 아이템</span><b>' + cartQty() + '개</b></div>' +
         '<button type="button" class="btn btn-primary btn-lg btn-block" data-act="go-checkout">주문서 작성하기</button>' +
-        '<p class="sum-note">5만원 이상 구매 시 배송비 무료</p>' +
+        '<p class="sum-note">실제 결제는 연결된 쇼핑몰(네이버쇼핑·쿠팡)에서 진행됩니다.</p>' +
       '</aside>' +
     '</div>';
 }
@@ -1662,7 +1434,6 @@ function renderCart() {
 /* ---------------- 주문서 ---------------- */
 function renderCheckout() {
   var box = $('#view-checkout');
-  var t = cartTotals();
   if (!state.cart.length) { showView('cart'); return; }
   var last = Store.get(K.addr, {}) || {};
   var pay = [
@@ -1677,7 +1448,7 @@ function renderCheckout() {
 
   var items = state.cart.map(function (l) {
     var it = item(l.id); if (!it) return '';
-    return '<li><span>' + esc(it.name) + ' <em>(' + esc(l.size) + ')</em> × ' + l.qty + '</span><b>' + formatWon(it.price * l.qty) + '</b></li>';
+    return '<li><span>' + esc(it.name) + ' <em>(' + esc(l.size) + ')</em> × ' + l.qty + '</span><b>' + priceOf(it) + '</b></li>';
   }).join('');
 
   box.innerHTML = '' +
@@ -1704,15 +1475,14 @@ function renderCheckout() {
         '<label class="agree"><input type="checkbox" id="fAgree" name="agree">' +
           '<span class="agree-box">주문 내용을 확인했고, 결제에 동의합니다. <i>(체험용 모의 결제)</i></span></label>' +
         '<p class="ferr" data-for="agree"></p>' +
-        '<button type="submit" class="btn btn-primary btn-lg btn-block">' + formatWon(t.total) + ' 결제하기</button>' +
+        '<button type="submit" class="btn btn-primary btn-lg btn-block">주문 완료하기</button>' +
         '<p class="sum-note">실제 결제는 이루어지지 않는 체험용 주문입니다.</p>' +
       '</form>' +
       '<aside class="summary">' +
         '<h2 class="sum-title">주문 상품</h2>' +
         '<ul class="sum-items">' + items + '</ul>' +
-        '<div class="sum-row"><span>상품 금액</span><b>' + formatWon(t.sub) + '</b></div>' +
-        '<div class="sum-row"><span>배송비</span><b>' + (t.ship ? formatWon(t.ship) : '무료') + '</b></div>' +
-        '<div class="sum-row sum-total"><span>총 결제 금액</span><b>' + formatWon(t.total) + '</b></div>' +
+        '<p class="sum-text">표시된 가격은 아이템별 원대 표기(예: 5만~)이고, 합계 금액은 실제 구매 시 쇼핑몰에서 확인하실 수 있습니다.</p>' +
+        '<div class="sum-count"><span>담은 아이템</span><b>' + cartQty() + '개</b></div>' +
       '</aside>' +
     '</div>';
 }
@@ -1743,7 +1513,6 @@ function validateOrder(form) {
 function weekKor(d) { return ['일', '월', '화', '수', '목', '금', '토'][d.getDay()]; }
 
 function placeOrder(form) {
-  var t = cartTotals();
   var now = new Date();
   var eta = new Date(now.getTime() + 3 * 24 * 3600 * 1000);
   var payLabels = { card: '신용·체크카드', kakao: '카카오페이', naver: '네이버페이', bank: '무통장 입금' };
@@ -1754,7 +1523,7 @@ function placeOrder(form) {
   state.order = {
     no: 'SE' + now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2) + '-' + (1000 + Math.floor(Math.random() * 9000)),
     ts: now.getTime(),
-    items: items, sub: t.sub, ship: t.ship, total: t.total,
+    items: items,
     name: form.name.value.trim(), phone: form.phone.value.trim(),
     addr: form.addr.value.trim() + ' ' + form.addr2.value.trim(),
     memo: form.memo.value.trim(),
@@ -1774,10 +1543,10 @@ function renderDone() {
   if (!o) { box.innerHTML = ''; return; }
   var rows = o.items.map(function (it) {
     return '<li><span class="rc-n">' + esc(it.name) + ' <em>' + esc(it.size === 'FREE' ? '프리' : it.size) + '</em> × ' + it.qty + '</span>' +
-      '<b>' + formatWon(it.price * it.qty) + '</b></li>';
+      '<b>' + priceTier(it.price) + '</b></li>';
   }).join('');
   var firstId = o.items.length ? o.items[0].id : null;
-  var kw = firstId ? shopKeyword(item(firstId)) : '50대 남성 코디';
+  var kw = firstId ? shopKeyword(item(firstId)) : '중년 남성 코디';
 
   box.innerHTML = '' +
     '<div class="receipt" id="receipt">' +
@@ -1797,11 +1566,7 @@ function renderDone() {
       '</dl>' +
       '<h2 class="rc-sub">주문 상품</h2>' +
       '<ul class="rc-items">' + rows + '</ul>' +
-      '<div class="rc-money">' +
-        '<div><span>상품 금액</span><b>' + formatWon(o.sub) + '</b></div>' +
-        '<div><span>배송비</span><b>' + (o.ship ? formatWon(o.ship) : '무료') + '</b></div>' +
-        '<div class="rc-total"><span>결제 금액</span><b>' + formatWon(o.total) + '</b></div>' +
-      '</div>' +
+      '<p class="rc-note">표시된 가격은 아이템별 원대 표기(예: 5만~)이며, 합계 금액은 실제 구매 시 쇼핑몰에서 확인하실 수 있습니다.</p>' +
       '<div class="demo-note"><b>체험용 결제입니다.</b> 실제 결제·배송은 아래 쇼핑몰에서 진행해 주세요. ' +
         '같은 상품을 검색해 바로 구매하실 수 있습니다.</div>' +
       '<div class="rc-shops">' +
@@ -1826,11 +1591,11 @@ function openItem(id) {
   modal.innerHTML = '<div class="modal-backdrop" data-act="close-modal"></div>' +
     '<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">' +
       '<button type="button" class="modal-x" data-act="close-modal" aria-label="닫기">✕</button>' +
-      '<div class="modal-pic">' + svgFor(it.kind, it.color) + '</div>' +
+      '<div class="modal-pic"><img src="' + imgFor(it) + '" alt="' + esc(it.name) + '" width="480" height="480"></div>' +
       '<div class="modal-body">' +
-        '<p class="modal-cat">' + catLabel(it.cat) + ' · ' + (it.g === 'm' ? '50대 남성' : '50대 여성') + ' 추천</p>' +
+        '<p class="modal-cat">' + catLabel(it.cat) + ' · ' + (it.g === 'm' ? '남성' : '여성') + ' 추천</p>' +
         '<h3 id="mTitle">' + esc(it.name) + '</h3>' +
-        '<p class="modal-price">' + formatWon(it.price) + ' <span>예상가</span></p>' +
+        '<p class="modal-price">' + priceOf(it) + ' <span>예상 가격대</span></p>' +
         '<div class="size-wrap"><span class="size-label">사이즈</span><div class="sizes" id="sizeBtns">' +
           sz.list.map(function (s) {
             return '<button type="button" class="size-btn' + (s === sz.def ? ' on' : '') + '" data-act="size" data-size="' + s + '" aria-pressed="' + (s === sz.def) + '">' + s + '</button>';
@@ -1843,7 +1608,7 @@ function openItem(id) {
           '<a href="' + shopUrl('naver', shopKeyword(it)) + '" target="_blank" rel="noopener noreferrer">네이버쇼핑에서 찾기 ↗</a>' +
           '<a href="' + shopUrl('coupang', shopKeyword(it)) + '" target="_blank" rel="noopener noreferrer">쿠팡에서 찾기 ↗</a>' +
         '</div>' +
-        '<p class="modal-note">표시 금액은 예상 가격대예요. 실제 판매가와 재고는 쇼핑몰에서 확인해 주세요.</p>' +
+        '<p class="modal-note">표시 가격은 3만~·5만~처럼 만 원 단위로 나타낸 예상 가격대예요. 실제 판매가와 재고는 쇼핑몰에서 확인해 주세요.</p>' +
       '</div>' +
     '</div>';
   modal.hidden = false;
@@ -1944,7 +1709,6 @@ document.addEventListener('click', function (e) {
       state.book.unshift({
         sig: sig,
         itemIds: lk.items.map(function (it) { return it.id; }),
-        total: lk.total,
         ts: Date.now(),
         gender: state.gender, weather: state.weather, mood: state.mood, occasion: state.occasion,
         conceptName: lk.concept.name
