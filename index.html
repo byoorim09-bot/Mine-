@@ -1129,7 +1129,7 @@ function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
   var w = ctx.w.id;
   if (conceptKey === 'classic') {
     if (w === 'cold') {
-      return outer ? '울 ' + josa(outerNoun(outer), '은', '는') + ' 어깨선이 맞아야 단정해 보여요. ' + bottom.colorName + ' ' + josa(catLabel(bottom.cat), '은', '는') + ' 무릎이 살짝 덮이는 길이가 가장 안정적입니다.'
+      return outer ? josa(outer.colorName + ' ' + outerNoun(outer), '은', '는') + ' 어깨선이 맞아야 단정해 보여요. ' + bottom.colorName + ' ' + josa(catLabel(bottom.cat), '은', '는') + ' 무릎이 살짝 덮이는 길이가 가장 안정적입니다.'
                    : '겨울에는 기모 안감 니트가 얇아 보이면서도 따뜻합니다. 목만 감싸도 체감 온도가 달라져요.';
     }
     if (w === 'rain') return '가죽 ' + shoeNoun(shoe) + '는 방수 스프레이를 뿌려 두면 물 자국이 덜 남습니다. 접이식보다 장우산이 편해요.';
@@ -1137,14 +1137,14 @@ function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
     return '아침저녁 일교차에는 얇은 ' + josa(outer ? outerNoun(outer) : '재킷', '이', '가') + ' 답이에요. 벗어서 팔에 걸쳐도 단정해 보입니다.';
   }
   if (conceptKey === 'soft') {
-    if (w === 'cold') return (top.kind === 'knit' || top.kind === 'turtleneck' ? '두꺼운 니트는 손세탁이 오래갑니다. 세탁망에 넣고 눌러 빨래하세요.' : '안쪽에 얇은 이너를 받쳐 입으면 겉옷이 덜 눌립니다.') + ' ' + (acc ? accNoun(acc) + '는 ' + acc.colorName + ' 한 가지로 통일하면 흐트러지지 않아요.' : '');
+    if (w === 'cold') return (top.kind === 'knit' || top.kind === 'turtleneck' ? '두꺼운 니트는 손세탁이 오래갑니다. 세탁망에 넣고 눌러 빨래하세요.' : '안쪽에 얇은 이너를 받쳐 입으면 겉옷이 덜 눌립니다.') + ' ' + (acc ? josa(accNoun(acc), '은', '는') + ' ' + acc.colorName + ' 한 가지로 통일하면 흐트러지지 않아요.' : '');
     if (w === 'rain') return '젖은 옷은 그늘에서 넓게 펴 말려야 냄새가 덜 배요. ' + josa(catLabel(bottom.cat), '은', '는') + ' 밑단이 짧을수록 편합니다.';
     if (w === 'warm') return '얇은 니트는 옷걸이보다 개어 보관하세요. 실내 냉방에는 ' + (outer ? outerNoun(outer) : '얇은 셔츠') + ' 하나면 충분합니다.';
     return '니트 밑단을 살짝 넣으면 허리선이 살아 비율이 좋아 보여요. ' + josa(shoeNoun(shoe), '은', '는') + ' 무광 소재가 편안한 핏과 잘 어울립니다.';
   }
   /* accent */
   if (w === 'cold') return '포인트 색은 목에 가까이 둘수록 얼굴빛이 밝아 보여요. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '스카프 하나') + '로 시선을 위로 모아 보세요.';
-  if (w === 'rain') return '비 오는 날은 밝은 색 상의가 답답함을 덜어 줘요. ' + (acc && acc.kind === 'umbrella' ? acc.colorName + ' 우산' : '우산 색') + '으로 포인트를 더하면 사진도 잘 나옵니다.';
+  if (w === 'rain') return '비 오는 날은 발밑이 젖어도 표정은 밝게. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '우산') + ' 색으로 포인트를 주면 사진도 잘 나옵니다.';
   if (w === 'warm') return '한낮에는 겉옷을 벗어도 주름이 적은 소재가 좋아요. 밝은 ' + top.colorName + ' ' + catLabel(top.cat) + '가 햇빛을 반사해 시원해 보입니다.';
   return '겉옷은 어두운 톤, 안쪽은 밝은 톤으로 대비를 주면 얼굴이 화사해 보여요. ' + top.colorName + ' ' + catLabel(top.cat) + '가 그 역할을 합니다.';
 }
