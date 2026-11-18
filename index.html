@@ -673,7 +673,11 @@ var OPTIONS = {
 };
 
 /* cat: top / bottom / outer / shoes / acc
-   formal: 0(편안) ~ 3(격식)   warmth: 0(한여름) ~ 3(한겨울) */
+   formal: 0(편안) ~ 3(격식)   warmth: 0(한여름) ~ 3(한겨울)
+   connectUrl: (선택) 네이버 브랜드·쇼핑 커넥트 상품 링크.
+               넣어 두면 「네이버쇼핑에서 최저가 보기」가 이 링크로 열리고,
+               없으면 아이템 이름으로 네이버쇼핑을 검색합니다.
+   예) { id: 'm_t1', ..., connectUrl: 'https://smartstore.naver.com/...' } */
 var WARDROBE = [
   /* ================= 남성 ================= */
   { id: 'm_t1', g: 'm', cat: 'top', kind: 'shirt', name: '네이비 옥스퍼드 셔츠', color: '#2B3A5B', colorName: '네이비', price: 39900, formal: 2, warmth: 1, moods: ['calm', 'formal'] },
