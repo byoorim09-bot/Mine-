@@ -429,18 +429,35 @@ img, svg { display: block; }
 
 .items { list-style: none; margin: 0 0 12px; padding: 0; border-top: 1px solid var(--line); }
 .items li { border-bottom: 1px solid #F2EBE1; }
+.irow-li {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; column-gap: 6px;
+}
 .irow {
-  display: grid; grid-template-columns: 42px 1fr auto 14px;
-  gap: 8px; align-items: center; width: 100%;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 6px; align-items: center; width: 100%; min-width: 0;
   padding: 10px 2px; border: 0; background: none;
   font: inherit; text-align: left; cursor: pointer; color: var(--ink);
   border-radius: 6px;
 }
 .irow:hover { background: rgba(255, 252, 246, .88); }
-.irow-cat { font-size: .7rem; font-weight: 800; color: var(--gold); }
+.irow-cat { font-size: .7rem; font-weight: 800; color: var(--gold); width: 3.3em; white-space: nowrap; }
 .irow-name { font-size: .92rem; font-weight: 700; color: var(--navy); line-height: 1.4; }
 .irow-price { font-size: .86rem; color: var(--ink2); white-space: nowrap; }
-.irow-go { color: var(--gold2); font-size: 1.1rem; line-height: 1; }
+
+/* 아이템 줄 오른쪽 미니 바로가기 (모달을 열지 않고 1탭 이동) */
+.irow-shops { display: inline-flex; align-items: center; gap: 4px; }
+.irow-shop {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 29px; padding: 4px 7px; border-radius: 999px;
+  font-size: .64rem; font-weight: 800; line-height: 1; letter-spacing: -.01em;
+  white-space: nowrap; text-decoration: none; border: 1px solid transparent;
+  transition: filter .15s, border-color .15s;
+}
+.irow-shop-n { background: #EAF7EE; color: #0B7A3B; border-color: #CDEBD7; }
+.irow-shop-c { background: #FBEDE7; color: #B23A1E; border-color: #EFC3B3; }
+.irow-shop:hover { filter: brightness(.95); }
+.irow-shop:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
 
 .tips {
   background: linear-gradient(180deg, rgba(252, 247, 238, .95), rgba(250, 244, 233, .9));
@@ -655,8 +672,11 @@ img, svg { display: block; }
   .wish-name { font-size: .94rem; }
   .wish-shop { font-size: .82rem; padding: 12px 8px; min-height: 54px; }
   .shop-btn { font-size: .82rem; padding: 11px 8px; min-height: 54px; }
-  .irow { grid-template-columns: 38px 1fr auto; }
-  .irow-go { display: none; }
+  .irow { gap: 6px; padding: 9px 0 9px 2px; }
+  .irow-cat { width: 3.2em; }
+  .irow-name { font-size: .87rem; }
+  .irow-price { font-size: .78rem; }
+  .irow-shop { min-height: 28px; padding: 4px 6px; font-size: .64rem; }
   .modal-card { padding: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -698,7 +718,7 @@ img, svg { display: block; }
 
 <footer class="foot">
   <p><b>영앤클래식</b> · 중년 남녀를 위한 데일리 코디 체험 앱</p>
-  <p class="foot-sub">표시된 가격은 원대(3만~·5만~)로 표기한 예상 가격대이며, 실제 구매와 결제는 네이버쇼핑·쿠팡에서 진행됩니다. 저장한 코디북과 찜한 옷은 이 브라우저에만 보관돼요.</p>
+  <p class="foot-sub">표시된 가격은 만 원대(3만~·5만~)로 표기한 예상 가격대이며, 실제 구매와 결제는 네이버쇼핑·쿠팡에서 진행됩니다. 저장한 코디북과 찜한 옷은 이 브라우저에만 보관돼요.</p>
   <p class="foot-affil">이 사이트의 일부 링크는 쿠팡 파트너스·네이버 쇼핑 커넥트 활동의 일환으로, 해당 링크를 통해 구매가 이루어지면 일정액의 수수료를 제공받습니다.</p>
 </footer>
 
@@ -1146,7 +1166,7 @@ var CURATED_LOOKS = [
     occasions: ['trip', 'walk'], moods: ['comfy', 'lively'], concept: 'soft',
     title: '베이지 폴로 나들이 룩',
     reason: '가볍게 걸어 다니기 좋은 여름 외출 조합이에요.',
-    tip: '폴로 셔츠는 어깨선이 맞아야 단정해 보여요. 가디건은 어깨에 걸쳐도 잘 어울립니다.',
+    tip: '피케 폴로는 어깨선이 맞아야 단정해 보여요. 가디건은 어깨에 걸쳐도 잘 어울립니다.',
     items: ['m_o1', 'm_t7', 'm_b5', 'm_s4', 'm_a5'],
     img: 'looks/set_02.jpg' },
   { id: 'm-warm-3', gender: 'm', weathers: ['warm'],
@@ -1209,7 +1229,7 @@ var CURATED_LOOKS = [
     occasions: ['work', 'gather', 'event'], moods: ['calm', 'formal'], concept: 'classic',
     title: '비 오는 날 단정한 출근 룩',
     reason: '비가 와도 흐트러져 보이지 않는 출근 조합이에요.',
-    tip: '트렌치는 무릎 아래로 오는 길이가 양말 젖는 걸 줄여 줘요. 신발은 가죽 더비가 안전해요.',
+    tip: '트렌치는 무릎 아래로 오는 길이가 발목이 젖는 걸 줄여 줘요. 신발은 가죽 더비가 안전해요.',
     items: ['m_o8', 'm_t1', 'm_b2', 'm_s3', 'm_a7'],
     img: 'looks/set_11.jpg' },
   { id: 'm-rain-2', gender: 'm', weathers: ['rain'],
@@ -1264,15 +1284,15 @@ var CURATED_LOOKS = [
   { id: 'm-cold-4', gender: 'm', weathers: ['cold'],
     occasions: ['trip', 'walk', 'gather'], moods: ['comfy', 'calm', 'lively'], concept: 'soft',
     title: '트렌치 겹쳐 입은 겨울 캐주얼',
-    reason: '코트보다 가볍게, 그러나 따뜻하게 겹치는 조합이에요.',
-    tip: '트렌치 안에 와플 니트를 받치고 목에는 머플러를 더하면 체감 온도가 크게 달라져요.',
+    reason: '가볍게 겹쳐 입어도 따뜻한 겨울 외출 조합이에요.',
+    tip: '트렌치 안에 와플 니트를 받치고 가죽 장갑까지 챙기면 손끝까지 따뜻해요.',
     items: ['m_o8', 'm_t10', 'm_b8', 'm_s5', 'm_a6'],
     img: 'looks/set_19.jpg' },
   { id: 'm-cold-5', gender: 'm', weathers: ['cold'],
     occasions: ['event', 'work'], moods: ['formal'], concept: 'classic',
     title: '겨울 격식 세미정장',
     reason: '경조사·중요 미팅처럼 격식이 먼저인 날의 조합이에요.',
-    tip: '겨울 정장에는 얇은 니트를 안에 받치고, 블레이저는 실내에서 벗어도 셔츠만으로 단정하게 보이도록 챙기세요.',
+    tip: '화이트 셔츠는 목둘레가 맞는 것으로 고르고, 블레이저는 실내에서 벗어도 셔츠만으로 단정하게 보이도록 챙기세요.',
     items: ['m_o4', 'm_t2', 'm_b1', 'm_s2', 'm_a4'],
     img: 'looks/set_20.jpg' },
   { id: 'f-warm-1', gender: 'f', weathers: ['warm'],
@@ -1300,7 +1320,7 @@ var CURATED_LOOKS = [
     occasions: ['gather', 'work'], moods: ['calm', 'lively'], concept: 'accent',
     title: '로즈 니트 크림 팬츠 룩',
     reason: '얼굴빛을 밝히는 부드러운 여름 조합이에요.',
-    tip: '크림 팬츠에는 같은 계열의 로즈 니트를 맞추고, 스카프는 목에 한 번만 둘러 색을 모아 주세요.',
+    tip: '크림 슬랙스에는 같은 계열의 로즈 니트를 맞추고, 스카프는 목에 한 번만 둘러 색을 모아 주세요.',
     items: ['f_o1', 'f_t5', 'f_b2', 'f_s6', 'f_a3'],
     img: 'looks/set_24.jpg' },
   { id: 'f-warm-5', gender: 'f', weathers: ['warm'],
@@ -1328,7 +1348,7 @@ var CURATED_LOOKS = [
     occasions: ['event', 'gather'], moods: ['formal'], concept: 'classic',
     title: '트위드 재킷 격식 룩',
     reason: '결혼식·상견례처럼 격식이 먼저인 날의 조합이에요.',
-    tip: '트위드 재킷은 어깨선이 맞아야 고급스러워 보여요. 미디 스커트는 무릎 아래 다섯 손가락 길이가 가장 안정적입니다.',
+    tip: '트위드 재킷은 어깨선이 맞아야 고급스러워 보여요. 펌프스는 굽이 너무 높지 않은 것을 고르세요.',
     items: ['f_o2', 'f_t1', 'f_b3', 'f_s1', 'f_a7'],
     img: 'looks/set_28.jpg' },
   { id: 'f-mild-4', gender: 'f', weathers: ['mild'],
@@ -1356,14 +1376,14 @@ var CURATED_LOOKS = [
     occasions: ['event', 'work'], moods: ['formal', 'calm'], concept: 'classic',
     title: '비 오는 날 단정한 격식 룩',
     reason: '비 오는 날 격식 있는 자리에도 맞는 조합이에요.',
-    tip: '미디 스커트 안에는 얇은 타이츠를 더하고, 부츠는 발목을 잡아 주는 것을 고르세요.',
+    tip: '미디 스커트는 무릎 아래로 떨어지는 길이가 좋고, 부츠는 발목을 잡아 주는 것을 고르세요.',
     items: ['f_o3', 'f_t1', 'f_b3', 'f_s5', 'f_a9'],
     img: 'looks/set_32.jpg' },
   { id: 'f-rain-3', gender: 'f', weathers: ['rain'],
     occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
     title: '비 오는 날 데님 캐주얼',
     reason: '짧게 나서는 날 가장 편한 비 오는 날 조합이에요.',
-    tip: '데님은 젖으면 금방 무거워져요. 재킷은 벗어 가방에 넣고, 우산은 큰 것을 쓰세요.',
+    tip: '데님은 젖으면 금방 무거워져요. 데님 재킷은 벗어 팔에 걸쳐 두고, 우산은 큰 것을 쓰세요.',
     items: ['f_o8', 'f_t4', 'f_b5', 'f_s4', 'f_a9'],
     img: 'looks/set_33.jpg' },
   { id: 'f-rain-4', gender: 'f', weathers: ['rain'],
@@ -1377,7 +1397,7 @@ var CURATED_LOOKS = [
     occasions: ['event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
     title: '비 오는 날 하객 룩',
     reason: '비가 와도 격식이 흐트러지지 않는 조합이에요.',
-    tip: '네이비 톤으로 위아래를 맞추면 비에 젖어도 티가 덜 나요. 우산은 검은 장우산이 가장 단정해 보입니다.',
+    tip: '네이비 톤으로 위아래를 맞추면 비에 젖어도 티가 덜 나요. 우산은 네이비 장우산이 가장 단정해 보입니다.',
     items: ['f_o2', 'f_t2', 'f_b7', 'f_s2', 'f_a9'],
     img: 'looks/set_35.jpg' },
   { id: 'f-cold-1', gender: 'f', weathers: ['cold'],
@@ -1404,7 +1424,7 @@ var CURATED_LOOKS = [
   { id: 'f-cold-4', gender: 'f', weathers: ['cold'],
     occasions: ['work', 'gather'], moods: ['calm', 'formal'], concept: 'classic',
     title: '겨울 트렌치 블라우스 출근 룩',
-    reason: '코트보다 가볍게, 그러나 단정하게 겹치는 조합이에요.',
+    reason: '가볍게 겹쳐 입어도 단정한 겨울 출근 조합이에요.',
     tip: '트렌치 안에 셔링 블라우스를 입으면 목선이 살아 보여요. 슬랙스는 발목이 보이지 않는 길이가 따뜻해요.',
     items: ['f_o6', 'f_t2', 'f_b6', 'f_s3', 'f_a2'],
     img: 'looks/set_39.jpg' },
@@ -1419,7 +1439,7 @@ var CURATED_LOOKS = [
     occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
     title: '편안한 트랙수트 산책 룩',
     reason: '가볍게 걷거나 여행 갈 때 몸이 편한 조합이에요.',
-    tip: '집업은 가슴까지만 올리고, 조거 팬츠 밑단을 살짝 접으면 다리가 길어 보여요.',
+    tip: '트랙 재킷 지퍼는 가슴까지만 올리고, 조거 팬츠 밑단을 살짝 접으면 다리가 길어 보여요.',
     items: ['m_tr1', 'm_tr2', 'm_tr3', 'm_s4', 'm_a5'],
     img: 'looks/set_41.jpg' },
   { id: 'f-train-1', gender: 'f', weathers: ['warm', 'mild', 'rain', 'cold'],
@@ -1491,7 +1511,9 @@ function affilNote(hasNaver, hasCoupang) {
   var out = [];
   if (hasCoupang) out.push(NOTE_COUPANG);
   if (hasNaver) out.push(NOTE_NAVER);
-  return out.join('<br>');
+  /* 마침표 뒤에는 줄바꿈(<br>)에 더해 공백도 넣습니다. 줄바꿈이 사라지는 곳에서도
+     「제공받습니다.」와 「이 링크는」이 한 문장처럼 붙어 보이지 않게 하기 위해서입니다. */
+  return out.join('<br> ');
 }
 
 function ctxOf(gender, weatherId, moodId, occasionId) {
@@ -1649,7 +1671,7 @@ function lookFromSet(set, pos, ctx) {
     items: its,
     tips: {
       color: makeColorTip(top, bottom, outer, acc, ctx),
-      fit: c.fit[ctx.gender],
+      fit: makeFitTip(top, bottom, outer, shoe, acc, set.concept, ctx.gender),
       extra: set.tip
     },
     reason: set.reason
@@ -1710,13 +1732,52 @@ function shoeNoun(it) {
   if (k === 'flat') return '플랫';
   return '신발';
 }
-/* 색 설명은 실제로 고른 상의·하의·겉옷·소품의 색 이름을 그대로 씁니다. */
+/* 색 이름 뒤에 붙는 옷 이름은 그 아이템의 실제 이름에서 색 이름만 덜어 씁니다.
+   (트위드 재킷을 「블레이저」, 나일론 크로스백을 「가방」처럼 다른 이름으로 부르지 않게) */
+function shortName(it) {
+  var n = it.name, c = String(it.colorName || '').replace(/\s+/g, '');
+  if (!c) return n;
+  if (n.indexOf(it.colorName) === 0) return n.slice(it.colorName.length).trim();
+  var parts = n.split(' '), acc = '';
+  while (parts.length > 1) {
+    acc += parts[0];
+    if (acc === c) { parts.shift(); return parts.join(' '); }
+    if (c.indexOf(acc) !== 0) break;
+    parts.shift();
+  }
+  return n;
+}
+/* 색 설명은 실제로 고른 상의·하의·겉옷·소품의 색 이름을 그대로 쓰고,
+   옷 이름도 그 아이템의 이름에서 색만 덜어 씁니다. */
 function makeColorTip(top, bottom, outer, acc, ctx) {
-  var base = top.colorName + '·' + bottom.colorName;
   var s = '색은 ' + top.colorName + ' ' + catLabel(top.cat) + ', ' + bottom.colorName + ' ' + josa(catLabel(bottom.cat), '으로', '로') + ' 맞췄어요.';
-  if (outer) s += ' 여기에 ' + outer.colorName + ' ' + josa(outerNoun(outer), '으로', '로') + ' 온도를 더했어요.';
-  if (acc) s += ' ' + acc.colorName + ' ' + josa(accNoun(acc), '으로', '로') + ' 마무리했고요.';
+  if (outer) s += ' 여기에 ' + outer.colorName + ' ' + josa(shortName(outer), '으로', '로') + ' 온도를 더했어요.';
+  if (acc) s += ' ' + acc.colorName + ' ' + josa(shortName(acc), '으로', '로') + ' 마무리했고요.';
   return s + ' ' + josa(ctx.mo.tone, '이', '가') + ' 됩니다.';
+}
+/* 「핏 · 체형」은 그 세트에 실제로 들어 있는 옷의 이름으로만 씁니다.
+   정해 둔 문구를 그대로 쓰면 트랙수트 세트에 「니트는 …」처럼 세트에 없는 옷이 나옵니다. */
+function makeFitTip(top, bottom, outer, shoe, acc, conceptKey, gender) {
+  var nm = function (it) { return it ? it.name : ''; };
+  if (conceptKey === 'classic') {
+    var head = outer ? nm(outer) + ' 어깨선과 '
+             : (top ? nm(top) + ' 어깨선과 ' : '');
+    var line = head + (bottom ? nm(bottom) + ' 길이를 맞추면 단정해 보여요.' : '어깨선을 맞추면 단정해 보여요.');
+    if (bottom && bottom.kind === 'skirt') line += ' 무릎 아래 다섯 손가락 길이가 가장 안정적입니다.';
+    else if (shoe) line += ' ' + nm(shoe) + ' 위에 밑단이 살짝 걸치게 입으면 키가 커 보여요.';
+    else line += ' 밑단이 발등을 살짝 덮는 길이가 안정적입니다.';
+    return line;
+  }
+  if (conceptKey === 'soft') {
+    var s = top ? josa(nm(top), '은', '는') + ' 몸에 달라붙지 않는 여유 핏으로. ' : '';
+    s += bottom ? nm(bottom) + ' 안에 밑단을 살짝 넣어 허리선만 드러내 주세요.'
+                : '밑단을 살짝 넣어 허리선만 드러내 주세요.';
+    if (acc && acc.kind === 'belt') s += ' ' + josa(nm(acc), '으로', '로') + ' 허리선을 잡아 주면 더 좋아요.';
+    return s;
+  }
+  if (gender === 'f') return '포인트 색은 얼굴 가까이 ' + (top ? nm(top) : '상의') + '에서 살리면 얼굴빛이 화사해 보여요.';
+  return '포인트 색은 ' + (top ? nm(top) : '상의') + '에서 살리고 ' + (bottom ? josa(nm(bottom), '은', '는') : '하의는') +
+    ' 한 톤 차분하게 맞추면 배 부분이 슬림해 보여요.';
 }
 /* '오늘의 팁'은 코디(정석·여유·포인트)와 날씨·실제 아이템에 맞춰 서로 다른 문구로 씁니다. */
 function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
@@ -1997,12 +2058,20 @@ function tileHTML(it) {
 }
 
 function itemRowHTML(it) {
-  return '<li><button type="button" class="irow" data-act="item" data-id="' + it.id + '">' +
-    '<span class="irow-cat">' + catLabel(it.cat) + '</span>' +
-    '<span class="irow-name">' + esc(it.name) + '</span>' +
-    '<span class="irow-price">' + priceOf(it) + '</span>' +
-    '<span class="irow-go" aria-hidden="true">›</span>' +
-    '</button></li>';
+  /* 행 자체(제품명·사진 영역)를 누르면 상세 모달이 열리고,
+     오른쪽 「네이버」·「쿠팡」 미니 버튼은 모달을 거치지 않고 바로 쇼핑몰로 이동합니다. */
+  var nm = esc(it.name);
+  return '<li class="irow-li">' +
+    '<button type="button" class="irow" data-act="item" data-id="' + it.id + '">' +
+      '<span class="irow-cat">' + catLabel(it.cat) + '</span>' +
+      '<span class="irow-name">' + nm + '</span>' +
+      '<span class="irow-price">' + priceOf(it) + '</span>' +
+    '</button>' +
+    '<span class="irow-shops">' +
+      '<a class="irow-shop irow-shop-n" href="' + shopUrlOf(it) + '" target="_blank" rel="noopener noreferrer" data-shop="naver" aria-label="' + nm + ' 네이버쇼핑에서 보기">네이버</a>' +
+      '<a class="irow-shop irow-shop-c" href="' + coupangUrlOf(it) + '" target="_blank" rel="noopener noreferrer" data-shop="coupang" aria-label="' + nm + ' 쿠팡에서 보기">쿠팡</a>' +
+    '</span>' +
+    '</li>';
 }
 
 function lookHTML(look, i, ctx) {
@@ -2200,7 +2269,7 @@ function openItem(id, fromHistory) {
           '<a class="btn btn-coupang shop-btn" href="' + coupangUrlOf(it) + '" target="_blank" rel="noopener noreferrer">' + (it.coupangUrl ? '쿠팡에서 최저가 보기' : '쿠팡에서 찾아보기') + ' <span aria-hidden="true">↗</span></a>' +
         '</div>' +
         '<p class="modal-note">표시 가격은 3만~·5만~처럼 만 원 단위로 나타낸 예상 가격대예요. 실제 판매가·재고·사이즈는 네이버쇼핑·쿠팡 상품 페이지에서 확인해 주세요.' +
-          (mNote ? '<br>' + mNote : '') + '</p>' +
+          (mNote ? '<br> ' + mNote : '') + '</p>' +
       '</div>' +
     '</div>';
   modal.hidden = false;
@@ -2291,6 +2360,9 @@ function showView(name, fromHistory) {
 
 /* ---------------- 이벤트 ---------------- */
 document.addEventListener('click', function (e) {
+  /* 아이템 줄의 「네이버」·「쿠팡」 바로가기는 부모 행의 상세 모달 열기로 번지지 않게 막습니다. */
+  var shop = e.target.closest ? e.target.closest('.irow-shop') : null;
+  if (shop) { e.stopPropagation(); return; }
   var el = e.target.closest ? e.target.closest('[data-act]') : null;
   if (!el) return;
   var act = el.dataset.act;
