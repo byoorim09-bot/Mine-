@@ -10,7 +10,7 @@
 <meta property="og:description" content="날씨·기분·상황에 맞춘 중년 풀코디 추천, 네이버쇼핑 최저가 연결, 나만의 코디북.">
 <meta name="description" content="중년 남녀를 위한 날씨·기분·상황별 코디 추천과 네이버쇼핑 최저가 연결, 나만의 코디북. 「영앤클래식」">
 <title>영앤클래식</title>
-<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/hero-xmas.jpg">
+<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/hero-beach.jpg">
 <style>/* ============================================================
    영앤클래식 — 스타일
    ============================================================ */
@@ -64,25 +64,29 @@ body.lock { overflow: hidden; }
 body { display: flex; flex-direction: column; min-height: 100vh; }
 #main { flex: 1 0 auto; }
 
-/* ---- 고급 배경: 화면에 고정된 부티크 라운지 이미지 + 은은한 아이보리 광막 ----
-   카드 뒤로만 비쳐 보이도록 광막을 덮어 글자 대비를 지킵니다. */
+/* ---- 시즌 배경: 화면에 고정된 눈 내리는 크리스마스 밤(산타 썰매·루돌프) + 은은한 아이보리 광막 ----
+   카드 뒤로만 비쳐 보이도록 광막을 덮어 글자 대비를 지킵니다.
+   (시즌이 끝나면 아래 이미지만 bg-luxury.jpg / bg-luxury-m.jpg로 되돌리면 됩니다.
+    부티크 이미지 파일은 지우지 않고 그대로 남겨 둡니다.) */
 body::before {
   content: "";
   position: fixed; inset: 0; z-index: -2;
-  background: var(--base) url("bg-luxury.jpg") 50% 42% / cover no-repeat;
+  background: #0E1626 url("hero-xmas.jpg") 62% 42% / cover no-repeat;
   pointer-events: none;
 }
 body::after {
   content: "";
   position: fixed; inset: 0; z-index: -1;
   pointer-events: none;
+  /* 크리스마스 밤 이미지는 어두워서, 그대로 두면 카드 바깥이 검게 가라앉습니다.
+     아이보리 광막을 조금 더 두껍게 덮어 밤하늘 결은 은은하게만 남기고 화면 전체는 밝게 유지합니다. */
   background:
-    radial-gradient(120% 78% at 50% 2%, rgba(255, 255, 253, .62) 0%, rgba(254, 251, 245, .42) 38%, rgba(249, 244, 235, .16) 72%, rgba(243, 234, 219, .30) 100%),
-    linear-gradient(180deg, rgba(252, 249, 242, .22) 0%, rgba(250, 246, 238, .04) 45%, rgba(240, 230, 214, .22) 100%);
+    radial-gradient(120% 78% at 50% 2%, rgba(255, 255, 253, .70) 0%, rgba(254, 251, 245, .52) 38%, rgba(249, 244, 235, .34) 72%, rgba(243, 234, 219, .46) 100%),
+    linear-gradient(180deg, rgba(252, 249, 242, .30) 0%, rgba(250, 246, 238, .14) 45%, rgba(240, 230, 214, .30) 100%);
 }
 /* 세로 화면(휴대폰)은 세로 구도로 따로 그린 배경을 써서 잘림 없이 보여 줍니다. */
 @media (max-aspect-ratio: 4/5) {
-  body::before { background-image: url("bg-luxury-m.jpg"); background-position: 50% 50%; }
+  body::before { background-image: url("hero-xmas-m.jpg"); background-position: 50% 45%; }
 }
 img, svg { display: block; }
 .glyph { filter: drop-shadow(0 2px 3px rgba(30, 42, 74, .10)); }
@@ -230,7 +234,7 @@ img, svg { display: block; }
 }
 
 /* ---------------- 1단계 ---------------- */
-/* ---------------- 1단계 : 겨울 크리스마스 히어로 ---------------- */
+/* ---------------- 1단계 : 오션뷰 비치 히어로 ---------------- */
 .hero {
   position: relative;
   margin: 6px 0 8px;
@@ -241,7 +245,7 @@ img, svg { display: block; }
   place-items: center;
   text-align: center;
   padding: 46px 22px 40px;
-  background: #0E1626 url("hero-xmas.jpg") 58% 50% / cover no-repeat;
+  background: #18202f url("hero-beach.jpg") 58% 52% / cover no-repeat;
   border: 1px solid rgba(216, 183, 138, .55);
   box-shadow: 0 30px 62px -34px rgba(20, 28, 46, .85), inset 0 0 0 1px rgba(255, 255, 255, .14);
   isolation: isolate;
@@ -607,7 +611,7 @@ img, svg { display: block; }
   .tab { flex: 1; padding: 9px 6px; font-size: .84rem; }
   .brand-txt i { display: none; }
   .brand-txt b { font-size: .96rem; white-space: normal; }
-  .hero { min-height: 310px; padding: 34px 16px 30px; border-radius: 20px; background-image: url("hero-xmas-m.jpg"); background-position: 56% 40%; }
+  .hero { min-height: 310px; padding: 34px 16px 30px; border-radius: 20px; background-position: 56% 52%; }
   .hero-title { font-size: 1.95rem; letter-spacing: .03em; }
   .hero-title::after { margin-top: 12px; width: 44px; }
   .hero-lede { font-size: .9rem; margin-top: 12px; }
