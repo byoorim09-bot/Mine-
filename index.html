@@ -850,7 +850,15 @@ var WARDROBE = [
   { id: 'f_a6', g: 'f', cat: 'acc', kind: 'watch', name: '로즈골드 워치', color: '#C9A27E', colorName: '로즈골드', price: 29900, formal: 2, warmth: 1, moods: ['formal', 'calm'] },
   { id: 'f_a7', g: 'f', cat: 'acc', kind: 'earring', name: '진주 이어링', color: '#EDE7DC', colorName: '진주', price: 24900, formal: 3, warmth: 1, moods: ['formal', 'calm'] },
   { id: 'f_a8', g: 'f', cat: 'acc', kind: 'gloves', name: '가죽 장갑', color: '#26282E', colorName: '블랙', price: 24900, formal: 2, warmth: 3, moods: ['formal', 'calm'] },
-  { id: 'f_a9', g: 'f', cat: 'acc', kind: 'umbrella', name: '우드핸들 장우산', color: '#2B3A5B', colorName: '네이비', price: 24900, formal: 1, warmth: 1, moods: ['calm'] }
+  { id: 'f_a9', g: 'f', cat: 'acc', kind: 'umbrella', name: '우드핸들 장우산', color: '#2B3A5B', colorName: '네이비', price: 24900, formal: 1, warmth: 1, moods: ['calm'] },
+
+  /* ================= 트레이닝 · 애슬레저 (2026-11-19 추가) ================= */
+  { id: 'm_tr1', g: 'm', cat: 'outer', kind: 'trackjacket', name: '차콜 트랙 재킷', color: '#3E4250', colorName: '차콜', price: 34900, formal: 0, warmth: 1, moods: ['comfy', 'lively'] },
+  { id: 'm_tr2', g: 'm', cat: 'top', kind: 'sweatshirt', name: '그레이 멜란지 스웨트셔츠', color: '#9A9C9E', colorName: '라이트그레이', price: 36900, formal: 0, warmth: 2, moods: ['comfy'] },
+  { id: 'm_tr3', g: 'm', cat: 'bottom', kind: 'jogger', name: '차콜 조거 팬츠', color: '#3A3D45', colorName: '차콜', price: 29900, formal: 0, warmth: 2, moods: ['comfy', 'lively'] },
+  { id: 'f_tr1', g: 'f', cat: 'outer', kind: 'trackjacket', name: '크림 트랙 재킷', color: '#F0E6D5', colorName: '크림', price: 39900, formal: 1, warmth: 1, moods: ['comfy', 'lively'] },
+  { id: 'f_tr2', g: 'f', cat: 'top', kind: 'hoodie', name: '오트밀 집업 후드', color: '#D5C4AC', colorName: '오트밀', price: 32900, formal: 0, warmth: 2, moods: ['comfy'] },
+  { id: 'f_tr3', g: 'f', cat: 'bottom', kind: 'trackpants', name: '네이비 와이드 트레이닝 팬츠', color: '#2C3A57', colorName: '네이비', price: 34900, formal: 0, warmth: 2, moods: ['comfy', 'lively'] }
 ];
 
 var SIZE_TABLE = {
@@ -999,6 +1007,13 @@ var CONNECT_LINKS = {
   f_a6: 'https://naver.me/GT4NhVLm',/* 로즈골드 워치 → 다니엘 웰링턴 MARLON MELROSE LINEN 로즈골드 메시 손목시계 (139,000원·5%) */
   f_a7: 'https://naver.me/FLEftLEO',/* 진주 이어링 → 스와로브스키 진주 귀걸이 실버925 미니 (16,900원·12%) */
   f_a8: 'https://naver.me/59l7Yu0w',/* 가죽 장갑 → (백화점 납품) 천연 스웨이드 기모 여성 겨울장갑 털 가죽 장갑 스마트폰 터치 손가락 장갑 (32,900원·5%) */
+  /* ↓ 2026-11-19 추가 발급 (트레이닝 · 애슬레저 6건) */
+  m_tr1: 'https://naver.me/GNJMmB3G',/* 차콜 트랙 재킷 → 러닝라이프 러닝 트레이닝 바람막이 트랙 자켓 집업 (34,900원·10%) */
+  m_tr2: 'https://naver.me/xQJbhohd',/* 그레이 멜란지 스웨트셔츠 → 남자 맨투맨 스판 회색 무지 스웻셔츠 오버핏 (션타운, 15,800원·14%) */
+  m_tr3: 'https://naver.me/FXnbWLtO',/* 차콜 조거 팬츠 → 베이직하우스 면 코튼 트레이닝 밴딩 조거팬츠 LYPT0102 (24,900원·5%) */
+  f_tr1: 'https://naver.me/FsoYGKud',/* 크림 트랙 재킷 → 여성 트레이닝세트 반집업 츄리닝 기모 와이드 조거 오버핏 상하세트 (콩닥, 35,800원·12%) */
+  f_tr2: 'https://naver.me/Fx2HqXLi',/* 오트밀 집업 후드 → 여성 트레이닝 후드 츄리닝 트레이닝복 (파인굿즈, 14,900원·5%) */
+  f_tr3: 'https://naver.me/IgMEdN4h',/* 네이비 와이드 트레이닝 팬츠 → 미미캐츠 히든 백포켓 여성 하이웨스트 롱밴드 와이드 트레이닝 팬츠 MC7619 (19,900원·8%) */
 };
 WARDROBE.forEach(function (it) {
   if (CONNECT_LINKS[it.id]) it.connectUrl = CONNECT_LINKS[it.id];
@@ -1101,10 +1116,320 @@ var COUPANG_LINKS = {
   f_a7: 'https://link.coupang.com/a/iNHWYGKzE4',   /* 세이아 주얼리 S925 은침 진주 귀걸이 데일리 포인트 · 12,900원 */
   f_a8: 'https://link.coupang.com/a/iNHZLXegY8',   /* 다알리아 여성 양가죽 리본 블랙 장갑 · 25,000원 */
   f_a9: 'https://link.coupang.com/a/iNH1S6hTxs',   /* 미치코런던 60우드 장우산 046 · 12,920원 */
+  /* ↓ 2026-11-19 추가 발급 (트레이닝 · 애슬레저 6건) */
+  m_tr1: 'https://link.coupang.com/a/iNNBp7udFc',   /* 로아 남성 트레이닝 자켓 데일리 하이넥 무지 저지 트랙 집업 · 12,890원 */
+  m_tr2: 'https://link.coupang.com/a/iNNDOGd1oG',   /* 트래드클럽 나루 베이직 스웨트 오버 맨투맨 (2컬러 S~5XL) · 24,900원 */
+  m_tr3: 'https://link.coupang.com/a/iNNCzK0g5A',   /* 캐럿 남성용 베이직 조거 팬츠 · 10,690원 */
+  f_tr1: 'https://link.coupang.com/a/iNNE2HFNqS',   /* 지존보 중년 여성 봄 가을 운동복 세트 캐주얼 점퍼 집업 상하의 세트 · 19,940원 */
+  f_tr2: 'https://link.coupang.com/a/iNNGbE6IqO',   /* 잇진 여성 나그랑 맨투맨 + 핀턱 투웨이 와이드 팬츠 트레이닝 세트 · 28,900원 */
+  f_tr3: 'https://link.coupang.com/a/iNNHbEL3Ce',   /* 가비진 여성 밴딩 사이드폴딩 트레이닝 와이드팬츠 · 15,750원 */
 };
 WARDROBE.forEach(function (it) {
   if (COUPANG_LINKS[it.id]) it.coupangUrl = COUPANG_LINKS[it.id];
 });
+
+/* ============================================================
+   큐레이션 코디 세트 (1:1 실착장)
+   세트 하나가 곧 완성된 코디입니다. items 순서 = 아우터·상의·하의·신발·소품,
+   img 는 그 세트의 items 를 그대로 입은 모델 착장 사진입니다.
+   (무작위 조합을 없애 카드의 옷과 사진이 항상 100% 일치합니다.)
+   ============================================================ */
+var CURATED_LOOKS = [
+  { id: 'm-warm-1', gender: 'm', weathers: ['warm'],
+    occasions: ['work', 'gather', 'event'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '산뜻한 여름 세미캐주얼',
+    reason: '출근과 저녁 약속을 한 벌로 잇는 단정한 조합이에요.',
+    tip: '가디건 단추는 풀고 셔츠 소매를 한 번 접으면 더위에도 단정해 보여요.',
+    items: ['m_o2', 'm_t2', 'm_b7', 'm_s2', 'm_a2'],
+    img: 'looks/set_01.jpg' },
+  { id: 'm-warm-2', gender: 'm', weathers: ['warm'],
+    occasions: ['trip', 'walk'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '베이지 폴로 나들이 룩',
+    reason: '가볍게 걸어 다니기 좋은 여름 외출 조합이에요.',
+    tip: '폴로 셔츠는 어깨선이 맞아야 단정해 보여요. 가디건은 어깨에 걸쳐도 잘 어울립니다.',
+    items: ['m_o1', 'm_t7', 'm_b5', 'm_s4', 'm_a5'],
+    img: 'looks/set_02.jpg' },
+  { id: 'm-warm-3', gender: 'm', weathers: ['warm'],
+    occasions: ['trip', 'walk', 'gather'], moods: ['comfy', 'lively'], concept: 'accent',
+    title: '린넨 셔츠 데님 캐주얼',
+    reason: '소재만 바꿔도 훨씬 시원해 보이는 여름 캐주얼이에요.',
+    tip: '린넨 셔츠는 한 사이즈 여유 있게, 소매를 접어 팔목을 드러내면 시원해 보여요.',
+    items: ['m_o3', 'm_t11', 'm_b6', 'm_s5', 'm_a1'],
+    img: 'looks/set_03.jpg' },
+  { id: 'm-warm-4', gender: 'm', weathers: ['warm'],
+    occasions: ['walk', 'trip'], moods: ['comfy'], concept: 'soft',
+    title: '화이트 티 심플 데일리',
+    reason: '티셔츠 한 장으로도 정돈돼 보이는 가장 단순한 조합이에요.',
+    tip: '흰 티는 목선이 늘어나지 않은 것을 고르고, 팬츠 위로 살짝만 넣어 입으면 비율이 좋아 보여요.',
+    items: ['m_o1', 'm_t9', 'm_b8', 'm_s4', 'm_a5'],
+    img: 'looks/set_04.jpg' },
+  { id: 'm-warm-5', gender: 'm', weathers: ['warm'],
+    occasions: ['gather', 'work'], moods: ['lively', 'calm'], concept: 'accent',
+    title: '블루 셔츠 베이지 팬츠 모임 룩',
+    reason: '모임·식사 자리에 밝고 부담 없는 조합이에요.',
+    tip: '블루 셔츠와 베이지 팬츠 사이에 갈색 로퍼를 두면 색이 자연스럽게 이어져요.',
+    items: ['m_o2', 'm_t3', 'm_b3', 'm_s1', 'm_a1'],
+    img: 'looks/set_05.jpg' },
+  { id: 'm-mild-1', gender: 'm', weathers: ['mild'],
+    occasions: ['work', 'event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '단정한 가을 세미정장',
+    reason: '출근·경조사처럼 격식이 필요한 날의 기본 조합이에요.',
+    tip: '블레이저 단추는 위에서 두 번째까지만 채우면 편하면서도 단정해 보여요.',
+    items: ['m_o5', 'm_t2', 'm_b1', 'm_s3', 'm_a2'],
+    img: 'looks/set_06.jpg' },
+  { id: 'm-mild-2', gender: 'm', weathers: ['mild'],
+    occasions: ['gather', 'trip', 'work'], moods: ['calm', 'comfy'], concept: 'classic',
+    title: '트렌치 니트 데님 룩',
+    reason: '아침저녁 일교차를 겉옷 하나로 견디는 조합이에요.',
+    tip: '트렌치는 허리끈을 묶지 않고 두르면 더 여유 있어 보여요. 니트는 하의 안에 넣어 허리선을 살려 주세요.',
+    items: ['m_o8', 'm_t4', 'm_b6', 'm_s6', 'm_a1'],
+    img: 'looks/set_07.jpg' },
+  { id: 'm-mild-3', gender: 'm', weathers: ['mild'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '데님 트러커 캐주얼',
+    reason: '동네·공원 산책처럼 가볍게 나서는 날에 맞는 조합이에요.',
+    tip: '트러커 재킷은 안쪽 니트보다 밝게, 데님은 짙게 고르면 위아래가 구분돼 보여요.',
+    items: ['m_o3', 'm_t10', 'm_b5', 'm_s5', 'm_a5'],
+    img: 'looks/set_08.jpg' },
+  { id: 'm-mild-4', gender: 'm', weathers: ['mild'],
+    occasions: ['gather', 'work'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '네이비 셔츠 베이지 팬츠 단정 룩',
+    reason: '가벼운 외출에도 셔츠 한 장이면 단정해 보이는 조합이에요.',
+    tip: '네이비 셔츠에는 갈색 벨트와 로퍼를 맞추면 색이 흩어지지 않아요.',
+    items: ['m_o1', 'm_t1', 'm_b3', 'm_s1', 'm_a1'],
+    img: 'looks/set_09.jpg' },
+  { id: 'm-mild-5', gender: 'm', weathers: ['mild'],
+    occasions: ['walk', 'trip', 'gather'], moods: ['lively', 'comfy'], concept: 'accent',
+    title: '블루와 올리브 포인트 룩',
+    reason: '얼굴 가까이 밝은 색을 두어 기분이 밝아 보이는 조합이에요.',
+    tip: '올리브 팬츠에는 흰 스니커즈를 맞추고, 가디건은 어깨에 걸쳐 색을 위로 올려 보세요.',
+    items: ['m_o1', 'm_t3', 'm_b4', 'm_s4', 'm_a2'],
+    img: 'looks/set_10.jpg' },
+  { id: 'm-rain-1', gender: 'm', weathers: ['rain'],
+    occasions: ['work', 'gather', 'event'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '비 오는 날 단정한 출근 룩',
+    reason: '비가 와도 흐트러져 보이지 않는 출근 조합이에요.',
+    tip: '트렌치는 무릎 아래로 오는 길이가 양말 젖는 걸 줄여 줘요. 신발은 가죽 더비가 안전해요.',
+    items: ['m_o8', 'm_t1', 'm_b2', 'm_s3', 'm_a7'],
+    img: 'looks/set_11.jpg' },
+  { id: 'm-rain-2', gender: 'm', weathers: ['rain'],
+    occasions: ['gather', 'work', 'trip'], moods: ['comfy', 'calm'], concept: 'soft',
+    title: '비 오는 날 니트 데님 룩',
+    reason: '비 오는 날의 쌀쌀함을 니트로 막는 조합이에요.',
+    tip: '필드 재킷은 지퍼를 끝까지 올리지 말고 목만 여유 있게 두면 답답하지 않아요.',
+    items: ['m_o10', 'm_t5', 'm_b6', 'm_s2', 'm_a7'],
+    img: 'looks/set_12.jpg' },
+  { id: 'm-rain-3', gender: 'm', weathers: ['rain'],
+    occasions: ['work', 'gather'], moods: ['calm', 'lively'], concept: 'classic',
+    title: '흐린 날 밝은 셔츠 룩',
+    reason: '흐린 날에도 얼굴이 밝아 보이는 조합이에요.',
+    tip: '흐린 날은 밝은 셔츠가 답답함을 덜어 줘요. 가디건은 단추를 채워 두면 바람을 막아 줍니다.',
+    items: ['m_o2', 'm_t3', 'm_b7', 'm_s5', 'm_a7'],
+    img: 'looks/set_13.jpg' },
+  { id: 'm-rain-4', gender: 'm', weathers: ['rain'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '비 오는 날 가벼운 데님 캐주얼',
+    reason: '짧게 나서는 날 부담 없는 비 오는 날 조합이에요.',
+    tip: '데님 재킷은 물에 젖으면 무거워져요. 우산을 꼭 챙기고, 스니커즈는 물이 스며들지 않는 소재가 좋아요.',
+    items: ['m_o3', 'm_t10', 'm_b5', 'm_s4', 'm_a7'],
+    img: 'looks/set_14.jpg' },
+  { id: 'm-rain-5', gender: 'm', weathers: ['rain'],
+    occasions: ['event', 'work'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '비 오는 날 터틀넥 세미정장',
+    reason: '비 오는 날 격식 있는 자리에도 맞는 조합이에요.',
+    tip: '터틀넥은 목을 너무 조이지 않는 것을 고르고, 블레이저 안에서 접히지 않게 여유를 두세요.',
+    items: ['m_o5', 'm_t6', 'm_b1', 'm_s2', 'm_a7'],
+    img: 'looks/set_15.jpg' },
+  { id: 'm-cold-1', gender: 'm', weathers: ['cold'],
+    occasions: ['work', 'event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '겨울 카멜 코트 정석',
+    reason: '겨울 출근과 모임을 한 번에 해결하는 가장 안정적인 조합이에요.',
+    tip: '카멜 코트 안에 검정 터틀넥을 받치면 색 대비로 얼굴이 맑아 보여요. 머플러는 한 번만 둘러 주세요.',
+    items: ['m_o6', 'm_t6', 'm_b2', 'm_s3', 'm_a3'],
+    img: 'looks/set_16.jpg' },
+  { id: 'm-cold-2', gender: 'm', weathers: ['cold'],
+    occasions: ['work', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '차콜 코트 니트 출근 룩',
+    reason: '추운 아침에도 격식이 흐트러지지 않는 조합이에요.',
+    tip: '차콜 코트와 차콜 니트는 밝기가 비슷해 어두워 보여요. 슬랙스를 네이비로 달리해 결을 나눠 보세요.',
+    items: ['m_o7', 'm_t5', 'm_b1', 'm_s1', 'm_a6'],
+    img: 'looks/set_17.jpg' },
+  { id: 'm-cold-3', gender: 'm', weathers: ['cold'],
+    occasions: ['walk', 'trip'], moods: ['comfy'], concept: 'soft',
+    title: '패딩 니트 데님 겨울 외출',
+    reason: '가볍게 나서는 겨울 외출에 가장 편한 조합이에요.',
+    tip: '경량 패딩은 안에 니트를 입어도 부해 보이지 않아요. 크로스백은 패딩 위에 걸치면 허리가 살아 보여요.',
+    items: ['m_o9', 'm_t4', 'm_b6', 'm_s6', 'm_a5'],
+    img: 'looks/set_18.jpg' },
+  { id: 'm-cold-4', gender: 'm', weathers: ['cold'],
+    occasions: ['trip', 'walk', 'gather'], moods: ['comfy', 'calm', 'lively'], concept: 'soft',
+    title: '트렌치 겹쳐 입은 겨울 캐주얼',
+    reason: '코트보다 가볍게, 그러나 따뜻하게 겹치는 조합이에요.',
+    tip: '트렌치 안에 와플 니트를 받치고 목에는 머플러를 더하면 체감 온도가 크게 달라져요.',
+    items: ['m_o8', 'm_t10', 'm_b8', 'm_s5', 'm_a6'],
+    img: 'looks/set_19.jpg' },
+  { id: 'm-cold-5', gender: 'm', weathers: ['cold'],
+    occasions: ['event', 'work'], moods: ['formal'], concept: 'classic',
+    title: '겨울 격식 세미정장',
+    reason: '경조사·중요 미팅처럼 격식이 먼저인 날의 조합이에요.',
+    tip: '겨울 정장에는 얇은 니트를 안에 받치고, 블레이저는 실내에서 벗어도 셔츠만으로 단정하게 보이도록 챙기세요.',
+    items: ['m_o4', 'm_t2', 'm_b1', 'm_s2', 'm_a4'],
+    img: 'looks/set_20.jpg' },
+  { id: 'f-warm-1', gender: 'f', weathers: ['warm'],
+    occasions: ['work', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '산뜻한 여름 출근 룩',
+    reason: '더운 날에도 단정함을 잃지 않는 출근 조합이에요.',
+    tip: '흰 셔츠는 소매를 팔꿈치까지 올리고, 플리츠 스커트는 허리선을 높게 잡으면 시원해 보여요.',
+    items: ['f_o1', 'f_t10', 'f_b7', 'f_s2', 'f_a6'],
+    img: 'looks/set_21.jpg' },
+  { id: 'f-warm-2', gender: 'f', weathers: ['warm'],
+    occasions: ['event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '여름 하객룩 세미정장',
+    reason: '결혼식·모임처럼 격식이 필요한 여름 자리에 맞는 조합이에요.',
+    tip: '트위드 재킷은 실내에서 벗어도 실크 블라우스만으로 단정해 보여요. 진주 이어링으로 얼굴 가까이를 밝혀 주세요.',
+    items: ['f_o2', 'f_t1', 'f_b9', 'f_s1', 'f_a7'],
+    img: 'looks/set_22.jpg' },
+  { id: 'f-warm-3', gender: 'f', weathers: ['warm'],
+    occasions: ['trip', 'walk'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '데님 재킷 여름 나들이 룩',
+    reason: '가볍게 걷고 사진 찍기 좋은 여름 외출 조합이에요.',
+    tip: '데님 재킷은 소매를 접고, 흰 티는 밑단을 살짝 넣어 허리선을 보여 주세요.',
+    items: ['f_o8', 'f_t7', 'f_b5', 'f_s4', 'f_a1'],
+    img: 'looks/set_23.jpg' },
+  { id: 'f-warm-4', gender: 'f', weathers: ['warm'],
+    occasions: ['gather', 'work'], moods: ['calm', 'lively'], concept: 'accent',
+    title: '로즈 니트 크림 팬츠 룩',
+    reason: '얼굴빛을 밝히는 부드러운 여름 조합이에요.',
+    tip: '크림 팬츠에는 같은 계열의 로즈 니트를 맞추고, 스카프는 목에 한 번만 둘러 색을 모아 주세요.',
+    items: ['f_o1', 'f_t5', 'f_b2', 'f_s6', 'f_a3'],
+    img: 'looks/set_24.jpg' },
+  { id: 'f-warm-5', gender: 'f', weathers: ['warm'],
+    occasions: ['gather', 'work'], moods: ['calm', 'comfy'], concept: 'soft',
+    title: '샴페인 블라우스 단정 캐주얼',
+    reason: '모임과 외출 사이에서 어느 쪽으로도 어색하지 않은 조합이에요.',
+    tip: '샴페인 블라우스는 반짝임이 적은 것을 고르고, 벨트로 허리선만 잡아 주면 단정해 보여요.',
+    items: ['f_o8', 'f_t8', 'f_b6', 'f_s3', 'f_a5'],
+    img: 'looks/set_25.jpg' },
+  { id: 'f-mild-1', gender: 'f', weathers: ['mild'],
+    occasions: ['work', 'event'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '단정한 가을 세미정장',
+    reason: '출근과 중요한 미팅에 가장 믿음이 가는 조합이에요.',
+    tip: '네이비 자켓 안에 흰 셔츠를 받치면 어떤 자리에서도 흐트러지지 않아요. 슬랙스는 발등을 덮는 길이가 안정적이에요.',
+    items: ['f_o3', 'f_t10', 'f_b1', 'f_s2', 'f_a6'],
+    img: 'looks/set_26.jpg' },
+  { id: 'f-mild-2', gender: 'f', weathers: ['mild'],
+    occasions: ['gather', 'trip', 'work'], moods: ['calm', 'comfy'], concept: 'classic',
+    title: '트렌치 니트 데일리 룩',
+    reason: '일교차가 큰 날 겉옷 하나로 해결되는 조합이에요.',
+    tip: '트렌치 허리끈은 앞에서 한 번 묶어 주면 허리선이 살아 보여요. 니트는 밑단을 넣어 비율을 잡아 주세요.',
+    items: ['f_o6', 'f_t4', 'f_b5', 'f_s7', 'f_a1'],
+    img: 'looks/set_27.jpg' },
+  { id: 'f-mild-3', gender: 'f', weathers: ['mild'],
+    occasions: ['event', 'gather'], moods: ['formal'], concept: 'classic',
+    title: '트위드 재킷 격식 룩',
+    reason: '결혼식·상견례처럼 격식이 먼저인 날의 조합이에요.',
+    tip: '트위드 재킷은 어깨선이 맞아야 고급스러워 보여요. 미디 스커트는 무릎 아래 다섯 손가락 길이가 가장 안정적입니다.',
+    items: ['f_o2', 'f_t1', 'f_b3', 'f_s1', 'f_a7'],
+    img: 'looks/set_28.jpg' },
+  { id: 'f-mild-4', gender: 'f', weathers: ['mild'],
+    occasions: ['gather', 'work'], moods: ['comfy', 'calm'], concept: 'soft',
+    title: '카멜 가디건 크림 팬츠 룩',
+    reason: '얼굴 가까이 따뜻한 색을 두는 부드러운 조합이에요.',
+    tip: '카멜과 크림은 밝기 차이로 결이 나요. 가디건 단추는 위쪽만 채워 아래를 열어 두세요.',
+    items: ['f_o1', 'f_t9', 'f_b2', 'f_s6', 'f_a4'],
+    img: 'looks/set_29.jpg' },
+  { id: 'f-mild-5', gender: 'f', weathers: ['mild'],
+    occasions: ['trip', 'walk', 'gather'], moods: ['lively', 'comfy'], concept: 'accent',
+    title: '블루 셔츠 올리브 팬츠 포인트 룩',
+    reason: '평소보다 한 톤 밝게 가는 포인트 조합이에요.',
+    tip: '올리브 팬츠에는 밝은 셔츠를 맞추고, 니트 자켓을 걸치면 허리가 길어 보이지 않아요.',
+    items: ['f_o9', 'f_t3', 'f_b8', 'f_s4', 'f_a5'],
+    img: 'looks/set_30.jpg' },
+  { id: 'f-rain-1', gender: 'f', weathers: ['rain'],
+    occasions: ['work', 'gather'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '비 오는 날 트렌치 출근 룩',
+    reason: '비 오는 출근길에 가장 믿음 가는 조합이에요.',
+    tip: '트렌치는 허리끈을 묶어 두면 바람에 옷이 날리지 않아요. 플랫은 가죽이 젖어도 덜 미끄러워요.',
+    items: ['f_o6', 'f_t8', 'f_b1', 'f_s6', 'f_a9'],
+    img: 'looks/set_31.jpg' },
+  { id: 'f-rain-2', gender: 'f', weathers: ['rain'],
+    occasions: ['event', 'work'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '비 오는 날 단정한 격식 룩',
+    reason: '비 오는 날 격식 있는 자리에도 맞는 조합이에요.',
+    tip: '미디 스커트 안에는 얇은 타이츠를 더하고, 부츠는 발목을 잡아 주는 것을 고르세요.',
+    items: ['f_o3', 'f_t1', 'f_b3', 'f_s5', 'f_a9'],
+    img: 'looks/set_32.jpg' },
+  { id: 'f-rain-3', gender: 'f', weathers: ['rain'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '비 오는 날 데님 캐주얼',
+    reason: '짧게 나서는 날 가장 편한 비 오는 날 조합이에요.',
+    tip: '데님은 젖으면 금방 무거워져요. 재킷은 벗어 가방에 넣고, 우산은 큰 것을 쓰세요.',
+    items: ['f_o8', 'f_t4', 'f_b5', 'f_s4', 'f_a9'],
+    img: 'looks/set_33.jpg' },
+  { id: 'f-rain-4', gender: 'f', weathers: ['rain'],
+    occasions: ['work', 'gather'], moods: ['calm', 'lively'], concept: 'classic',
+    title: '흐린 날 밝은 셔츠 룩',
+    reason: '흐린 날에도 얼굴이 밝아 보이는 조합이에요.',
+    tip: '파란 스트라이프 셔츠는 흐린 날 가장 잘 어울려요. 가디건은 단추를 채워 바람을 막아 주세요.',
+    items: ['f_o1', 'f_t3', 'f_b6', 'f_s6', 'f_a9'],
+    img: 'looks/set_34.jpg' },
+  { id: 'f-rain-5', gender: 'f', weathers: ['rain'],
+    occasions: ['event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '비 오는 날 하객 룩',
+    reason: '비가 와도 격식이 흐트러지지 않는 조합이에요.',
+    tip: '네이비 톤으로 위아래를 맞추면 비에 젖어도 티가 덜 나요. 우산은 검은 장우산이 가장 단정해 보입니다.',
+    items: ['f_o2', 'f_t2', 'f_b7', 'f_s2', 'f_a9'],
+    img: 'looks/set_35.jpg' },
+  { id: 'f-cold-1', gender: 'f', weathers: ['cold'],
+    occasions: ['work', 'event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '겨울 카멜 코트 출근 룩',
+    reason: '겨울 출근과 모임에 가장 안정적인 조합이에요.',
+    tip: '카멜 코트 안에 검정 터틀넥을 받치면 얼굴선이 맑아 보여요. 머플러는 목에 한 번만 둘러 주세요.',
+    items: ['f_o4', 'f_t6', 'f_b1', 'f_s5', 'f_a4'],
+    img: 'looks/set_36.jpg' },
+  { id: 'f-cold-2', gender: 'f', weathers: ['cold'],
+    occasions: ['work', 'gather'], moods: ['calm', 'comfy'], concept: 'classic',
+    title: '그레이 코트 겨울 출근 룩',
+    reason: '차분한 겨울 출근 조합이에요.',
+    tip: '그레이 코트는 니트와 밝기를 달리해야 답답해 보이지 않아요. 미디 스커트에는 앵클 부츠가 안정적입니다.',
+    items: ['f_o5', 'f_t4', 'f_b3', 'f_s7', 'f_a8'],
+    img: 'looks/set_37.jpg' },
+  { id: 'f-cold-3', gender: 'f', weathers: ['cold'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '패딩 니트 데님 겨울 외출',
+    reason: '가볍게 나서는 겨울 외출에 가장 편한 조합이에요.',
+    tip: '아이보리 패딩은 안에 카멜 니트를 받치면 포근해 보여요. 스니커즈는 기모 안감이면 더 따뜻해요.',
+    items: ['f_o7', 'f_t9', 'f_b5', 'f_s4', 'f_a4'],
+    img: 'looks/set_38.jpg' },
+  { id: 'f-cold-4', gender: 'f', weathers: ['cold'],
+    occasions: ['work', 'gather'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '겨울 트렌치 블라우스 출근 룩',
+    reason: '코트보다 가볍게, 그러나 단정하게 겹치는 조합이에요.',
+    tip: '트렌치 안에 셔링 블라우스를 입으면 목선이 살아 보여요. 슬랙스는 발목이 보이지 않는 길이가 따뜻해요.',
+    items: ['f_o6', 'f_t2', 'f_b6', 'f_s3', 'f_a2'],
+    img: 'looks/set_39.jpg' },
+  { id: 'f-cold-5', gender: 'f', weathers: ['cold'],
+    occasions: ['event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '겨울 격식 하객 룩',
+    reason: '겨울 결혼식·모임에 맞는 격식 조합이에요.',
+    tip: '네이비 자켓과 카멜 스커트는 색 대비가 좋아 사진이 잘 나와요. 진주 이어링으로 마무리해 보세요.',
+    items: ['f_o3', 'f_t1', 'f_b4', 'f_s2', 'f_a7'],
+    img: 'looks/set_40.jpg' },
+  { id: 'm-train-1', gender: 'm', weathers: ['warm', 'mild', 'rain', 'cold'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '편안한 트랙수트 산책 룩',
+    reason: '가볍게 걷거나 여행 갈 때 몸이 편한 조합이에요.',
+    tip: '집업은 가슴까지만 올리고, 조거 팬츠 밑단을 살짝 접으면 다리가 길어 보여요.',
+    items: ['m_tr1', 'm_tr2', 'm_tr3', 'm_s4', 'm_a5'],
+    img: 'looks/set_41.jpg' },
+  { id: 'f-train-1', gender: 'f', weathers: ['warm', 'mild', 'rain', 'cold'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '크림 트랙수트 나들이 룩',
+    reason: '동네 산책부터 주말 나들이까지 편하게 입는 조합이에요.',
+    tip: '크림 톤으로 위아래를 맞추고 안에는 오트밀 후드를 받치면 부드러운 분위기가 살아요.',
+    items: ['f_tr1', 'f_tr2', 'f_tr3', 'f_s4', 'f_a1'],
+    img: 'looks/set_42.jpg' },
+];
 
 /* ============================================================
    코디 추천 엔진 (날씨 · 기분 · 상황 → 풀코디 3가지)
@@ -1263,58 +1588,84 @@ function pickBest(pool, exclude, scorer, prev, formalTarget) {
   return best;
 }
 
-/* prev: 직전에 보여 준 코디의 아이템 ID 목록({ id: true }).
-   「다른 조합 보기」에서 넘기면 직전 옷을 최대한 피해 다시 고릅니다. */
+/* ============================================================
+   큐레이션 세트 선택 (1:1 실착장)
+   - 무작위 조합 대신 CURATED_LOOKS 안에서만 고릅니다. 그래서 카드의 5가지 아이템과
+     착장 사진(looks/set_XX.jpg)이 언제나 1:1로 맞습니다.
+   - (성별·날씨) 구간마다 5~6개 세트가 있고, 기분·상황에 맞는 순서로 상위 3개를 보여 줍니다.
+   - 「🔄 다른 조합 보기」는 같은 구간 안에서 세트를 밀어 실제로 다른 조합을 보여 줍니다.
+   ============================================================ */
+function conceptByKey(k) {
+  for (var i = 0; i < CONCEPTS.length; i++) if (CONCEPTS[i].key === k) return CONCEPTS[i];
+  return CONCEPTS[0];
+}
+function setItems(set) {
+  return set.items.map(function (id) { return item(id); }).filter(Boolean);
+}
+var SET_FORMAL = {};
+function setFormalOf(set) {
+  if (!(set.id in SET_FORMAL)) SET_FORMAL[set.id] = lookFormal(setItems(set));
+  return SET_FORMAL[set.id];
+}
+/* 세트 점수: 고른 기분·상황에 맞고, 상황의 격식도와 세트의 격식도가 가까울수록 높습니다. */
+function scoreSet(set, ctx) {
+  var s = 0;
+  if (set.moods.indexOf(ctx.mo.id) >= 0) s += 3;
+  if (set.occasions.indexOf(ctx.oc.id) >= 0) s += 2.5;
+  s -= Math.abs(setFormalOf(set) - ctx.formalTarget) * 1.1;
+  return s;
+}
+function rankSets(gender, ctx) {
+  var pool = CURATED_LOOKS.filter(function (st) {
+    return st.gender === gender && st.weathers.indexOf(ctx.w.id) >= 0;
+  });
+  pool.forEach(function (st) { st._score = scoreSet(st, ctx); });
+  pool.sort(function (a, b) { return b._score - a._score || (a.id < b.id ? -1 : 1); });
+  return pool;
+}
+function gcdNum(a, b) { return b ? gcdNum(b, a % b) : a; }
+/* 세트 수와 서로소인 보폭으로 돌려, 「다른 조합 보기」를 누를 때마다 앞의 세트가 겹치지 않게 합니다. */
+function shuffleStep(n) {
+  var cand = [3, 5, 2, 1];
+  for (var i = 0; i < cand.length; i++) if (cand[i] < n && gcdNum(cand[i], n) === 1) return cand[i];
+  return 1;
+}
+function lookFromSet(set, pos, ctx) {
+  var its = setItems(set);
+  var top = null, bottom = null, outer = null, shoe = null, acc = null;
+  its.forEach(function (it) {
+    if (it.cat === 'top') top = it;
+    else if (it.cat === 'bottom') bottom = it;
+    else if (it.cat === 'outer') outer = it;
+    else if (it.cat === 'shoes') shoe = it;
+    else if (it.cat === 'acc') acc = it;
+  });
+  var c = conceptByKey(set.concept);
+  return {
+    setId: set.id,
+    concept: { key: c.key, no: ('0' + (pos + 1)).slice(-2), name: set.title, line: set.reason, fit: c.fit },
+    title: set.title,
+    image: set.img,
+    items: its,
+    tips: {
+      color: makeColorTip(top, bottom, outer, acc, ctx),
+      fit: c.fit[ctx.gender],
+      extra: set.tip
+    },
+    reason: set.reason
+  };
+}
+/* prev: 직전 코디 아이템({id:true}). 서명만 유지하고, 실제 전환은 seed 회전이 맡습니다. */
 function buildLooks(gender, weatherId, moodId, occasionId, seed, prev) {
   var ctx = ctxOf(gender, weatherId, moodId, occasionId);
-  var pool = WARDROBE.filter(function (it) { return it.g === gender; });
-  var tops = pool.filter(function (it) { return it.cat === 'top' && topFits(it, ctx); });
-  var bottoms = pool.filter(function (it) { return it.cat === 'bottom'; });
-  var outers = pool.filter(function (it) { return it.cat === 'outer' && outerFits(it, ctx); });
-  var shoes = pool.filter(function (it) { return it.cat === 'shoes' && shoesFit(it, ctx); });
-  var accs = pool.filter(function (it) { return it.cat === 'acc'; });
-
-  var used = {};
-  var looks = [];
-  var formalShift = { classic: 0.55, soft: -0.45, accent: -0.1 };
-
-  CONCEPTS.forEach(function (concept) {
-    var target = Math.max(0, Math.min(3, ctx.formalTarget + formalShift[concept.key]));
-    /* 격식이 중요한 자리(출근·경조사)일 때만 정식 하한을 둡니다. */
-    var formalGate = ctx.oc.formal >= 2.6 ? target : null;
-    var top = pickBest(tops, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'top'); }, prev, formalGate);
-    var bottom = pickBest(bottoms, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'bottom'); }, prev, formalGate);
-    var outer = null;
-    if (ctx.needOuter && outers.length) {
-      var outerTarget = Math.min(3, target + 0.4);
-      outer = pickBest(outers, used, function (it) {
-        return scoreItem(it, ctx, outerTarget, ctx.outerWarmth, concept.key, seed, 'outer');
-      }, prev, formalGate == null ? null : outerTarget);
-    }
-    var shoe = pickBest(shoes, used, function (it) { return scoreItem(it, ctx, target, 1, concept.key, seed, 'shoes'); }, prev, formalGate);
-    /* 소품(가방·시계·머플러)은 정식이 낮아도 코디를 망치지 않으므로 하한을 두지 않습니다. */
-    var acc = pickBest(accs, used, function (it) { return accScore(it, ctx, target, concept.key, seed); }, prev, null);
-
-    [top, bottom, outer, shoe, acc].forEach(function (it) { if (it) used[it.id] = true; });
-
-    var items = [top, bottom];
-    if (outer) items.push(outer);
-    items.push(shoe); items.push(acc);
-
-    looks.push({
-      concept: concept,
-      title: lookTitle(concept, items),
-      image: 'looks/' + gender + '-' + lookImageKey(gender, items, concept, ctx) + '.jpg',
-      items: items,
-      tips: {
-        color: makeColorTip(top, bottom, outer, acc, ctx),
-        fit: concept.fit[gender],
-        extra: makeExtraTip(ctx, outer, acc, shoe, concept.key, top, bottom)
-      },
-      reason: makeReason(concept, ctx)
-    });
-  });
-  return looks;
+  var ranked = rankSets(gender, ctx);
+  var n = ranked.length;
+  if (!n) return [];
+  var start = ((seed || 0) * shuffleStep(n)) % n;
+  var picked = [];
+  for (var k = 0; k < 3 && k < n; k++) picked.push(ranked[(start + k) % n]);
+  picked.sort(function (a, b) { return b._score - a._score || (a.id < b.id ? -1 : 1); });
+  return picked.map(function (st, i) { return lookFromSet(st, i, ctx); });
 }
 
 /* 조사 처리: 받침이 있으면 '으로/을/은', 없으면 '로/를/는'
@@ -1716,6 +2067,7 @@ function renderResults() {
     '</div>' +
     '<div class="looks">' + state.looks.map(function (l, i) { return lookHTML(l, i, ctx); }).join('') + '</div>' +
     '<div class="after-looks">' +
+      '<p class="note">각 코디는 착장 사진과 옷 5가지(아우터·상의·하의·신발·소품)가 1:1로 맞춰진 완성 세트예요.</p>' +
       '<button type="button" class="btn btn-soft" data-act="shuffle">🔄 다른 조합 보기</button>' +
       '<p class="note">가격은 3만~·5만~처럼 만 원 단위로 표기한 예상 가격대예요. 실제 판매가·배송비·재고는 네이버쇼핑·쿠팡에서 확인해 주세요.</p>' +
     '</div>';
