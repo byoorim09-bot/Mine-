@@ -10,7 +10,7 @@
 <meta property="og:description" content="날씨·기분·상황에 맞춘 중년 풀코디 추천, 네이버쇼핑 최저가 연결, 나만의 코디북.">
 <meta name="description" content="중년 남녀를 위한 날씨·기분·상황별 코디 추천과 네이버쇼핑 최저가 연결, 나만의 코디북. 「영앤클래식」">
 <title>영앤클래식</title>
-<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/hero-beach.jpg">
+<meta property="og:image" content="https://byoorim09-bot.github.io/Mine-/hero-xmas.jpg">
 <style>/* ============================================================
    영앤클래식 — 스타일
    ============================================================ */
@@ -230,7 +230,7 @@ img, svg { display: block; }
 }
 
 /* ---------------- 1단계 ---------------- */
-/* ---------------- 1단계 : 오션뷰 비치 히어로 ---------------- */
+/* ---------------- 1단계 : 겨울 크리스마스 히어로 ---------------- */
 .hero {
   position: relative;
   margin: 6px 0 8px;
@@ -241,7 +241,7 @@ img, svg { display: block; }
   place-items: center;
   text-align: center;
   padding: 46px 22px 40px;
-  background: #18202f url("hero-beach.jpg") 58% 52% / cover no-repeat;
+  background: #0E1626 url("hero-xmas.jpg") 58% 50% / cover no-repeat;
   border: 1px solid rgba(216, 183, 138, .55);
   box-shadow: 0 30px 62px -34px rgba(20, 28, 46, .85), inset 0 0 0 1px rgba(255, 255, 255, .14);
   isolation: isolate;
@@ -607,7 +607,7 @@ img, svg { display: block; }
   .tab { flex: 1; padding: 9px 6px; font-size: .84rem; }
   .brand-txt i { display: none; }
   .brand-txt b { font-size: .96rem; white-space: normal; }
-  .hero { min-height: 310px; padding: 34px 16px 30px; border-radius: 20px; background-position: 56% 52%; }
+  .hero { min-height: 310px; padding: 34px 16px 30px; border-radius: 20px; background-image: url("hero-xmas-m.jpg"); background-position: 56% 40%; }
   .hero-title { font-size: 1.95rem; letter-spacing: .03em; }
   .hero-title::after { margin-top: 12px; width: 44px; }
   .hero-lede { font-size: .9rem; margin-top: 12px; }
@@ -1015,24 +1015,38 @@ function accScore(it, ctx, targetFormal, conceptKey, seed) {
   return s;
 }
 
-function pickBest(pool, exclude, scorer) {
+/* 「🔄 다른 조합 보기」로 다시 고를 때, 직전 코디에 나왔던 옷은 이만큼 감점합니다.
+   (정식 한 단계 차이 1.55의 두 배 남짓 — 같은 자리에 새 옷이 있으면 먼저 새 옷을 고르고,
+    새 옷이 눈에 띄게 안 맞을 때만 직전 옷으로 돌아갑니다.) */
+var PREV_PENALTY = 3;
+/* 경조사·출근처럼 격식이 중요한 자리에서 「다른 조합 보기」를 누를 때는, 정식 차이가 이보다
+   크게 벌어지는 옷은 후보에서 빼 둡니다. (그래도 고를 옷이 없으면 아래 폴백이 자리를 채웁니다.) */
+var PREV_MAX_FORMAL_GAP = 1.4;
+
+function pickBest(pool, exclude, scorer, prev, formalTarget) {
+  var strict = !!prev && formalTarget != null;
   var best = null, bestScore = -1e9;
   for (var i = 0; i < pool.length; i++) {
     var it = pool[i];
     if (exclude[it.id]) continue;
-    var sc = scorer(it);
+    var isPrev = !!(prev && prev[it.id]);
+    if (strict && Math.abs(it.formal - formalTarget) > PREV_MAX_FORMAL_GAP) continue;
+    var sc = scorer(it) - (isPrev ? PREV_PENALTY : 0);
     if (sc > bestScore) { bestScore = sc; best = it; }
   }
+  /* 후보가 없거나 모두 다른 자리에서 이미 쓰였을 때의 폴백: 빈 자리가 생기지 않도록 하나를 고릅니다. */
   if (!best) {
     for (var j = 0; j < pool.length; j++) {
-      var it2 = pool[j], sc2 = scorer(it2) - 0.001;
+      var it2 = pool[j], sc2 = scorer(it2) - 0.001 - ((prev && prev[it2.id]) ? PREV_PENALTY : 0);
       if (sc2 > bestScore) { bestScore = sc2; best = it2; }
     }
   }
   return best;
 }
 
-function buildLooks(gender, weatherId, moodId, occasionId, seed) {
+/* prev: 직전에 보여 준 코디의 아이템 ID 목록({ id: true }).
+   「다른 조합 보기」에서 넘기면 직전 옷을 최대한 피해 다시 고릅니다. */
+function buildLooks(gender, weatherId, moodId, occasionId, seed, prev) {
   var ctx = ctxOf(gender, weatherId, moodId, occasionId);
   var pool = WARDROBE.filter(function (it) { return it.g === gender; });
   var tops = pool.filter(function (it) { return it.cat === 'top' && topFits(it, ctx); });
@@ -1047,16 +1061,20 @@ function buildLooks(gender, weatherId, moodId, occasionId, seed) {
 
   CONCEPTS.forEach(function (concept) {
     var target = Math.max(0, Math.min(3, ctx.formalTarget + formalShift[concept.key]));
-    var top = pickBest(tops, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'top'); });
-    var bottom = pickBest(bottoms, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'bottom'); });
+    /* 격식이 중요한 자리(출근·경조사)일 때만 정식 하한을 둡니다. */
+    var formalGate = ctx.oc.formal >= 2.6 ? target : null;
+    var top = pickBest(tops, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'top'); }, prev, formalGate);
+    var bottom = pickBest(bottoms, used, function (it) { return scoreItem(it, ctx, target, ctx.topWarmth, concept.key, seed, 'bottom'); }, prev, formalGate);
     var outer = null;
     if (ctx.needOuter && outers.length) {
+      var outerTarget = Math.min(3, target + 0.4);
       outer = pickBest(outers, used, function (it) {
-        return scoreItem(it, ctx, Math.min(3, target + 0.4), ctx.outerWarmth, concept.key, seed, 'outer');
-      });
+        return scoreItem(it, ctx, outerTarget, ctx.outerWarmth, concept.key, seed, 'outer');
+      }, prev, formalGate == null ? null : outerTarget);
     }
-    var shoe = pickBest(shoes, used, function (it) { return scoreItem(it, ctx, target, 1, concept.key, seed, 'shoes'); });
-    var acc = pickBest(accs, used, function (it) { return accScore(it, ctx, target, concept.key, seed); });
+    var shoe = pickBest(shoes, used, function (it) { return scoreItem(it, ctx, target, 1, concept.key, seed, 'shoes'); }, prev, formalGate);
+    /* 소품(가방·시계·머플러)은 정식이 낮아도 코디를 망치지 않으므로 하한을 두지 않습니다. */
+    var acc = pickBest(accs, used, function (it) { return accScore(it, ctx, target, concept.key, seed); }, prev, null);
 
     [top, bottom, outer, shoe, acc].forEach(function (it) { if (it) used[it.id] = true; });
 
@@ -1168,9 +1186,18 @@ var APP_TITLE = '영앤클래식';
 /* 예전에 담아 둔 옷이 사라지지 않도록 찜 목록은 그때 쓰던 저장 키를 그대로 씁니다. */
 var K = { book: 'seryeom.book.v1', wish: 'seryeom.cart.v1', zoom: 'seryeom.zoom.v1' };
 
+/* 첫 접속 날짜(달)에 맞춰 날씨를 미리 골라 둡니다.
+   11·12·1·2월은 쌀쌀·추움, 6·7·8월은 맑고 포근, 그 밖의 달은 선선·일교차.
+   첫 화면에서 다른 날씨 버튼을 누르면 그대로 바뀝니다. */
+function defaultWeatherForMonth(m) {
+  if (m === 11 || m === 12 || m === 1 || m === 2) return 'cold';
+  if (m === 6 || m === 7 || m === 8) return 'warm';
+  return 'mild';
+}
+
 var state = {
   view: 'home',
-  gender: 'm', weather: 'mild', mood: 'comfy', occasion: 'walk',
+  gender: 'm', weather: defaultWeatherForMonth(new Date().getMonth() + 1), mood: 'comfy', occasion: 'walk',
   looks: [], seed: 0,
   wish: [], book: [], zoom: 0,
   modal: null
@@ -1617,7 +1644,12 @@ document.addEventListener('click', function (e) {
       break;
     case 'shuffle':
       state.seed += 1;
-      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed);
+      /* 직전 코디에 나왔던 옷을 모아 두고, 새 조합에서는 그 옷을 최대한 피합니다. */
+      var prevIds = {};
+      state.looks.forEach(function (lk) {
+        lk.items.forEach(function (it) { prevIds[it.id] = true; });
+      });
+      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed, prevIds);
       showView('result');
       toast('다른 조합으로 다시 골랐어요');
       break;
