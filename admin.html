@@ -1223,6 +1223,7 @@ function render() {
     '<div class="num">' + (uvToday ? ctr.toFixed(1) : '0.0') + '<small>%</small></div>' +
     '<div class="cap">' + (uvToday
       ? '오늘 방문자 <b>' + num(uvToday) + '명</b> 중 <b>' + num(clicksToday) + '번</b> 제휴 버튼을 눌렀어요. (100명이 오면 약 <b>' + per100 + '번</b>)'
+        + (ctr > 100 ? '<br><span style="font-size:12.5px">방문자가 적을 때는 한 사람이 여러 번 눌러 100%를 넘을 수 있어요.</span>' : '')
       : '오늘 아직 방문 기록이 없습니다. 손님이 들어오면 여기에 바로 쌓입니다.') + '</div>' +
     '</div></section>';
 
