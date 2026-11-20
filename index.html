@@ -2528,11 +2528,10 @@ var VisitStats = (function () {
     return v;
   }
 
-  /* 검색 로봇·미리보기 봇 제외 */
+  /* 검색 로봇·미리보기 봇 제외 (사람이 쓰는 브라우저만 셉니다) */
   function isBot() {
-    if (navigator.webdriver) return true;
     var ua = navigator.userAgent || '';
-    return /bot|crawl|spider|slurp|yeti|daumoa|bingpreview|facebookexternalhit|kakaotalk-scrap|headless|phantom|python-requests|curl\//i.test(ua);
+    return /bot|crawl|spider|slurp|yeti|daumoa|bingpreview|facebookexternalhit|kakaotalk-scrap|headlesschrome|phantom|python-requests|curl\//i.test(ua);
   }
 
   /* 유입 경로 구분 */
