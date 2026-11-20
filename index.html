@@ -2490,6 +2490,150 @@ function boot() {
   showView('home');
 }
 boot();
+
+/* ============================================================
+   방문·클릭 집계 (실제 방문자, 한국시간 00:00~24:00 기준)
+   ------------------------------------------------------------
+   · 정적 페이지라도 다른 사람 폰·PC 방문까지 합산되도록
+     Firebase Realtime Database(REST)에 방문 기록을 남깁니다.
+   · 방문자(UV)는 이 브라우저에 저장한 무작위 ID로만 구분하며,
+     이름·전화번호·IP 같은 개인정보는 보내지 않습니다.
+   · 네이버·구글 검색 로봇과 링크 미리보기 봇은 세지 않습니다.
+   ============================================================ */
+var VisitStats = (function () {
+  var DB = 'https://youngclassic-stats-default-rtdb.asia-southeast1.firebasedatabase.app';
+  var KST = 9 * 60 * 60 * 1000;          /* 한국시간 = UTC+9 */
+  var VID_KEY = 'yc.visitor.v1';
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  /* 한국시간 기준 날짜(YYYY-MM-DD) */
+  function dayOf(ts) {
+    var d = new Date((ts || Date.now()) + KST);
+    return d.getUTCFullYear() + '-' + pad2(d.getUTCMonth() + 1) + '-' + pad2(d.getUTCDate());
+  }
+  function monthOf(day) { return day.slice(0, 7).replace('-', ''); }
+
+  function randomId() {
+    var abc = '0123456789abcdef', s = '';
+    for (var i = 0; i < 12; i++) s += abc.charAt(Math.floor(Math.random() * 16));
+    return s;
+  }
+  function visitorId() {
+    var v = '';
+    try { v = localStorage.getItem(VID_KEY) || ''; } catch (e) {}
+    if (!/^[0-9a-f]{12}$/.test(v)) {
+      v = randomId();
+      try { localStorage.setItem(VID_KEY, v); } catch (e) {}
+    }
+    return v;
+  }
+
+  /* 검색 로봇·미리보기 봇 제외 */
+  function isBot() {
+    if (navigator.webdriver) return true;
+    var ua = navigator.userAgent || '';
+    return /bot|crawl|spider|slurp|yeti|daumoa|bingpreview|facebookexternalhit|kakaotalk-scrap|headless|phantom|python-requests|curl\//i.test(ua);
+  }
+
+  /* 유입 경로 구분 */
+  function refSource() {
+    var r = document.referrer || '';
+    if (!r) return 'direct';
+    var h = '';
+    try { h = new URL(r).hostname.toLowerCase(); } catch (e) { return 'other'; }
+    if (/(^|\.)blog\.naver\.com$/.test(h) || /tistory\.com$/.test(h) || /brunch\.co\.kr$/.test(h) || /(^|\.)blog\.me$/.test(h)) return 'blog';
+    if (/(^|\.)naver\.com$/.test(h) || /(^|\.)naver\.me$/.test(h)) return 'naver';
+    if (/(^|\.)google\./.test(h) || /googleusercontent\.com$/.test(h)) return 'google';
+    if (/(^|\.)instagram\.com$/.test(h) || /^(l|lm)\.instagram\.com$/.test(h)) return 'instagram';
+    if (/(^|\.)kakao\.com$/.test(h) || /(^|\.)kko\.to$/.test(h) || /(^|\.)kakaocorp\.com$/.test(h)) return 'kakao';
+    if (/(^|\.)daum\.net$/.test(h)) return 'daum';
+    if (/(^|\.)facebook\.com$/.test(h) || /(^|\.)fb\.me$/.test(h)) return 'facebook';
+    return 'other';
+  }
+
+  function post(ev) {
+    if (isBot()) return;
+    var ts = Date.now();
+    ev.t = ts;
+    ev.d = dayOf(ts);
+    ev.v = visitorId();
+    var url = DB + '/e/' + monthOf(ev.d) + '.json';
+    try {
+      fetch(url, {
+        method: 'POST', mode: 'cors', cache: 'no-store', keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ev)
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  /* ---- 무엇을 눌렀는지 읽어 내기 ---- */
+  function currentState() {
+    try { if (typeof state === 'object' && state) return state; } catch (e) {}
+    return null;
+  }
+  function itemOf(a) {
+    /* 옷 목록 줄: 같은 줄 안의 상세 버튼에서 아이템 ID를 찾습니다. */
+    var li = a.closest ? a.closest('.irow-li') : null;
+    if (li) {
+      var b = li.querySelector('[data-id]');
+      if (b) return b.getAttribute('data-id');
+    }
+    /* 찜한 옷 카드: 카드 순서로 아이템 ID를 찾습니다. */
+    var card = a.closest ? a.closest('.wish-card') : null;
+    var st = currentState();
+    if (card && st) {
+      var all = Array.prototype.slice.call(document.querySelectorAll('.wish-card'));
+      var i = all.indexOf(card);
+      if (i >= 0 && st.wish[i]) return st.wish[i].id;
+    }
+    /* 상세 창 안의 버튼 */
+    if (st && st.modal && st.modal.id) return st.modal.id;
+    return '';
+  }
+  function shopOf(href) {
+    var h = String(href || '').toLowerCase();
+    if (h.indexOf('naver.me') >= 0 || h.indexOf('naver.com') >= 0 || h.indexOf('smartstore.naver') >= 0) return 'naver';
+    if (h.indexOf('coupang.com') >= 0) return 'coupang';
+    return '';
+  }
+  function isAffiliate(href) {
+    var h = String(href || '').toLowerCase();
+    return h.indexOf('naver.me') >= 0 || h.indexOf('link.coupang.com') >= 0;
+  }
+
+  function trackPageview() {
+    post({ k: 'pv', r: refSource() });
+  }
+
+  function trackShopClick(a) {
+    var href = a.getAttribute('href') || '';
+    var shop = shopOf(href);
+    if (!shop) return;
+    var ev = { k: 'click', s: shop, af: isAffiliate(href) ? 1 : 0 };
+    var id = itemOf(a);
+    var st = currentState();
+    if (id) {
+      ev.it = id;
+      var it = (typeof item === 'function') ? item(id) : null;
+      if (it && it.g) ev.g = it.g;
+    }
+    if (!ev.g && st && st.gender) ev.g = st.gender;
+    if (st && st.mood) ev.st = st.mood;
+    post(ev);
+  }
+
+  /* 쇼핑몰로 나가는 모든 버튼(옷 목록·찜한 옷·상세 창·코디 하단)을 한 곳에서 셉니다. */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    try { trackShopClick(a); } catch (err) {}
+  }, true);
+
+  trackPageview();
+
+  return { day: dayOf, month: monthOf, source: refSource, send: post };
+})();
 </script>
 </body>
 </html>

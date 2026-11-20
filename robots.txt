@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
 
 Sitemap: https://byoorim09-bot.github.io/Mine-/sitemap.xml
