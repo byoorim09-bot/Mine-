@@ -340,6 +340,44 @@ img, svg { display: block; }
 .chip[aria-pressed="true"] .chip-t { color: #fff; }
 .chip[aria-pressed="true"] .chip-s { color: rgba(255, 255, 255, .74); }
 
+/* ---- 02 날씨: 기온 3단계 + ☔ 비·눈 체크 ----
+   기온 세 버튼은 한 줄에 나란히 두고, 그 아래에 비·눈 체크 버튼을 따로 둡니다. */
+.chips-weather { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.chips.chips-weather .chip {
+  grid-template-columns: 1fr; justify-items: center; text-align: center;
+  padding: 11px 6px; row-gap: 4px; min-height: 78px;
+}
+.chips-weather .chip-ic { font-size: 1.5rem; }
+.chips-weather .chip-t { font-size: .92rem; }
+.chips-weather .chip-s { font-size: .71rem; }
+.rain-row { margin-top: 10px; }
+/* 켜고 끄는 체크 버튼 — 손가락으로 누르기 쉽게 높이를 두고, 켜지면 진한 남색 + 금색 체크 */
+.rain-toggle {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  width: 100%; min-height: 68px; padding: 12px 16px;
+  border: 2px dashed rgba(206, 180, 140, .85); border-radius: 14px; background: rgba(255, 255, 255, .9);
+  font: inherit; text-align: left; cursor: pointer;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.rain-toggle:hover { border-color: var(--gold2); background: #fff; }
+.rain-ic { font-size: 1.55rem; line-height: 1; }
+.rain-tx { display: grid; gap: 2px; }
+.rain-tx b { font-size: 1.02rem; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+.rain-tx i { font-style: normal; font-size: .79rem; color: var(--ink2); }
+.rain-check {
+  width: 30px; height: 30px; border-radius: 9px; border: 2px solid rgba(30, 42, 74, .26);
+  display: grid; place-items: center; background: #fff; color: transparent;
+  font-size: 1.02rem; font-weight: 900; line-height: 1;
+}
+.rain-toggle[aria-pressed="true"] {
+  border: 2px solid var(--navy);
+  background: linear-gradient(160deg, #2C4469 0%, #1E2A4A 100%);
+  box-shadow: 0 10px 24px -14px rgba(30, 42, 74, .85), inset 0 0 0 2px rgba(216, 183, 138, .6);
+}
+.rain-toggle[aria-pressed="true"] .rain-tx b { color: #fff; }
+.rain-toggle[aria-pressed="true"] .rain-tx i { color: rgba(255, 255, 255, .82); }
+.rain-toggle[aria-pressed="true"] .rain-check { background: var(--gold2); border-color: var(--gold2); color: #1E2A4A; }
+
 
 .cta-wrap { margin-top: 24px; }
 .cta-hint { text-align: center; color: var(--ink2); font-size: .82rem; margin: 10px 0 0; }
@@ -377,6 +415,19 @@ img, svg { display: block; }
 .wn-ic { font-size: 1.4rem; line-height: 1.2; flex: none; }
 .weather-note b { color: #7A5626; font-size: .92rem; }
 .weather-note p { margin: 2px 0 0; color: #6B5A42; font-size: .88rem; line-height: 1.55; }
+/* 결과 위쪽 안내는 기온 배지 + ☔ 비·눈 배지를 함께 보여 줍니다. */
+.wn-body { min-width: 0; }
+.wn-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
+.wn-badge {
+  display: inline-block; background: rgba(255, 255, 255, .82); border: 1px solid rgba(184, 134, 75, .5);
+  border-radius: 999px; padding: 2px 11px; font-size: .84rem; font-weight: 800; color: #7A5626;
+}
+.wn-badge-rain { background: var(--navy); border-color: var(--navy); color: #F6E7C9; }
+.weather-note-rain {
+  background: linear-gradient(180deg, rgba(234, 240, 249, .95), rgba(226, 234, 246, .9));
+  border-color: rgba(152, 172, 202, .9);
+}
+.weather-note-rain p { color: #3B4A66; }
 
 .looks { display: grid; gap: 18px; grid-template-columns: 1fr; }
 .look {
@@ -648,6 +699,7 @@ img, svg { display: block; }
   .questions > .q:nth-child(4) { grid-column: 1 / -1; }
   .questions > .q:nth-child(2) .chips,
   .questions > .q:nth-child(3) .chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .questions > .q:nth-child(2) .chips.chips-weather { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 900px) {
   .looks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -683,6 +735,13 @@ img, svg { display: block; }
   .irow-price { font-size: .78rem; }
   .irow-shop { min-height: 28px; padding: 4px 6px; font-size: .64rem; }
   .modal-card { padding: 14px; }
+  .chips.chips-weather .chip { padding: 10px 4px; min-height: 74px; }
+  .chips-weather .chip-ic { font-size: 1.38rem; }
+  .chips-weather .chip-t { font-size: .87rem; }
+  .chips-weather .chip-s { font-size: .68rem; }
+  .rain-toggle { min-height: 64px; padding: 11px 13px; gap: 10px; }
+  .rain-tx b { font-size: .97rem; }
+  .rain-tx i { font-size: .75rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -739,14 +798,14 @@ var OPTIONS = {
     { id: 'm', label: '남성', icon: '👔', sub: '중년 남성 코디' },
     { id: 'f', label: '여성', icon: '👗', sub: '중년 여성 코디' }
   ],
+  /* 기온은 3단계만 고르고, 비·눈은 아래 「☔ 비·눈 오는 날」 체크로 따로 더합니다.
+     (예전에는 비·바람이 기온과 같은 줄에 있어서, 겨울 비·여름 비에도 봄·가을 기준 코디가 나왔습니다.) */
   weather: [
-    { id: 'warm', label: '맑고 포근', icon: '☀️', sub: '23도 이상 · 반소매도 좋아요', needOuter: false, top: 0.6, outer: 0.4,
+    { id: 'warm', label: '맑고 포근', icon: '☀️', sub: '23도 이상', needOuter: false, top: 0.6, outer: 0.4,
       note: '한낮에는 더워요. 얇은 셔츠나 린넨 소재로 가볍게, 실내 냉방을 위해 얇은 겉옷을 하나 챙기면 좋아요.' },
-    { id: 'mild', label: '선선·일교차', icon: '🌤', sub: '15~22도 · 겉옷 필수', needOuter: true, top: 1.3, outer: 1.4,
+    { id: 'mild', label: '선선·일교차', icon: '🌤', sub: '15~22도', needOuter: true, top: 1.3, outer: 1.4,
       note: '아침저녁으로 쌀쌀해요. 가디건이나 재킷을 걸치면 낮에 벗어도 단정해 보입니다.' },
-    { id: 'rain', label: '비·바람', icon: '🌧', sub: '비 소식 · 방수 신발', needOuter: true, top: 1.6, outer: 2.0,
-      note: '비 오는 날은 밝은 색 상의가 답답함을 덜어 줘요. 젖어도 티가 덜 나는 소재와 방수 신발을 권합니다.' },
-    { id: 'cold', label: '쌀쌀·추움', icon: '🥶', sub: '10도 이하 · 보온이 먼저', needOuter: true, top: 2.5, outer: 3.0,
+    { id: 'cold', label: '쌀쌀·추움', icon: '🥶', sub: '10도 이하', needOuter: true, top: 2.5, outer: 3.0,
       note: '보온이 먼저예요. 안에는 얇은 니트, 겉에는 코트로 겹겹이. 목도리를 더하면 체감 온도가 확 달라집니다.' }
   ],
   mood: [
@@ -766,6 +825,19 @@ var OPTIONS = {
     { id: 'walk', label: '가벼운 산책', icon: '🚶', sub: '동네·공원', formal: 0.5 },
     { id: 'event', label: '경조사', icon: '🎊', sub: '결혼식·장례식', formal: 3.0 }
   ]
+};
+
+/* ☔ 비·눈 오는 날 — 기온과 따로 켜고 끄는 체크 항목입니다.
+   기온은 그대로 따르고, 비·눈일 때만 신발·소품·안내 문구가 달라집니다. */
+var RAIN_INFO = {
+  id: 'rain', label: '비·눈 오는 날', icon: '☔', short: '비·눈',
+  sub: '방수 신발 · 우산 챙기기',
+  note: '비나 눈이 오면 젖어도 티가 덜 나는 소재에 방수 신발을 권합니다. 우드핸들 장우산을 챙기면 손과 어깨가 덜 젖어요.'
+};
+/* 예전 코디북에 weather:'rain'으로 저장된 코디도 이름이 그대로 보이도록 남겨 둡니다. */
+var WEATHER_LEGACY = {
+  rain: { id: 'rain', label: '비·바람', icon: '🌧', sub: '비 소식 · 방수 신발',
+    note: '비 오는 날은 밝은 색 상의가 답답함을 덜어 줘요. 젖어도 티가 덜 나는 소재와 방수 신발을 권합니다.' }
 };
 
 /* cat: top / bottom / outer / shoes / acc
@@ -1467,6 +1539,11 @@ function findOpt(group, id) {
   for (var i = 0; i < arr.length; i++) if (arr[i].id === id) return arr[i];
   return arr[0];
 }
+/* 날씨 이름을 찾을 때는 예전 저장값(rain)도 그대로 이름을 돌려줍니다. */
+function weatherOptOf(id) {
+  if (WEATHER_LEGACY[id]) return WEATHER_LEGACY[id];
+  return findOpt('weather', id);
+}
 function hashStr(s) {
   var h = 0;
   for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 100000; }
@@ -1521,11 +1598,16 @@ function affilNote(hasNaver, hasCoupang) {
   return out.join('<br> ');
 }
 
-function ctxOf(gender, weatherId, moodId, occasionId) {
-  var w = findOpt('weather', weatherId), mo = findOpt('mood', moodId), oc = findOpt('occasion', occasionId);
-  var needOuter = w.needOuter || oc.formal >= 2.6;
+/* isRain: ☔ 비·눈 체크(기온과 따로). 예전 코디북의 weather:'rain'은 「선선·일교차 + 비」로 읽습니다.
+   기본값은 false라 예전 호출부(인자 4개)도 그대로 동작합니다. */
+function ctxOf(gender, weatherId, moodId, occasionId, isRain) {
+  var wid = weatherId, rain = isRain === true;
+  if (wid === 'rain') { wid = 'mild'; rain = true; }
+  var w = findOpt('weather', wid), mo = findOpt('mood', moodId), oc = findOpt('occasion', occasionId);
+  var needOuter = w.needOuter || oc.formal >= 2.6 || rain;
   return {
     gender: gender, w: w, mo: mo, oc: oc,
+    rain: rain, isRain: rain, rainInfo: rain ? RAIN_INFO : null,
     formalTarget: oc.formal,
     topWarmth: w.top,
     outerWarmth: w.id === 'warm' ? 1.0 : w.outer,
@@ -1533,22 +1615,23 @@ function ctxOf(gender, weatherId, moodId, occasionId) {
   };
 }
 
+/* 상의·겉옷은 고른 기온(warm/mild/cold)만 따릅니다.
+   비·눈이 와도 기온은 그대로이므로, 추움+비·눈이면 겨울 코트·니트가 나옵니다. */
 function topFits(it, ctx) {
   var w = ctx.w.id;
   if (w === 'warm') return it.warmth <= 1;
   if (w === 'mild') return it.warmth >= 0 && it.warmth <= 2;
-  if (w === 'rain') return it.warmth >= 1 && it.warmth <= 2;
   return it.warmth >= 2; /* cold */
 }
 function outerFits(it, ctx) {
   var w = ctx.w.id;
   if (w === 'warm') return it.warmth <= 1;
   if (w === 'mild') return it.warmth >= 1 && it.warmth <= 2;
-  if (w === 'rain') return it.warmth >= 2 && it.kind !== 'padding';
-  return it.warmth >= 3;
+  return it.warmth >= 3; /* cold */
 }
+/* 비·눈에는 스웨이드 신발을 뺍니다. (스웨이드는 젖으면 얼룩이 남습니다) */
 function shoesFit(it, ctx) {
-  if (ctx.w.id === 'rain' && it.suede) return false;
+  if (ctx.rain && it.suede) return false;
   if (ctx.oc.id === 'event' && it.formal < 2) return false;
   return true;
 }
@@ -1568,7 +1651,9 @@ function scoreItem(it, ctx, targetFormal, warmthTarget, conceptKey, seed, slot) 
 
 function accScore(it, ctx, targetFormal, conceptKey, seed) {
   var s = scoreItem(it, ctx, targetFormal, ctx.w.id === 'cold' ? 3 : 1, conceptKey, seed, 'acc');
-  if (ctx.w.id === 'rain') { if (it.kind === 'umbrella') s += 3.2; else s -= 0.8; }
+  /* 비·눈에는 우드핸들 장우산을 먼저 권합니다. 추움에는 목도리·장갑도 함께 챙기도록
+     우산 가점(3.2)과 방한 가점(1.8/1.2)이 같이 살아 있게 둡니다. */
+  if (ctx.rain) { if (it.kind === 'umbrella') s += 3.2; }
   else { if (it.kind === 'umbrella') s -= 2.2; }
   if (ctx.w.id === 'cold') { if (it.kind === 'scarf') s += 1.8; if (it.kind === 'gloves') s += 1.2; }
   if (ctx.oc.formal >= 2.6) {
@@ -1634,17 +1719,44 @@ function setFormalOf(set) {
   if (!(set.id in SET_FORMAL)) SET_FORMAL[set.id] = lookFormal(setItems(set));
   return SET_FORMAL[set.id];
 }
-/* 세트 점수: 고른 기분·상황에 맞고, 상황의 격식도와 세트의 격식도가 가까울수록 높습니다. */
+/* 세트 점수: 고른 기분·상황에 맞고, 상황의 격식도와 세트의 격식도가 가까울수록 높습니다.
+   ☔ 비·눈이면 장우산까지 갖춘 비 세트를 살짝 앞세워, 비 오는 날 카드에 우산이 실제로 보이게 합니다. */
 function scoreSet(set, ctx) {
   var s = 0;
   if (set.moods.indexOf(ctx.mo.id) >= 0) s += 3;
   if (set.occasions.indexOf(ctx.oc.id) >= 0) s += 2.5;
   s -= Math.abs(setFormalOf(set) - ctx.formalTarget) * 1.1;
+  if (ctx.rain && set.weathers.indexOf('rain') >= 0) s += 1.0;
   return s;
+}
+/* 세트의 상의·겉옷이 고른 기온에 맞는지 (다른 기온 구간의 비 세트를 데려올 때 씁니다) */
+function setTempFits(set, ctx) {
+  var its = setItems(set);
+  for (var i = 0; i < its.length; i++) {
+    var it = its[i];
+    if (!it) return false;
+    if (it.cat === 'top' && !topFits(it, ctx)) return false;
+    if (it.cat === 'outer' && !outerFits(it, ctx)) return false;
+  }
+  return true;
+}
+/* 비·눈에는 스웨이드 신발이 든 세트를 빼야 합니다. (어떤 구간의 세트든 마찬가지) */
+function setHasSuede(set) {
+  var its = setItems(set);
+  for (var i = 0; i < its.length; i++) if (its[i] && its[i].suede) return true;
+  return false;
 }
 function rankSets(gender, ctx) {
   var pool = CURATED_LOOKS.filter(function (st) {
-    return st.gender === gender && st.weathers.indexOf(ctx.w.id) >= 0;
+    if (st.gender !== gender) return false;
+    /* 자기 기온 구간의 세트는 그대로 쓰고, 비 세트는 ☔ 체크 때만 함께 꺼냅니다.
+       이때는 고른 기온에 맞는 세트만 데려옵니다. (추움+비에 봄 세트가 섞이지 않게) */
+    var ownTemp = st.weathers.indexOf(ctx.w.id) >= 0;
+    var rainy = ctx.rain && st.weathers.indexOf('rain') >= 0;
+    if (!ownTemp && !rainy) return false;
+    if (!ownTemp && !setTempFits(st, ctx)) return false;
+    if (ctx.rain && setHasSuede(st)) return false;
+    return true;
   });
   pool.forEach(function (st) { st._score = scoreSet(st, ctx); });
   pool.sort(function (a, b) { return b._score - a._score || (a.id < b.id ? -1 : 1); });
@@ -1682,9 +1794,10 @@ function lookFromSet(set, pos, ctx) {
     reason: set.reason
   };
 }
-/* prev: 직전 코디 아이템({id:true}). 서명만 유지하고, 실제 전환은 seed 회전이 맡습니다. */
-function buildLooks(gender, weatherId, moodId, occasionId, seed, prev) {
-  var ctx = ctxOf(gender, weatherId, moodId, occasionId);
+/* prev: 직전 코디 아이템({id:true}). 서명만 유지하고, 실제 전환은 seed 회전이 맡습니다.
+   isRain: ☔ 비·눈 체크 (기본값 false — 예전 호출부와 호환) */
+function buildLooks(gender, weatherId, moodId, occasionId, seed, prev, isRain) {
+  var ctx = ctxOf(gender, weatherId, moodId, occasionId, isRain);
   var ranked = rankSets(gender, ctx);
   var n = ranked.length;
   if (!n) return [];
@@ -1787,26 +1900,43 @@ function makeFitTip(top, bottom, outer, shoe, acc, conceptKey, gender) {
 /* '오늘의 팁'은 코디(정석·여유·포인트)와 날씨·실제 아이템에 맞춰 서로 다른 문구로 씁니다. */
 function makeExtraTip(ctx, outer, acc, shoe, conceptKey, top, bottom) {
   var w = ctx.w.id;
+  /* ☔ 비·눈은 기온 위에 더해지는 조건입니다. 기온(추움/선선/더움)과 코디(정석·여유·포인트)에
+     맞춰 서로 다른 문구를 써서, 세 카드가 같은 말을 반복하지 않게 합니다. */
+  if (ctx.rain) return makeRainTip(w, conceptKey, shoe, acc, top);
   if (conceptKey === 'classic') {
     if (w === 'cold') {
       return outer ? josa(outer.colorName + ' ' + outerNoun(outer), '은', '는') + ' 어깨선이 맞아야 단정해 보여요. ' + bottom.colorName + ' ' + josa(catLabel(bottom.cat), '은', '는') + ' 무릎이 살짝 덮이는 길이가 가장 안정적입니다.'
                    : '겨울에는 기모 안감 니트가 얇아 보이면서도 따뜻합니다. 목만 감싸도 체감 온도가 달라져요.';
     }
-    if (w === 'rain') return '가죽 ' + josa(shoeNoun(shoe), '은', '는') + ' 방수 스프레이를 뿌려 두면 물 자국이 덜 남습니다. 접이식보다 장우산이 편해요.';
     if (w === 'warm') return '린넨·코튼 ' + josa(catLabel(top.cat), '은', '는') + ' 땀에 강해요. 세탁 후 그늘에 말리면 모양이 오래갑니다.';
     return '아침저녁 일교차에는 얇은 ' + josa(outer ? outerNoun(outer) : '재킷', '이', '가') + ' 답이에요. 벗어서 팔에 걸쳐도 단정해 보입니다.';
   }
   if (conceptKey === 'soft') {
     if (w === 'cold') return (top.kind === 'knit' || top.kind === 'turtleneck' ? '두꺼운 니트는 손세탁이 오래갑니다. 세탁망에 넣고 눌러 빨래하세요.' : '안쪽에 얇은 이너를 받쳐 입으면 겉옷이 덜 눌립니다.') + ' ' + (acc ? josa(accNoun(acc), '은', '는') + ' ' + acc.colorName + ' 한 가지로 통일하면 흐트러지지 않아요.' : '');
-    if (w === 'rain') return '젖은 옷은 그늘에서 넓게 펴 말려야 냄새가 덜 배요. ' + josa(catLabel(bottom.cat), '은', '는') + ' 밑단이 짧을수록 편합니다.';
     if (w === 'warm') return '얇은 니트는 옷걸이보다 개어 보관하세요. 실내 냉방에는 ' + (outer ? outerNoun(outer) : '얇은 셔츠') + ' 하나면 충분합니다.';
     return ((top.kind === 'knit' || top.kind === 'turtleneck') ? '니트 밑단을 살짝 넣으면' : '상의 밑단을 살짝 넣으면') + ' 허리선이 살아 비율이 좋아 보여요. ' + josa(shoeNoun(shoe), '은', '는') + ' 무광 소재가 편안한 핏과 잘 어울립니다.';
   }
   /* accent */
   if (w === 'cold') return '포인트 색은 목에 가까이 둘수록 얼굴빛이 밝아 보여요. ' + (acc ? acc.colorName + ' ' + josa(accNoun(acc), '으로', '로') : '스카프 하나로') + ' 시선을 위로 모아 보세요.';
-  if (w === 'rain') return '비 오는 날은 발밑이 젖어도 표정은 밝게. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '우산') + ' 색으로 포인트를 주면 사진도 잘 나옵니다.';
   if (w === 'warm') return '한낮에는 겉옷을 벗어도 주름이 적은 소재가 좋아요. 밝은 ' + top.colorName + ' ' + josa(catLabel(top.cat), '이', '가') + ' 햇빛을 반사해 시원해 보입니다.';
   return '겉옷은 어두운 톤, 안쪽은 밝은 톤으로 대비를 주면 얼굴이 화사해 보여요. ' + top.colorName + ' ' + josa(catLabel(top.cat), '이', '가') + ' 그 역할을 합니다.';
+}
+/* ☔ 비·눈 날의 「오늘의 팁」 — 기온 × 코디별로 다른 문구 */
+function makeRainTip(w, conceptKey, shoe, acc, top) {
+  var sh = shoeNoun(shoe);
+  if (conceptKey === 'classic') {
+    if (w === 'cold') return '눈·비 오는 겨울에는 코트 안에 기모 니트를 받쳐 입고, 신발은 스웨이드 대신 방수 가죽이나 부트로. 장우산은 접이식보다 손이 덜 시립니다.';
+    if (w === 'warm') return '더운 날 비에는 젖어도 금방 마르는 얇은 셔츠가 편해요. 발은 방수 스니커즈, 손에는 가벼운 장우산이면 충분합니다.';
+    return '가죽 ' + josa(sh, '은', '는') + ' 방수 스프레이를 뿌려 두면 물 자국이 덜 남습니다. 접이식보다 우드핸들 장우산이 편해요.';
+  }
+  if (conceptKey === 'soft') {
+    if (w === 'cold') return '비·눈에 젖은 니트는 그늘에 넓게 펴 말려야 냄새가 덜 배요. 겨울에는 기모 안감 니트를 고르면 겉옷이 덜 무겁습니다.';
+    if (w === 'warm') return '얇은 옷은 젖으면 금방 마르지만 주름이 남아요. 손에 든 우산은 가벼운 장우산이 낫습니다.';
+    return '젖은 옷은 그늘에서 넓게 펴 말려야 냄새가 덜 배요. ' + josa(sh, '은', '는') + ' 무광 방수 소재가 편합니다.';
+  }
+  if (w === 'cold') return '추운 비·눈 날에는 포인트 색을 목에 가까이 두세요. ' + (acc ? acc.colorName + ' ' + josa(accNoun(acc), '으로', '로') : '머플러 하나로') + ' 시선을 위로 모으면 얼굴빛이 밝아 보입니다.';
+  if (w === 'warm') return '비 오는 더운 날은 밝은 ' + top.colorName + ' ' + josa(catLabel(top.cat), '이', '가') + ' 답답함을 덜어 줘요. 우산 색까지 밝게 맞추면 사진도 잘 나옵니다.';
+  return '비 오는 날은 발밑이 젖어도 표정은 밝게. ' + (acc ? acc.colorName + ' ' + accNoun(acc) : '우산') + ' 색으로 포인트를 주면 사진도 잘 나옵니다.';
 }
 function makeReason(concept, ctx) {
   if (concept.key === 'classic') return ctx.oc.label + ' 자리에 가장 무난하게 어울리는 조합이에요.';
@@ -1887,7 +2017,7 @@ function lookImageKey(gender, items, concept, ctx) {
   if (tier === 'high') return 'formal';
   if (hasKind(items, ['padding'])) return 'cozy';
   if (concept.key === 'soft') return 'daily';
-  if (ctx.w.id === 'cold' || ctx.w.id === 'rain' || tier === 'low') return 'cozy';
+  if (ctx.w.id === 'cold' || ctx.rain || tier === 'low') return 'cozy';
   return 'daily';
 }
 
@@ -1916,7 +2046,7 @@ function defaultWeatherForMonth(m) {
 
 var state = {
   view: 'home',
-  gender: 'm', weather: defaultWeatherForMonth(new Date().getMonth() + 1), mood: 'comfy', occasion: 'walk',
+  gender: 'm', weather: defaultWeatherForMonth(new Date().getMonth() + 1), rain: false, mood: 'comfy', occasion: 'walk',
   looks: [], seed: 0,
   wish: [], book: [], zoom: 0,
   modal: null
@@ -1993,6 +2123,19 @@ function chipsHTML(group) {
   }).join('');
 }
 
+/* ☔ 비·눈 오는 날 — 기온과 따로 켜고 끄는 체크 버튼입니다.
+   50대 이상 사용자를 위해 버튼을 크게 두고, 켜지면 진한 남색 바탕 + 금색 체크로 분명히 보이게 합니다. */
+function rainToggleHTML() {
+  var on = state.rain === true;
+  return '<div class="rain-row">' +
+    '<button type="button" class="rain-toggle" data-act="toggle-rain" aria-pressed="' + (on ? 'true' : 'false') + '">' +
+      '<span class="rain-ic" aria-hidden="true">' + RAIN_INFO.icon + '</span>' +
+      '<span class="rain-tx"><b>' + esc(RAIN_INFO.label) + '</b><i>' + esc(RAIN_INFO.sub) + '</i></span>' +
+      '<span class="rain-check" aria-hidden="true">✓</span>' +
+    '</button>' +
+  '</div>';
+}
+
 function renderHome() {
   var html = '' +
     '<div class="hero">' +
@@ -2012,7 +2155,8 @@ function renderHome() {
 
     '<div class="q">' +
       '<div class="q-head"><span class="q-no">02</span><h2>오늘 날씨는 어떤가요?</h2></div>' +
-      '<div class="chips" data-group="weather">' + chipsHTML('weather') + '</div>' +
+      '<div class="chips chips-weather" data-group="weather">' + chipsHTML('weather') + '</div>' +
+      rainToggleHTML() +
     '</div>' +
 
     '<div class="q">' +
@@ -2119,15 +2263,20 @@ function lookHTML(look, i, ctx) {
 }
 
 function renderResults() {
-  var ctx = ctxOf(state.gender, state.weather, state.mood, state.occasion);
-  if (!state.looks.length) state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed);
+  var ctx = ctxOf(state.gender, state.weather, state.mood, state.occasion, state.rain);
+  if (!state.looks.length) state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed, null, state.rain);
 
   var chosen = [
     (state.gender === 'm' ? '👔 남성' : '👗 여성'),
     ctx.w.icon + ' ' + ctx.w.label,
     ctx.mo.icon + ' ' + ctx.mo.label,
     ctx.oc.icon + ' ' + ctx.oc.label
-  ].map(function (t) { return '<span class="pill">' + esc(t) + '</span>'; }).join('');
+  ].concat(ctx.rain ? [RAIN_INFO.icon + ' ' + RAIN_INFO.short] : [])
+    .map(function (t) { return '<span class="pill">' + esc(t) + '</span>'; }).join('');
+
+  var wnBadges = '<span class="wn-badge">' + ctx.w.icon + ' ' + esc(ctx.w.label) + '</span>' +
+    (ctx.rain ? '<span class="wn-badge wn-badge-rain">' + RAIN_INFO.icon + ' ' + esc(RAIN_INFO.short) + '</span>' : '');
+  var wnText = ctx.w.note + (ctx.rain ? ' ' + RAIN_INFO.note : '');
 
   var box = $('#view-result');
   box.innerHTML = '' +
@@ -2136,8 +2285,9 @@ function renderResults() {
       '<div class="result-head"><h1 class="view-title">오늘의 코디 3가지</h1></div>' +
       '<div class="pills">' + chosen + '</div>' +
     '</div>' +
-    '<div class="weather-note"><span class="wn-ic" aria-hidden="true">' + ctx.w.icon + '</span>' +
-      '<div><b>' + esc(ctx.w.label) + ' · ' + esc(ctx.w.sub) + '</b><p>' + esc(ctx.w.note) + '</p></div>' +
+    '<div class="weather-note' + (ctx.rain ? ' weather-note-rain' : '') + '">' +
+      '<span class="wn-ic" aria-hidden="true">' + (ctx.rain ? RAIN_INFO.icon : ctx.w.icon) + '</span>' +
+      '<div class="wn-body"><div class="wn-badges">' + wnBadges + '</div><p>' + esc(wnText) + '</p></div>' +
     '</div>' +
     '<div class="looks">' + state.looks.map(function (l, i) { return lookHTML(l, i, ctx); }).join('') + '</div>' +
     '<div class="after-looks">' +
@@ -2149,8 +2299,11 @@ function renderResults() {
 
 /* ---------------- 나만의 코디북 ---------------- */
 function bookTitle(entry) {
-  var w = findOpt('weather', entry.weather), oc = findOpt('occasion', entry.occasion);
-  return w.label + ' · ' + oc.label + ' · ' + entry.conceptName;
+  var w = weatherOptOf(entry.weather), oc = findOpt('occasion', entry.occasion);
+  /* 비·눈을 켜고 저장한 코디는 제목에도 표시하고, 예전에 weather:'rain'으로 저장된 코디는
+     그때 이름(비·바람) 그대로 보여 줍니다. */
+  var rainMark = (entry.rain && entry.weather !== 'rain') ? ' · ' + RAIN_INFO.icon + ' ' + RAIN_INFO.short : '';
+  return w.label + rainMark + ' · ' + oc.label + ' · ' + entry.conceptName;
 }
 function renderBook() {
   var box = $('#view-book');
@@ -2387,9 +2540,15 @@ document.addEventListener('click', function (e) {
     }
     case 'recommend':
       state.seed = 0;
-      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, 0);
+      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, 0, null, state.rain);
       showView('result');
       break;
+    case 'toggle-rain': {
+      state.rain = !state.rain;
+      el.setAttribute('aria-pressed', state.rain ? 'true' : 'false');
+      toast(state.rain ? '☔ 비·눈 오는 날을 함께 고려할게요' : '비·눈 체크를 껐어요');
+      break;
+    }
     case 'shuffle':
       state.seed += 1;
       /* 직전 코디에 나왔던 옷을 모아 두고, 새 조합에서는 그 옷을 최대한 피합니다. */
@@ -2397,7 +2556,7 @@ document.addEventListener('click', function (e) {
       state.looks.forEach(function (lk) {
         lk.items.forEach(function (it) { prevIds[it.id] = true; });
       });
-      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed, prevIds);
+      state.looks = buildLooks(state.gender, state.weather, state.mood, state.occasion, state.seed, prevIds, state.rain);
       showView('result');
       toast('다른 조합으로 다시 골랐어요');
       break;
@@ -2435,7 +2594,7 @@ document.addEventListener('click', function (e) {
         sig: sig,
         itemIds: lk.items.map(function (it) { return it.id; }),
         ts: Date.now(),
-        gender: state.gender, weather: state.weather, mood: state.mood, occasion: state.occasion,
+        gender: state.gender, weather: state.weather, rain: state.rain === true, mood: state.mood, occasion: state.occasion,
         conceptName: lk.title,
         image: lk.image
       });
