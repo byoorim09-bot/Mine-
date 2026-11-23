@@ -1780,6 +1780,12 @@ function lookFromSet(set, pos, ctx) {
     else if (it.cat === 'acc') acc = it;
   });
   var c = conceptByKey(set.concept);
+  /* ☔ 비·눈인데 이 세트에 우산이 없으면(겨울 세트 등), 카드 팁에 우산·방수 신발 안내를 한 줄 더합니다.
+     우산이 이미 든 비 세트는 같은 말을 되풀이하지 않습니다. */
+  var extra = set.tip;
+  if (ctx.rain && !hasKind(its, ['umbrella'])) {
+    extra += ' ☔ 오늘은 장우산과 방수 신발을 챙기면 발과 손이 덜 젖어요.';
+  }
   return {
     setId: set.id,
     concept: { key: c.key, no: ('0' + (pos + 1)).slice(-2), name: set.title, line: set.reason, fit: c.fit },
@@ -1789,7 +1795,7 @@ function lookFromSet(set, pos, ctx) {
     tips: {
       color: makeColorTip(top, bottom, outer, acc, ctx),
       fit: makeFitTip(top, bottom, outer, shoe, acc, set.concept, ctx.gender),
-      extra: set.tip
+      extra: extra
     },
     reason: set.reason
   };
