@@ -955,7 +955,23 @@ var WARDROBE = [
   { id: 'm_tr3', g: 'm', cat: 'bottom', kind: 'jogger', name: '차콜 조거 팬츠', color: '#3A3D45', colorName: '차콜', price: 29900, formal: 0, warmth: 2, moods: ['comfy', 'lively'] },
   { id: 'f_tr1', g: 'f', cat: 'outer', kind: 'trackjacket', name: '크림 트랙 재킷', color: '#F0E6D5', colorName: '크림', price: 39900, formal: 1, warmth: 1, moods: ['comfy', 'lively'] },
   { id: 'f_tr2', g: 'f', cat: 'top', kind: 'hoodie', name: '오트밀 집업 후드', color: '#D5C4AC', colorName: '오트밀', price: 32900, formal: 0, warmth: 2, moods: ['comfy'] },
-  { id: 'f_tr3', g: 'f', cat: 'bottom', kind: 'trackpants', name: '네이비 와이드 트레이닝 팬츠', color: '#2C3A57', colorName: '네이비', price: 34900, formal: 0, warmth: 2, moods: ['comfy', 'lively'] }
+  { id: 'f_tr3', g: 'f', cat: 'bottom', kind: 'trackpants', name: '네이비 와이드 트레이닝 팬츠', color: '#2C3A57', colorName: '네이비', price: 34900, formal: 0, warmth: 2, moods: ['comfy', 'lively'] },
+
+  /* ================= 2026 겨울 트렌드 (2026-11-23 추가) =================
+     근거: 2026 F/W 는 ① 초콜릿 브라운(보그 코리아 9/4·시니어스 10/27·머니투데이 11/14),
+     ② 하프·숏 기장 아우터(한국경제 11/16 — 하프 트렌치 거래 +243%), ③ 숏퍼퍼·퍼 재킷
+     (29CM 퍼 아우터 +100%), ④ 퀄팅 자켓, ⑤ 버건디 포인트(LF 검색 +68%),
+     ⑥ 코듀로이·세미와이드 팬츠 가운데 40~50대가 실제로 입기 좋은 것만 골랐습니다. */
+  { id: 'm_o11', g: 'm', cat: 'outer', kind: 'coat', name: '초콜릿 브라운 하프 코트', color: '#4A2F23', colorName: '초코브라운', price: 89900, formal: 3, warmth: 3, moods: ['formal', 'calm'], img: 'items/coat-choco-men.jpg' },
+  { id: 'm_o12', g: 'm', cat: 'outer', kind: 'padding', name: '블랙 숏 퍼퍼 재킷', color: '#26282E', colorName: '블랙', price: 59900, formal: 0, warmth: 3, moods: ['comfy', 'lively'], img: 'items/padding-black-short.jpg' },
+  { id: 'm_o13', g: 'm', cat: 'outer', kind: 'jacket', name: '브라운 에코퍼 재킷', color: '#6B4A34', colorName: '브라운', price: 79900, formal: 1, warmth: 3, moods: ['comfy', 'calm'], img: 'items/jacket-brown-fur.jpg' },
+  { id: 'm_o14', g: 'm', cat: 'outer', kind: 'jacket', name: '차콜 퀄팅 자켓', color: '#3E4250', colorName: '차콜', price: 69900, formal: 1, warmth: 3, moods: ['calm', 'comfy'], img: 'items/jacket-charcoal-quilted.jpg' },
+  { id: 'm_t13', g: 'm', cat: 'top', kind: 'knit', name: '버건디 케이블 니트', color: '#6B2737', colorName: '버건디', price: 49900, formal: 2, warmth: 3, moods: ['calm', 'formal'], img: 'items/knit-burgundy.jpg' },
+  { id: 'm_b9', g: 'm', cat: 'bottom', kind: 'slacks', name: '브라운 코듀로이 팬츠', color: '#5A4030', colorName: '브라운', price: 39900, formal: 1, warmth: 2, moods: ['comfy', 'calm'], img: 'items/slacks-brown-corduroy.jpg' },
+  { id: 'f_o10', g: 'f', cat: 'outer', kind: 'coat', name: '초콜릿 브라운 벨티드 하프 코트', color: '#4A2F23', colorName: '초코브라운', price: 99900, formal: 3, warmth: 3, moods: ['formal', 'calm'], img: 'items/coat-choco-women.jpg' },
+  { id: 'f_o12', g: 'f', cat: 'outer', kind: 'jacket', name: '카멜 하프 무스탕', color: '#B98A56', colorName: '카멜', price: 129000, formal: 2, warmth: 3, moods: ['calm', 'formal'], img: 'items/jacket-camel-shearling.jpg' },
+  { id: 'f_t13', g: 'f', cat: 'top', kind: 'knit', name: '버건디 케이블 니트', color: '#6B2737', colorName: '버건디', price: 39900, formal: 2, warmth: 3, moods: ['calm', 'lively'], img: 'items/knit-burgundy-w.jpg' },
+  { id: 'f_b10', g: 'f', cat: 'bottom', kind: 'slacks', name: '브라운 코듀로이 팬츠', color: '#5A4030', colorName: '브라운', price: 39900, formal: 1, warmth: 2, moods: ['comfy', 'calm'], img: 'items/slacks-brown-corduroy-w.jpg' }
 ];
 
 var SIZE_TABLE = {
@@ -974,9 +990,13 @@ var COLOR_SLUG = {
   '올리브': 'olive', '인디고': 'indigo', '다크인디고': 'dark-indigo', '스카이블루': 'sky-blue',
   '그레이': 'grey', '라이트그레이': 'light-grey', '크림': 'cream', '카멜': 'camel',
   '라벤더': 'lavender', '샴페인': 'champagne', '로즈': 'rose', '누드': 'nude',
-  '진주': 'pearl', '로즈골드': 'rose-gold', '실버': 'silver'
+  '진주': 'pearl', '로즈골드': 'rose-gold', '실버': 'silver',
+  '초코브라운': 'choco', '버건디': 'burgundy'
 };
+/* it.img 가 있으면 그 사진을 그대로 씁니다(2026-11-23 겨울 트렌드 신규 아이템 —
+   같은 종류·색상이어도 남녀 컷이 달라 한 장씩 따로 만들었습니다). */
 function imgFor(it) {
+  if (it.img) return it.img;
   return 'items/' + it.kind + '-' + (COLOR_SLUG[it.colorName] || 'basic') + '.jpg';
 }
 
@@ -1223,6 +1243,28 @@ var COUPANG_LINKS = {
 };
 WARDROBE.forEach(function (it) {
   if (COUPANG_LINKS[it.id]) it.coupangUrl = COUPANG_LINKS[it.id];
+});
+
+/* 2026-11-23 추가: 2026 겨울 트렌드 신규 아이템 10종의 제휴 링크.
+   네이버 쇼핑 커넥트(brandconnect.naver.com)·쿠팡 파트너스(partners.coupang.com)에서
+   상품을 직접 골라 링크를 발급받아 한 개도 빠짐없이 연결했습니다. */
+var TREND_LINKS_1123 = {
+  m_o11: { naver: 'https://naver.me/IIDj17Iy', coupang: 'https://link.coupang.com/a/iUtuvWzdS0' },  /* 남성롱코트 오버핏모직코트 루즈핏 브라운 / Evadia 남성 하프코트 */
+  m_o12: { naver: 'https://naver.me/FCZV4Mc7', coupang: 'https://link.coupang.com/a/iUtwyALkn6' },  /* 피팅남 크롭 숏 패딩 / 스파오 베이직 퍼퍼 */
+  m_o13: { naver: 'https://naver.me/x7e7BFf1', coupang: 'https://link.coupang.com/a/iUtx0y3RhA' },  /* 블루트 남자 양털 트러커 자켓 / 코디코치 푸리 양털 점퍼 */
+  m_o14: { naver: 'https://naver.me/FCZV46ke', coupang: 'https://link.coupang.com/a/iUtzkZ5EFE' },  /* 션타운 하이넥 퀄팅자켓 / 남자 사선 퀼팅 패딩 재킷 */
+  m_t13: { naver: 'https://naver.me/5MviS0Av', coupang: 'https://link.coupang.com/a/iUtBwpsgDc' },  /* 워셔블 라운드 니트 버건디 / 트래드클럽 베리 반집업 니트 */
+  m_b9: { naver: 'https://naver.me/GT4cePZA', coupang: 'https://link.coupang.com/a/iUtEWkz5Ea' },   /* 남자 코듀로이 초코클래식 / 중년 남성 골덴 바지 */
+  f_o10: { naver: 'https://naver.me/5wrzA15G', coupang: 'https://link.coupang.com/a/iUtHRKgTue' }, /* 온더풀 브라운 벨티드 하프코트 / 레노마레이디 울 벨티드 하프코트 */
+  f_o12: { naver: 'https://naver.me/xm0Stmvw', coupang: 'https://link.coupang.com/a/iUtJDrc87M' }, /* 뎁프 덤블 퍼 후드 하프 무스탕 / 미쏘 토글 하프 무스탕 */
+  f_t13: { naver: 'https://naver.me/GSQfHTHX', coupang: 'https://link.coupang.com/a/iUtC50MfJc' }, /* 여성 라운드 버건디 니트 / 로린 꽈배기 브이넥 니트 */
+  f_b10: { naver: 'https://naver.me/xZKiGlZy', coupang: 'https://link.coupang.com/a/iUtF51QNvU' }  /* 코시보 여성 코듀로이 / 미쏘 코듀로이 세미와이드 */
+};
+WARDROBE.forEach(function (it) {
+  var t = TREND_LINKS_1123[it.id];
+  if (!t) return;
+  it.connectUrl = t.naver;
+  it.coupangUrl = t.coupang;
 });
 
 /* ============================================================
@@ -1526,6 +1568,64 @@ var CURATED_LOOKS = [
     tip: '크림 톤으로 위아래를 맞추고 안에는 오트밀 후드를 받치면 부드러운 분위기가 살아요.',
     items: ['f_tr1', 'f_tr2', 'f_tr3', 'f_s4', 'f_a1'],
     img: 'looks/set_42.jpg' },
+
+  /* ===== 2026 겨울 트렌드 세트 (2026-11-23 추가 · set_43~50) ===== */
+  { id: 'm-trend-1', gender: 'm', weathers: ['cold'],
+    occasions: ['work', 'event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '초콜릿 브라운 하프코트 정석',
+    reason: '올겨울 남성복의 중심인 초콜릿 브라운 하프코트로 격식과 따뜻함을 함께 챙긴 조합이에요.',
+    tip: '브라운 코트 안에 검정 터틀넥을 받치면 색이 더 깊어 보여요. 슬랙스는 세미와이드로 두어 다리선이 곧게 떨어지게 하세요.',
+    items: ['m_o11', 'm_t6', 'm_b7', 'm_s3', 'm_a3'],
+    img: 'looks/set_43.jpg' },
+  { id: 'm-trend-2', gender: 'm', weathers: ['cold'],
+    occasions: ['walk', 'trip'], moods: ['comfy', 'lively'], concept: 'soft',
+    title: '숏퍼퍼 니트 데님 캐주얼',
+    reason: '허리선에서 끊기는 검정 숏퍼퍼로 다리가 길어 보이는 겨울 외출 조합이에요.',
+    tip: '숏퍼퍼 밑단 스트링은 살짝만 조여 주세요. 그레이 니트와 다크 데님으로 위아래를 눌러 주면 부해 보이지 않아요.',
+    items: ['m_o12', 'm_t10', 'm_b6', 'm_s4', 'm_a5'],
+    img: 'looks/set_44.jpg' },
+  { id: 'm-trend-3', gender: 'm', weathers: ['cold'],
+    occasions: ['gather', 'work'], moods: ['calm', 'lively'], concept: 'accent',
+    title: '에코퍼 재킷 버건디 니트 룩',
+    reason: '올겨울 다시 뜬 퍼 재킷에 버건디 니트로 색을 한 번 올린 조합이에요.',
+    tip: '브라운 퍼 재킷 안에는 버건디처럼 짙은 색을 받쳐야 얼굴이 화사해 보여요. 코듀로이 팬츠는 밑단을 살짝 접어 신발을 보여 주세요.',
+    items: ['m_o13', 'm_t13', 'm_b9', 'm_s2', 'm_a2'],
+    img: 'looks/set_45.jpg' },
+  { id: 'm-trend-4', gender: 'm', weathers: ['rain'],
+    occasions: ['work', 'gather', 'walk', 'trip'], moods: ['calm', 'comfy', 'lively'], concept: 'classic',
+    title: '비·눈 오는 날 퀄팅 자켓',
+    reason: '추위와 비를 한 번에 막는 퀄팅 자켓에 우드핸들 장우산까지 챙긴 조합이에요.',
+    tip: '퀄팅 자켓은 안에 오트밀 니트를 받치면 어두운 겨울날에도 얼굴이 밝아 보여요. 우산은 우드핸들 장우산, 신발은 젖어도 되는 더비로.',
+    items: ['m_o14', 'm_t4', 'm_b9', 'm_s3', 'm_a7'],
+    img: 'looks/set_46.jpg' },
+  { id: 'f-trend-1', gender: 'f', weathers: ['cold'],
+    occasions: ['work', 'event', 'gather'], moods: ['formal', 'calm'], concept: 'classic',
+    title: '브라운 벨티드 하프코트 출근 룩',
+    reason: '올겨울 여성복의 답인 하프 기장과 초콜릿 브라운을 한 번에 담은 조합이에요.',
+    tip: '벨트는 꽉 조이지 말고 살짝 묶어 허리선만 잡아 주세요. 크림 슬랙스로 아래를 밝게 두면 코트가 무겁지 않아 보여요.',
+    items: ['f_o10', 'f_t4', 'f_b2', 'f_s7', 'f_a4'],
+    img: 'looks/set_47.jpg' },
+  { id: 'f-trend-2', gender: 'f', weathers: ['cold'],
+    occasions: ['walk', 'trip', 'gather'], moods: ['comfy', 'lively'], concept: 'accent',
+    title: '버건디 니트 코듀로이 룩',
+    reason: '버건디 니트와 코듀로이 팬츠로 올겨울 포인트 컬러를 살린 조합이에요.',
+    tip: '버건디 니트는 얼굴 가까이 오는 만큼 목선이 편한 것을 고르세요. 코듀로이 팬츠는 골이 굵지 않은 것을 고르면 덜 부해 보여요.',
+    items: ['f_o7', 'f_t13', 'f_b10', 'f_s4', 'f_a1'],
+    img: 'looks/set_48.jpg' },
+  { id: 'f-trend-3', gender: 'f', weathers: ['cold'],
+    occasions: ['gather', 'event'], moods: ['calm', 'formal'], concept: 'classic',
+    title: '카멜 하프 무스탕 모임 룩',
+    reason: '한 벌로 분위기가 바뀌는 무스탕을 하프 기장으로 가볍게 입은 조합이에요.',
+    tip: '무스탕 안에는 검정 터틀넥처럼 단순한 옷을 받쳐야 퍼 질감이 살아나요. 슬랙스는 일자로 떨어지는 것을 고르세요.',
+    items: ['f_o12', 'f_t6', 'f_b1', 'f_s5', 'f_a6'],
+    img: 'looks/set_49.jpg' },
+  { id: 'f-trend-4', gender: 'f', weathers: ['rain'],
+    occasions: ['work', 'gather', 'event', 'walk'], moods: ['calm', 'formal', 'comfy'], concept: 'classic',
+    title: '비·눈 오는 날 브라운 하프코트',
+    reason: '비 오는 겨울 출근길에도 단정함을 지키는 브라운 하프코트 조합이에요.',
+    tip: '울 코트는 비에 젖으면 바로 털어 그늘에 말리세요. 우드핸들 장우산과 물이 스며들지 않는 부츠를 함께 챙기면 발이 덜 젖어요.',
+    items: ['f_o10', 'f_t13', 'f_b10', 'f_s5', 'f_a9'],
+    img: 'looks/set_50.jpg' },
 ];
 
 /* ============================================================
@@ -1726,7 +1826,7 @@ function scoreSet(set, ctx) {
   if (set.moods.indexOf(ctx.mo.id) >= 0) s += 3;
   if (set.occasions.indexOf(ctx.oc.id) >= 0) s += 2.5;
   s -= Math.abs(setFormalOf(set) - ctx.formalTarget) * 1.1;
-  if (ctx.rain && set.weathers.indexOf('rain') >= 0) s += 1.0;
+  if (ctx.rain && set.weathers.indexOf('rain') >= 0) s += 4.0;
   return s;
 }
 /* 세트의 상의·겉옷이 고른 기온에 맞는지 (다른 기온 구간의 비 세트를 데려올 때 씁니다) */
